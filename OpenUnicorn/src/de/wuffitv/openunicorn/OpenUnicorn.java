@@ -2,7 +2,7 @@ package de.wuffitv.openunicorn;
 
 public class OpenUnicorn {
 	
-	public static OpenUnicorn openUnicorn;
+	private static OpenUnicorn openUnicorn;
 	private PreInitialisation preInitialisation;
 	private Initialisation initialisation;
 	
@@ -15,4 +15,19 @@ public class OpenUnicorn {
 		initialisation = new Initialisation();
 	}
 	
+	
+	/**
+	 * Getter & Setter
+	 */
+	public PreInitialisation getPreInitialisation(){
+		return preInitialisation;
+	}
+	
+	public Initialisation getInitialisation(){
+		return initialisation;
+	}
+	
+	public static OpenUnicorn getOpenUnicorn(){
+		return openUnicorn;
+	}
 }
