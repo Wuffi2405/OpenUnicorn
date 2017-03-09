@@ -7,6 +7,7 @@ public class Initialisation {
 		
 		new Window();
 		
+		
 	}
 	
 }

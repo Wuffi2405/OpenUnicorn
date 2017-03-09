@@ -9,16 +9,21 @@ public class Window extends Canvas {
 
 	private static final long serialVersionUID = 8904967363319735435L;
 	private JFrame frame;
+//	private Root
 	
 	public Window(){
 		frame = new JFrame();
 		frame.setLayout(null);
 		frame.setSize(new Dimension(400, 600));
 		frame.setLocationRelativeTo(null);
-		frame.pack();
+//		frame.pack();
 		frame.setVisible(true);
 		frame.setResizable(false);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+	
+	public void MenuPane(){
+		
 	}
 	
 }
