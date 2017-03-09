@@ -29,8 +29,8 @@ public class Window extends Canvas {
 		JButton button = new JButton("Klick mich");
 		button.setBounds(0, 0, 100, 50);
 		
-		JButton button2 = new JButton("Klick mich");
-		button.setBounds(0, 50, 100, 50);
+		JButton button2 = new JButton("------Klick mich------");
+		button2.setBounds(0, 50, 100, 50);
 		
 		launcher = new JLayeredPane();
 		launcher.setBounds(0, 0, 100, 200);
