@@ -2,18 +2,16 @@ package de.wuffitv.openunicorn;
 
 public class Initialisation {
 	
-	private Window window;
-	
 	public Initialisation(){
-		System.out.println("[OpenUnicorns] [Initialisation] [Initialisation] called");
+		System.out.println("[OpenUnicorn] [Initialisation] [Initialisation] called");
 		
-		window = new Window();
+		/**
+		 * KeyListener
+		 * Updater
+		 * Timer
+		 * Renderer		
+		 */
 		
-		
-	}
-	
-	public Window getWindow(){
-		return window;
 	}
 	
 }
