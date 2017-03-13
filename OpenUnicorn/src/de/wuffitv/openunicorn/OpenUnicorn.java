@@ -1,5 +1,10 @@
 package de.wuffitv.openunicorn;
 
+import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.image.BufferStrategy;
+
 public class OpenUnicorn implements Runnable {
 	
 	private static OpenUnicorn openUnicorn;
@@ -77,11 +82,11 @@ public class OpenUnicorn implements Runnable {
 				delta += (now - lastTime) / ns;
 				lastTime = now;
 				while(delta >= 1){
-//					update();
+					update();
 					updates++;
 					delta --;
 				}
-//				render();
+				render();
 				frames ++;
 				
 				if(System.currentTimeMillis() - timer > 1000){
@@ -94,4 +99,34 @@ public class OpenUnicorn implements Runnable {
 			stop();
 		}
 	}
+	
+	public void update(){
+		
+	}
+	
+	public void render(){
+		
+//		BufferStrategy bs = getBufferStrategy();
+//		if(bs == null){
+//			createBufferStrategy(3);
+//			return;
+//		}
+//		
+//		Graphics g = bs.getDrawGraphics();
+//		
+//		g.setColor(Color.BLACK);
+//		g.fillRect(0, 0, 100, 500);
+//		
+//		g.dispose();
+//		bs.show();
+//		
+		/**
+		 * NOR WORKING
+		 * 
+		 * Create a seperat class for the Layered_game
+		 * --> create it there
+		 */
+		
+	}
+	
 }

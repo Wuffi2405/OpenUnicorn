@@ -9,6 +9,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
 
+import de.wuffitv.openunicorn.frame.LayeredPaneGame;
+
 public class Window extends Canvas implements ActionListener {
 
 	private static final long serialVersionUID = 8904967363319735435L;
@@ -43,10 +45,8 @@ public class Window extends Canvas implements ActionListener {
 		layeredPane_launcher.add(button);
 		frame.add(layeredPane_launcher);
 		
-		layeredPane_game = new JLayeredPane();
-		layeredPane_game.setBounds(0, 0, frame.getWidth(), frame.getHeight());
-		layeredPane_game.add(button2);
-		frame.add(layeredPane_game);
+		layeredPane_game = new LayeredPaneGame(frame);
+		
 		
 	}
 	
@@ -64,6 +64,7 @@ public class Window extends Canvas implements ActionListener {
 		}else{
 			System.err.println("[OpenUnicorn] [Window] [setForgroundLayer] Value of 'int forgroundLayer' isn't allowed ");		
 		}
+		
 	}
 	
 	public JFrame getJFrame(){
@@ -79,5 +80,7 @@ public class Window extends Canvas implements ActionListener {
 			setForegroundLayer(0);
 		}
 	}
+	
+	
 	
 }
