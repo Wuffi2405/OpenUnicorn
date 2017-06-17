@@ -6,10 +6,11 @@ public class Initialisation {
 		System.out.println("[OpenUnicorn] [Initialisation] [Initialisation] called");
 		
 		/**
-		 * KeyListener
+		 * init KeyListener
 		 * Updater
-		 * Timer
-		 * Renderer		
+		 * Renderer
+		 * 
+		 * load World		
 		 */
 		
 	}

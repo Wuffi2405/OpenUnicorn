@@ -1,11 +1,10 @@
 package de.wuffitv.openunicorn;
 
 import java.awt.Canvas;
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.image.BufferStrategy;
 
-public class OpenUnicorn implements Runnable {
+public class OpenUnicorn extends Canvas implements Runnable {
+	
+	private static final long serialVersionUID = -3150180067987504535L;
 	
 	private static OpenUnicorn openUnicorn;
 	private PreInitialisation preInitialisation;
@@ -18,36 +17,14 @@ public class OpenUnicorn implements Runnable {
 	}
 	
 	public OpenUnicorn(){
+		System.out.println("WARNING: THREAD ISNT CLOSING AFTER CALLING THE STOP() METHOD");
+		
 		preInitialisation = new PreInitialisation();
-		start();
-		/*
-		 * 
-		 * start(); bzw. run() wird erst nach initialisation aufgerufen
-		 * --> soll nicht so sein
-		 * --> am besten aus dem Ende der PreInitialisation aufrufen
-		 * 
-		 * 
-		 * 
-		 * 
-		 * 
-		 */
+		//if start button was pushed, the loop begins
+	}
+	
+	public void callInitialisation(){
 		initialisation = new Initialisation();
-	}
-	
-	
-	/**
-	 * Getter & Setter
-	 */
-	public PreInitialisation getPreInitialisation(){
-		return preInitialisation;
-	}
-	
-	public Initialisation getInitialisation(){
-		return initialisation;
-	}
-	
-	public static OpenUnicorn getOpenUnicorn(){
-		return openUnicorn;
 	}
 	
 	public synchronized void start(){
@@ -120,13 +97,27 @@ public class OpenUnicorn implements Runnable {
 //		g.dispose();
 //		bs.show();
 //		
-		/**
-		 * NOR WORKING
-		 * 
-		 * Create a seperat class for the Layered_game
-		 * --> create it there
-		 */
 		
+	}
+
+	public boolean isRunning() {
+		return running;
+	}
+
+	public void setRunning(boolean running) {
+		this.running = running;
+	}
+	
+	public PreInitialisation getPreInitialisation(){
+		return preInitialisation;
+	}
+	
+	public Initialisation getInitialisation(){
+		return initialisation;
+	}
+	
+	public static OpenUnicorn getOpenUnicorn(){
+		return openUnicorn;
 	}
 	
 }
