@@ -7,7 +7,6 @@ public class PreInitialisation {
 	public PreInitialisation(){
 		System.out.println("[OpenUnicorn] [PreInitialisation] [PreInitialisation] called");
 		
-		
 		//last post init
 		window = new Window();
 		

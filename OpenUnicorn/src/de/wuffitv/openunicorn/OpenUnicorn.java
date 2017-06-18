@@ -2,6 +2,8 @@ package de.wuffitv.openunicorn;
 
 import java.awt.Canvas;
 
+import de.wuffitv.openunicorn.frame.LayeredPaneGame;
+
 public class OpenUnicorn extends Canvas implements Runnable {
 	
 	private static final long serialVersionUID = -3150180067987504535L;
@@ -22,6 +24,7 @@ public class OpenUnicorn extends Canvas implements Runnable {
 	}
 	
 	public void callInitialisation(){
+		System.out.println("[OpenUnicorn] [OpenUnicorn] [callInitialisation] called");
 		initialisation = new Initialisation();
 	}
 	
@@ -73,26 +76,11 @@ public class OpenUnicorn extends Canvas implements Runnable {
 	}
 	
 	public void update(){
-		
+		LayeredPaneGame.getGameCanvas().update();
 	}
 	
 	public void render(){
-		
-//		BufferStrategy bs = getBufferStrategy();
-//		if(bs == null){
-//			createBufferStrategy(3);
-//			return;
-//		}
-//		
-//		Graphics g = bs.getDrawGraphics();
-//		
-//		g.setColor(Color.BLACK);
-//		g.fillRect(0, 0, 100, 500);
-//		
-//		g.dispose();
-//		bs.show();
-//		
-		
+		LayeredPaneGame.getGameCanvas().render();
 	}
 
 	public boolean isRunning() {

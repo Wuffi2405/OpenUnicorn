@@ -12,7 +12,7 @@ import de.wuffitv.openunicorn.frame.LayeredPaneLauncher;
 public class Window extends Canvas{
 
 	private static final long serialVersionUID = 8904967363319735435L;
-	private JFrame frame;
+	private static JFrame frame;
 	public static JLayeredPane layeredPane;
 	public static Dimension dimension;
 	public static LayeredPaneLauncher layeredPaneLauncher;
@@ -20,7 +20,7 @@ public class Window extends Canvas{
 	
 	
 	public Window(){
-		System.out.println("[OpenUnicorn] [Initialisation] [Window] called");
+		System.out.println("[OpenUnicorn] [Window] [Window] called");
 		dimension = new Dimension(800, 600);
 		
 		frame = new JFrame();
@@ -50,7 +50,7 @@ public class Window extends Canvas{
 		frame.add(layeredPane);
 	}
 	
-	public JFrame getJFrame(){
+	public static JFrame getJFrame(){
 		return frame;
 	}	
 	
