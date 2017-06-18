@@ -16,9 +16,7 @@ public class OpenUnicorn extends Canvas implements Runnable {
 		openUnicorn = new OpenUnicorn();
 	}
 	
-	public OpenUnicorn(){
-		System.out.println("WARNING: THREAD ISNT CLOSING AFTER CALLING THE STOP() METHOD");
-		
+	public OpenUnicorn(){		
 		preInitialisation = new PreInitialisation();
 		//if start button was pushed, the loop begins
 	}
@@ -36,11 +34,8 @@ public class OpenUnicorn extends Canvas implements Runnable {
 	
 	public synchronized void stop(){
 		running = false;
-		try {
-			thread.join();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+		
+		thread.interrupt();
 	}
 	
 	@Override
