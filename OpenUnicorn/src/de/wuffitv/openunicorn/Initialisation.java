@@ -2,16 +2,24 @@ package de.wuffitv.openunicorn;
 
 import java.awt.Graphics;
 
-import de.wuffitv.openunicorn.util.SourceLoader;
+import de.wuffitv.openunicorn.entity.Player;
+import de.wuffitv.openunicorn.world.World;
 
 public class Initialisation {
 	
+	private boolean readyForLoop = false;
+	
 	private static int frame_widthWithoutInsets = 0;
 	private static int frame_heightWithoutInsets = 0;
+	private Player player;
+	private World world;
 	
 	public Initialisation(){
 		System.out.println("[OpenUnicorn] [Initialisation] [Initialisation] called");
+		readyForLoop = true;
 		
+		world = new World();
+		player = new Player();
 		/**
 		 * init KeyListener
 		 * Updater
@@ -23,11 +31,17 @@ public class Initialisation {
 	}
 	
 	public void update(){
-		
+		if(readyForLoop){
+			world.update();
+			player.update();
+		}
 	}
 	
 	public void render(Graphics g){
-		g.drawImage(SourceLoader.loadImage("/de/wuffitv/openunicorn/images/politics_merkel.png"), 0, 0, 128, 265, null);
+		if(readyForLoop){
+			world.render(g);
+			player.render(g);
+		}
 	}
 
 	public static int getFrame_widthWithoutInsets() {

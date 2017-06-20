@@ -1,5 +1,7 @@
 package de.wuffitv.openunicorn;
 
+import de.wuffitv.openunicorn.frame.Window;
+
 public class PreInitialisation {
 	
 	private Window window;

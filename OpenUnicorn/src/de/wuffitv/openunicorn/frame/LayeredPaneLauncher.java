@@ -8,7 +8,6 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import de.wuffitv.openunicorn.OpenUnicorn;
-import de.wuffitv.openunicorn.Window;
 
 public class LayeredPaneLauncher extends JPanel {
 	

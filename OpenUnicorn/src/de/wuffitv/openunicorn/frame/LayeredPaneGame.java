@@ -1,6 +1,5 @@
 package de.wuffitv.openunicorn.frame;
 
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -9,7 +8,6 @@ import javax.swing.JPanel;
 
 import de.wuffitv.openunicorn.GameCanvas;
 import de.wuffitv.openunicorn.OpenUnicorn;
-import de.wuffitv.openunicorn.Window;
 
 public class LayeredPaneGame extends JPanel{
 
@@ -20,7 +18,6 @@ public class LayeredPaneGame extends JPanel{
 	
 	public LayeredPaneGame(){
 		setBounds(0, 0, 800, 600);
-		setBackground(Color.RED);
 		setLayout(null);
 		
 		button_closeGame = new JButton("Spiel schlieﬂen");
@@ -37,6 +34,7 @@ public class LayeredPaneGame extends JPanel{
 				OpenUnicorn.getOpenUnicorn().stop();
 			}
 		});
+		button_closeGame.setFocusable(false);
 		this.add(button_closeGame, 0);
 		
 		gameCanvas = new GameCanvas();

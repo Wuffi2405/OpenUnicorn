@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
+import de.wuffitv.openunicorn.frame.Window;
+
 public class GameCanvas extends Canvas {
 	
 	private static final long serialVersionUID = 3809363670935094921L;
@@ -17,6 +19,7 @@ public class GameCanvas extends Canvas {
 		Initialisation.setFrame_widthWithoutInsets(Window.getJFrame().getWidth()-(Window.getJFrame().getInsets().left+Window.getJFrame().getInsets().right));
 		Initialisation.setFrame_heightWithoutInsets(Window.getJFrame().getHeight()-(Window.getJFrame().getInsets().top+Window.getJFrame().getInsets().bottom));
 		
+		addKeyListener(new KeyInput());
 	}
 	
 	public void update(){
@@ -24,6 +27,7 @@ public class GameCanvas extends Canvas {
 	}
 	
 	public void render(){
+		
 		BufferStrategy bs = getBufferStrategy();
 		if(bs == null){
 			createBufferStrategy(3);
@@ -35,8 +39,8 @@ public class GameCanvas extends Canvas {
 		/**
 		 * set bg, against a bug xD
 		 */
-		g.setColor(Color.CYAN);
-		g.fillRect(0, 0, Initialisation.getFrame_widthWithoutInsets(), Initialisation.getFrame_heightWithoutInsets());
+		g.setColor(Color.BLACK);
+		g.fillRect(0, 0, 20000, 20000);
 
 		OpenUnicorn.getOpenUnicorn().getInitialisation().render(g);
 		
