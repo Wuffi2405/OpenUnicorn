@@ -12,8 +12,11 @@ public class GameCanvas extends Canvas {
 	public GameCanvas(){
 		System.out.println("[OpenUnicorn] [GameCanvas] [GameCanvas] called");
 		
-		setBounds(0, 0, Window.dimension.width, Window.dimension.height);
-		setBackground(Color.MAGENTA);
+		setBounds(0, 0, 800, 600);
+		
+		Initialisation.setFrame_widthWithoutInsets(Window.getJFrame().getWidth()-(Window.getJFrame().getInsets().left+Window.getJFrame().getInsets().right));
+		Initialisation.setFrame_heightWithoutInsets(Window.getJFrame().getHeight()-(Window.getJFrame().getInsets().top+Window.getJFrame().getInsets().bottom));
+		
 	}
 	
 	public void update(){
@@ -29,13 +32,13 @@ public class GameCanvas extends Canvas {
 		
 		Graphics g = bs.getDrawGraphics();
 		
+		/**
+		 * set bg, against a bug xD
+		 */
 		g.setColor(Color.CYAN);
-		g.fillRect(0, 0, Initialisation.getFrame_width(), Initialisation.getFrame_height());
-//		System.out.println("width: " + Window.getJFrame().getWidth() + " || ");
-//		System.out.println("insets: " + Window.getJFrame().getInsets().right + " || " + Window.getJFrame().getInsets().left);
-		
-		g.setColor(Color.RED);
-		g.fillRect(790, 0, 10, 500);
+		g.fillRect(0, 0, Initialisation.getFrame_widthWithoutInsets(), Initialisation.getFrame_heightWithoutInsets());
+
+		OpenUnicorn.getOpenUnicorn().getInitialisation().render(g);
 		
 		g.dispose();
 		bs.show();

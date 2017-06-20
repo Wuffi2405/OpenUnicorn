@@ -17,7 +17,7 @@ public class LayeredPaneLauncher extends JPanel {
 	public static JButton button_startGame;
 	
 	public LayeredPaneLauncher(){
-		setBounds(0, 0, (int)Window.dimension.getWidth(), (int)Window.dimension.getHeight());
+		setBounds(0, 0, 800, 600);
 		setBackground(Color.DARK_GRAY);
 		setLayout(null);
 		

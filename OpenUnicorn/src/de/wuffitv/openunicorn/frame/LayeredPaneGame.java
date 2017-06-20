@@ -19,8 +19,8 @@ public class LayeredPaneGame extends JPanel{
 	private static GameCanvas gameCanvas;
 	
 	public LayeredPaneGame(){
-		setBounds(0, 0, (int)Window.dimension.getWidth(), (int)Window.dimension.getHeight());
-		setBackground(Color.BLACK);
+		setBounds(0, 0, 800, 600);
+		setBackground(Color.RED);
 		setLayout(null);
 		
 		button_closeGame = new JButton("Spiel schlieﬂen");
