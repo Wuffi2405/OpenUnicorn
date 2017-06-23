@@ -1,10 +1,10 @@
 package de.wuffitv.openunicorn.world;
 
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 
 import de.wuffitv.openunicorn.KeyInput;
 import de.wuffitv.openunicorn.entity.Player;
-import de.wuffitv.openunicorn.util.SourceLoader;
 
 public class World {
 	
@@ -12,10 +12,12 @@ public class World {
 	public static int world_y = 0;
 	public static int world_width = 1024;
 	public static int world_height = 1024;
+	private BufferedImage background;
 	
 	public World(){
-//		System.out.println("WARNING [OpenUnicorn] [World] NOT ENOUGH FPS, FPS: 15-26; NEED: MIN 30");
 		System.out.println("[OpenUnicorn] [World] [World] called");
+//		background = new BufferedImage(1024, 1024, BufferedImage.TYPE_INT_ARGB);
+//		background = SourceLoader.loadImage("/de/wuffitv/openunicorn/images/background.png");
 		
 	}
 	
@@ -35,14 +37,18 @@ public class World {
 			Player.player_y = 0;
 		}
 		
-		if(Player.player_x + Player.player_width > world_x+world_width){
-			System.out.println(222);
-		}
-		System.out.println(world_x*-1 + " || " + world_width + " || " + (Player.player_x + Player.player_width));
+//		if(Player.player_x + Player.player_width > world_x+world_width){
+//			Player.player_x = world_x+world_width-Player.player_width;
+//			System.out.println(222);
+//		}
+//		if(world_x > background.getWidth() - Window.getJFrame().getWidth()){
+//			System.out.println(222);
+//		}
+////		System.out.println(world_x*-1 + " || " + world_width + " || " + (Player.player_x + Player.player_width));
 	}
 	
 	public void render(Graphics g){
-		g.drawImage(SourceLoader.loadImage("/de/wuffitv/openunicorn/images/background.png"), world_x, world_y, world_width, world_height, null);
+//		g.drawImage(SourceLoader.loadImage("/de/wuffitv/openunicorn/images/background.png"), world_x, world_y, world_width, world_height, null);
 	}
 	
 }

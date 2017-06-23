@@ -3,6 +3,7 @@ package de.wuffitv.openunicorn;
 import java.awt.Graphics;
 
 import de.wuffitv.openunicorn.entity.Player;
+import de.wuffitv.openunicorn.util.SourceLoader;
 import de.wuffitv.openunicorn.world.World;
 
 public class Initialisation {
@@ -16,10 +17,12 @@ public class Initialisation {
 	
 	public Initialisation(){
 		System.out.println("[OpenUnicorn] [Initialisation] [Initialisation] called");
-		readyForLoop = true;
 		
+//		World.background = SourceLoader.loadImage("assets/de/wuffitv/openunicorn/images/background.png");
 		world = new World();
 		player = new Player();
+		
+		readyForLoop = true;
 		/**
 		 * init KeyListener
 		 * Updater

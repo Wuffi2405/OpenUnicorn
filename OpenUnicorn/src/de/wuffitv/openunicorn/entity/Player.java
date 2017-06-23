@@ -18,7 +18,6 @@ public class Player {
 	
 	public Player(){
 		System.out.println("[OpenUnicorn] [Player] [Player] called");
-		
 	}
 	
 	public void update(){

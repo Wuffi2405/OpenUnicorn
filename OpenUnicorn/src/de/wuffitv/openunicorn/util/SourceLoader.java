@@ -12,10 +12,13 @@ public class SourceLoader {
 	public static BufferedImage loadImage(String path){
 		try {
 			image = ImageIO.read(SourceLoader.class.getResourceAsStream(path));
+//			image = ImageIO.read(SourceLoader.class.getClassLoader().getResourceAsStream(path));
+			return image;
 		} catch (IOException e) {
+			System.err.println("ERROR");
 			e.printStackTrace();
+			return null;
 		}
-		return image;
 	}
 	
 }
