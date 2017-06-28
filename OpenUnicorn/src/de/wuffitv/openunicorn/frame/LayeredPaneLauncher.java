@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import de.wuffitv.openunicorn.Initialisation;
 import de.wuffitv.openunicorn.OpenUnicorn;
 
 public class LayeredPaneLauncher extends JPanel {
@@ -14,6 +15,8 @@ public class LayeredPaneLauncher extends JPanel {
 	private static final long serialVersionUID = 3803108154839418167L;
 
 	public static JButton button_startGame;
+	
+	public static Initialisation initialisation;
 	
 	public LayeredPaneLauncher(){
 		setBounds(0, 0, 800, 600);
@@ -26,12 +29,14 @@ public class LayeredPaneLauncher extends JPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				initialisation = new Initialisation();
 				Window.layeredPane.moveToFront(Window.layeredPaneGame);
 				LayeredPaneGame.button_closeGame.setVisible(true);
 				LayeredPaneLauncher.button_startGame.setVisible(false);
 				
 				OpenUnicorn.getOpenUnicorn().start();
-				OpenUnicorn.getOpenUnicorn().callInitialisation();
+//				OpenUnicorn.getOpenUnicorn().callInitialisation();
+//				initialisation = new Initialisation();
 			}
 		});
 		this.add(button_startGame);

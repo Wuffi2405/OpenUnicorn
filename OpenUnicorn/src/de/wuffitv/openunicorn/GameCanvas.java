@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
+import de.wuffitv.openunicorn.frame.LayeredPaneLauncher;
 import de.wuffitv.openunicorn.frame.Window;
 
 public class GameCanvas extends Canvas {
@@ -23,7 +24,8 @@ public class GameCanvas extends Canvas {
 	}
 	
 	public void update(){
-		OpenUnicorn.getOpenUnicorn().getInitialisation().update();
+//		OpenUnicorn.getOpenUnicorn().getInitialisation().update();
+		LayeredPaneLauncher.initialisation.update();
 	}
 	
 	public void render(){
@@ -42,7 +44,8 @@ public class GameCanvas extends Canvas {
 		g.setColor(Color.BLACK);
 		g.fillRect(0, 0, 20000, 20000);
 
-		OpenUnicorn.getOpenUnicorn().getInitialisation().render(g);
+//		OpenUnicorn.getOpenUnicorn().getInitialisation().render(g);
+		LayeredPaneLauncher.initialisation.render(g);
 		
 		g.dispose();
 		bs.show();
