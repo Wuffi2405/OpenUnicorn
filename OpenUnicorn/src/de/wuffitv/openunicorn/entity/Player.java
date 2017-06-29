@@ -25,7 +25,7 @@ public class Player {
 			if(KeyInput.W) player_y -= player_speed_y;
 //			if(KeyInput.A) player_x -= player_speed_x;
 			if(KeyInput.S) player_y += player_speed_y;
-			if(KeyInput.D) player_x += player_speed_x;
+//			if(KeyInput.D) player_x += player_speed_x;
 		}		
 		
 	}

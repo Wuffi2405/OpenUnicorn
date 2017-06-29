@@ -3,7 +3,6 @@ package de.wuffitv.openunicorn.world;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
-import de.wuffitv.openunicorn.Initialisation;
 import de.wuffitv.openunicorn.KeyInput;
 import de.wuffitv.openunicorn.entity.Player;
 import de.wuffitv.openunicorn.frame.Window;
@@ -13,8 +12,8 @@ public class World {
 	
 	public static int world_x = 0;
 	public static int world_y = 0;
-	public static int world_width = 1024;
-	public static int world_height = 1024;
+	public static int world_width = 1536;
+	public static int world_height = 1536;
 	private BufferedImage background;
 	
 	public World(){
@@ -28,11 +27,12 @@ public class World {
 		if(KeyInput.W){
 			world_y += Player.player_speed_y;
 		}
-		if(KeyInput.A){//links
+		
+/*l*/	if(KeyInput.A){//links
 			/**
 			 * Wenn über die Hälfte des Feldes
 			 */
-			if(Player.player_x < Window.getJFrame().getWidth()/2){				
+			if(Player.player_x <= (Window.getJFrame().getWidth()/2)){				
 				/**
 				 * Welt bewegen
 				 */
@@ -60,31 +60,30 @@ public class World {
 		if(KeyInput.S) world_y -= Player.player_speed_y;
 		
 		if(KeyInput.D){ //rechts
+			
 			/**
-			 * Welt oder Spieler bewegen
+			 * linke Hälfte
 			 */
-			if(!(world_x+world_width < Initialisation.getFrame_widthWithoutInsets())){
-				/**
-				 * Welt bewegen
-				 */
-				world_x -= Player.player_speed_x;
+			if(Player.player_x+(Player.player_width/2) < (Window.getJFrame().getWidth()/2)){
+				Player.player_x += Player.player_speed_x;				
 			}
 			
-			if(world_x+world_width < Initialisation.getFrame_widthWithoutInsets()){
-				/**
-				 * Spieler bewegen
-				 */
-				if(Player.player_x + Player.player_width > Initialisation.getFrame_widthWithoutInsets() 
-						|| Player.player_x + Player.player_width+Player.player_speed_x > Initialisation.getFrame_widthWithoutInsets()){
-					Player.player_x = world_x+world_width-Player.player_width;
+			/**
+			 * rechte Hälfte
+			 */
+			if(!(Player.player_x+(Player.player_width/2) < Window.getJFrame().getWidth()/2)){
+				if(!(world_x+world_width <= Window.getJFrame().getWidth())){
+					world_x -= Player.player_speed_x;
+				}else{
+					if(Player.player_x+Player.player_width >= Window.getJFrame().getWidth()
+							|| Player.player_x+Player.player_width+Player.player_speed_x >= Window.getJFrame().getWidth()){
+						Player.player_x = Window.getJFrame().getWidth()-Player.player_width;
+					}else{
+						Player.player_x += Player.player_speed_x;
+					}
 				}
 			}
 		}
-//		
-//		if(Player.player_x < 0){
-//			world_x = 0;
-//			Player.player_x = 0;
-//		}
 		
 		if(Player.player_y < 0){
 			world_y = 0;
