@@ -19,7 +19,7 @@ public class World {
 	public World(){
 		System.out.println("[OpenUnicorn] [World] [World] called");
 		
-		background = SourceLoader.loadImage("test/de/wuffitv/openunicorn/background.png");
+		background = SourceLoader.loadImage("/assets/background.png");
 		
 	}
 	

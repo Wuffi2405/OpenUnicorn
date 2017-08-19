@@ -31,7 +31,7 @@ public class Player {
 	}
 	
 	public void render(Graphics g){
-		g.drawImage(SourceLoader.loadImage("/de/wuffitv/openunicorn/images/player.png"), player_x, player_y, player_width, player_height, null);
+		g.drawImage(SourceLoader.loadImage("/assets/player.png"), player_x, player_y, player_width, player_height, null);
 	}
 	
 }
