@@ -118,6 +118,8 @@ public class LayeredPaneLauncher extends JPanel {
 					Window.button_game.get(i).setVisible(false);
 				}
 				LayeredPaneCredits.credits.setVisible(true);
+				LayeredPaneCredits.animateCredits = true;
+//				LayeredPaneCredits.callRun();
 			}
 		});
 		this.add(buttonCredits);

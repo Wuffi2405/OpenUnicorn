@@ -15,10 +15,13 @@ public class LayeredPaneCredits extends JPanel {
 
 	private static final long serialVersionUID = -1924166369822977552L;
 	
-	Button button_back;
+	private Button button_back;
 	public static JLabel credits;
-	JLabel image;
-	String credits_text = "<html><body>Projektleitung:<br>---------<br><br>Game Design:<br>Markus Krancher<br>Nico Matzke<br><br>Programmierung:<br>Fabius Mayer-Uhma<br>Nico Matzke<br><br>Grafik:<br>Jesko Alexander Kloﬂ<br><br>Sounds:<br>Markus Krancher<br></body></html>";
+	private JLabel image;
+	public static boolean animateCredits = false;
+	private int y = 0;
+	
+	String credits_text = "<html><body>Projektleitung:<br>Nico Matzke<br><br>Game Design:<br>Markus Krancher<br>Nico Matzke<br><br>Programmierung:<br>Fabius Mayer-Uhma<br>Nico Matzke<br><br>Grafik:<br>Jesko Alexander Kloﬂ<br><br>Sounds:<br>Markus Krancher<br></body></html>";
 	
 	public LayeredPaneCredits() {
 		setBounds(0, 0, 800, 600);
@@ -26,7 +29,7 @@ public class LayeredPaneCredits extends JPanel {
 		setLayout(null);
 		
 		credits = new JLabel(credits_text);
-		credits.setBounds(0, 0, Window.getJFrame().getWidth(), Window.getJFrame().getHeight());
+		credits.setBounds(y, 0, Window.getJFrame().getWidth(), Window.getJFrame().getHeight());
 		credits.setHorizontalAlignment((int) CENTER_ALIGNMENT);
 		credits.setFont(new Font("Calibri", Font.BOLD, 25));
 		credits.setForeground(Color.BLACK);
@@ -76,6 +79,7 @@ public class LayeredPaneCredits extends JPanel {
 					Window.button_game.get(i).setVisible(false);
 				}
 				credits.setVisible(false);
+				animateCredits = false;
 			}
 		});
 		this.add(button_back);
@@ -83,6 +87,46 @@ public class LayeredPaneCredits extends JPanel {
 		image = new JLabel(new ImageIcon(SourceLoader.loadImage("/assets/texture/launcher/launcher-background.png")));
 		image.setBounds(0, 0, Window.getJFrame().getWidth(), Window.getJFrame().getHeight());
 		this.add(image);
+		
+	}
+	
+	public synchronized void callRun() {
+		run();
+	}
+	
+	public void run() {
+		System.out.println(9);
+//		OpenUnicorn.getOpenUnicorn().getPreInitialisation().getWindow().requestFocus();
+		long lastTime = System.nanoTime();
+		long timer = System.currentTimeMillis();
+		double ns = 1000000000.0 / 60.0;
+		double delta = 0;
+		int frames = 0;
+		int updates = 0;
+		while(animateCredits){
+			long now = System.nanoTime();
+			delta += (now - lastTime) / ns;
+			lastTime = now;
+			while(delta >= 1){
+				update();
+				updates++;
+				delta --;
+			}
+			frames ++;
+			
+			if(System.currentTimeMillis() - timer > 1000){
+				timer += 1000;
+				System.out.println(updates + "ups, " + frames + "fps");
+				frames = 0;
+				updates = 0;
+			}
+		}
+	}
+	
+	public void update() {
+		y+=5;
+		System.out.println(5);
+		repaint();
 	}
 	
 }
