@@ -57,7 +57,24 @@ public class World {
 			}
 		}
 		
-		if(KeyInput.S) world_y -= Player.player_speed_y;
+		if(KeyInput.S) {
+			/**
+			 * untere Hälfte
+			 */
+			if(Player.player_y-Player.player_height > Window.getJFrame().getHeight()/2) {
+				world_y -= Player.player_speed_y;
+				System.out.println("1");
+			}
+			
+			/**
+			 * bis zur Mitte
+			 */
+			if(!(Player.player_y > Window.getJFrame().getHeight()/2)) {
+				Player.player_y += Player.player_speed_y;
+				System.out.println("2: " + Player.player_y);
+			}
+//			world_y -= Player.player_speed_y;
+		}
 		
 		if(KeyInput.D){ //rechts
 			
