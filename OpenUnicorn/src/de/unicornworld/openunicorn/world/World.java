@@ -7,7 +7,6 @@ import java.awt.Rectangle;
 import java.util.Random;
 
 import de.unicornworld.openunicorn.Component;
-import de.unicornworld.openunicorn.Inventory;
 
 public class World {
 	public static int worldW = 70, worldH = 70;
@@ -84,39 +83,6 @@ public class World {
 
 	public void building(int camX, int camY, int renW, int renH) {
 
-		if (Component.isMouseLeft || Component.isMouseRight) {
-
-			for (int x = (camX / Tile.tileSize); x < (camX / Tile.tileSize) + renW; x++) {
-				for (int y = (camY / Tile.tileSize); y < (camY / Tile.tileSize) + renH; y++) {
-
-					if (x >= 0 && y >= 0 && x < worldW && y < worldH) {
-
-						if (block[x][y].contains(new Point(Component.mse.x / Component.pixelsize + (int) Component.sx, Component.mse.y / Component.pixelsize + (int) Component.sy))) {
-
-							int sid[] = Component.inventory.inv_bar[Inventory.selected].id;
-
-							if (Component.isMouseRight) {
-
-								if (sid != Tile.air) {
-									if (block[x][y].id == Tile.air) {
-										block[x][y].id = sid;
-
-									}
-
-								}
-
-							} else {
-								block[x][y].id = Tile.air;
-
-							}
-
-							break;
-						}
-
-					}
-				}
-			}
-		}
 	}
 
 	public void tick(int camX, int camY, int renW, int renH) {

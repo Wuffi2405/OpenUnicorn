@@ -8,7 +8,6 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import de.unicornworld.openunicorn.OpenUnicorn;
-import de.wuffitv.openunicorn.Initialisation;
 
 public class LayeredPaneLauncher extends JPanel {
 	
@@ -16,7 +15,6 @@ public class LayeredPaneLauncher extends JPanel {
 
 	public static JButton button_startGame;
 	
-	public static Initialisation initialisation;
 	
 	public LayeredPaneLauncher(){
 		setBounds(0, 0, 800, 600);
@@ -29,7 +27,6 @@ public class LayeredPaneLauncher extends JPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				initialisation = new Initialisation();
 				Window.layeredPane.moveToFront(Window.layeredPaneGame);
 				LayeredPaneGame.button_closeGame.setVisible(true);
 				LayeredPaneLauncher.button_startGame.setVisible(false);

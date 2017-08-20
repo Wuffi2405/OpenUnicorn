@@ -7,9 +7,6 @@ import java.awt.Point;
 
 import de.unicornworld.openunicorn.world.Sky;
 import de.unicornworld.openunicorn.world.World;
-import de.wuffitv.openunicorn.Initialisation;
-import de.wuffitv.openunicorn.KeyInput;
-import de.wuffitv.openunicorn.frame.Window;
 
 public class Component extends Canvas {
 
@@ -35,7 +32,6 @@ public class Component extends Canvas {
 	public static boolean isMouseRight = false;
 
 	public static World world;
-	public static Inventory inventory;
 	public static Sky sky;
 
 	public static InitMethods init;
@@ -44,11 +40,6 @@ public class Component extends Canvas {
 		System.out.println("[OpenUnicorn] [GameCanvas] [GameCanvas] called");
 
 		setBounds(0, 0, 800, 600); // test
-
-		Initialisation.setFrame_widthWithoutInsets(Window.getJFrame().getWidth()
-				- (Window.getJFrame().getInsets().left + Window.getJFrame().getInsets().right));
-		Initialisation.setFrame_heightWithoutInsets(Window.getJFrame().getHeight()
-				- (Window.getJFrame().getInsets().top + Window.getJFrame().getInsets().bottom));
 
 		addKeyListener(new KeyInput());
 		init = new InitMethods();

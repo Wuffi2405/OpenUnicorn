@@ -2,7 +2,6 @@ package de.wuffitv.openunicorn.entity;
 
 import java.awt.Graphics;
 
-import de.wuffitv.openunicorn.Initialisation;
 import de.wuffitv.openunicorn.KeyInput;
 import de.wuffitv.openunicorn.util.SourceLoader;
 
@@ -29,10 +28,6 @@ public class Player extends Entity{
 			if(KeyInput.S) player_y += player_speed_y;
 			if(KeyInput.D) player_x += player_speed_x;
 			
-			if(KeyInput.W) Initialisation.sy += player_speed_y;
-			if(KeyInput.A) Initialisation.sx += player_speed_x;
-			if(KeyInput.S) Initialisation.sy -= player_speed_y;
-			if(KeyInput.D) Initialisation.sx -= player_speed_x;
 		}		
 		
 	}
