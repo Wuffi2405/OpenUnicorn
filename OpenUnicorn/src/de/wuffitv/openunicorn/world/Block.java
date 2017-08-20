@@ -21,7 +21,7 @@ public class Block extends Rectangle {
 
 	public void render(Graphics g) {
 		g.setColor(Color.CYAN);
-		g.fillRect(x, y, BLOCKSIZE, BLOCKSIZE);
+		g.drawRect(x, y, BLOCKSIZE, BLOCKSIZE);
 	}
 
 }
