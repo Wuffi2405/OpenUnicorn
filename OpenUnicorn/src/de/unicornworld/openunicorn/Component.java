@@ -67,7 +67,7 @@ public class Component extends Canvas {
 		g.setColor(new Color(100, 50, 150));
 		g.drawRect(0, 0, 1000, 1000);
 		if (readyForLoop) {
-			
+
 			world.render(g);
 
 			player.render(g);

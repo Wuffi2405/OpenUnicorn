@@ -40,9 +40,7 @@ public class Player extends DoubleRectangle {
 	}
 
 	public void render(Graphics g) {
-
 		g.drawRect((int) x, (int) y, (int) width, (int) height);
-
 	}
 
 }
