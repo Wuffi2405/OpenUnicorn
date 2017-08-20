@@ -38,7 +38,7 @@ public class LayeredPaneCredits extends JPanel {
 		button_back.text.setFont(new Font("Calibri", Font.BOLD, 17));
 		Window.button_credits.add(button_back);
 		button_back.addMouseListener(new MouseListener() {
-			
+			 
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				// TODO Auto-generated method stub
