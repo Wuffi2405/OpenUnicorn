@@ -36,7 +36,7 @@ public class Component extends Canvas {
 	public static Inventory inventory;
 	public static Sky sky;
 
-	public static Initialisation init;
+	public static InitMethods init;
 
 	public Component() {
 		System.out.println("[OpenUnicorn] [GameCanvas] [GameCanvas] called");
@@ -49,7 +49,7 @@ public class Component extends Canvas {
 				- (Window.getJFrame().getInsets().top + Window.getJFrame().getInsets().bottom));
 
 		addKeyListener(new KeyInput());
-		init = new Initialisation();
+		init = new InitMethods();
 
 	}
 
@@ -60,7 +60,7 @@ public class Component extends Canvas {
 	public void render() {
 
 		this.setBackground(new Color(100, 50, 150));
-
+		init.render(getGraphics());
 	}
 
 }
