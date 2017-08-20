@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Point;
+import java.awt.image.BufferStrategy;
 
 import de.unicornworld.openunicorn.world.Sky;
 import de.unicornworld.openunicorn.world.World;
@@ -61,11 +62,19 @@ public class Component extends Canvas {
 	}
 
 	public void render() {
-
-		Graphics g = getGraphics();
 		
+		BufferStrategy bs = getBufferStrategy();
+		if(bs == null) {
+			createBufferStrategy(3);
+			return;
+		}
+		
+		Graphics g = bs.getDrawGraphics();
+		
+		//Background
 		g.setColor(Color.CYAN);
 		g.fillRect(0, 0, 800, 600);
+		//---------
 		
 		g.setColor(new Color(100, 50, 150));
 		g.drawRect(0, 0, 1000, 1000);
@@ -78,6 +87,7 @@ public class Component extends Canvas {
 		}
 
 		g.dispose();
+		bs.show();
 	}
 
 }
