@@ -63,7 +63,10 @@ public class Component extends Canvas {
 	public void render() {
 
 		Graphics g = getGraphics();
-
+		
+		g.setColor(Color.CYAN);
+		g.fillRect(0, 0, 800, 600);
+		
 		g.setColor(new Color(100, 50, 150));
 		g.drawRect(0, 0, 1000, 1000);
 		if (readyForLoop) {
