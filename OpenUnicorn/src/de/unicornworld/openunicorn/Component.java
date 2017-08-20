@@ -1,12 +1,12 @@
 package de.unicornworld.openunicorn;
 
 import java.awt.Canvas;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
 
 import de.wuffitv.openunicorn.Initialisation;
 import de.wuffitv.openunicorn.KeyInput;
-import de.wuffitv.openunicorn.frame.LayeredPaneLauncher;
 import de.wuffitv.openunicorn.frame.Window;
 
 public class Component extends Canvas {
@@ -17,6 +17,8 @@ public class Component extends Canvas {
 	public static double sy = 0;
 
 	public static Dimension realsize;
+
+	public static Player character;
 
 	public static Dimension size = new Dimension(1300, 700);
 
@@ -30,7 +32,6 @@ public class Component extends Canvas {
 	public static boolean isMouseLeft = false;
 	public static boolean isMouseRight = false;
 
-	public static Player character;
 	public static World world;
 	public static Inventory inventory;
 	public static Sky sky;
@@ -48,25 +49,18 @@ public class Component extends Canvas {
 				- (Window.getJFrame().getInsets().top + Window.getJFrame().getInsets().bottom));
 
 		addKeyListener(new KeyInput());
-	}
-
-	public void start() {
-
-		new Tile();
 		init = new Initialisation();
-		world = new World();
-		character = new Player(Tile.tileSize, Tile.tileSize * 2);
-		inventory = new Inventory();
-		sky = new Sky();
 
 	}
 
 	public void update() {
-		System.out.println("update");
+		// TODO
 	}
 
 	public void render() {
-		System.out.println("render");
+
+		this.setBackground(new Color(100, 50, 150));
+
 	}
 
 }

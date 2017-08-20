@@ -63,6 +63,7 @@ public class OpenUnicorn extends Canvas implements Runnable {
 					delta --;
 				}
 				render();
+				update();
 				frames ++;
 				
 				if(System.currentTimeMillis() - timer > 1000){
