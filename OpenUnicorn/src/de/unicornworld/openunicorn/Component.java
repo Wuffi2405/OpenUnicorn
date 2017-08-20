@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
 
+import de.unicornworld.openunicorn.world.Sky;
+import de.unicornworld.openunicorn.world.World;
 import de.wuffitv.openunicorn.Initialisation;
 import de.wuffitv.openunicorn.KeyInput;
 import de.wuffitv.openunicorn.frame.Window;

@@ -1,7 +1,9 @@
-package de.unicornworld.openunicorn;
+package de.unicornworld.openunicorn.world;
 
 import java.awt.Color;
 import java.awt.Graphics;
+
+import de.unicornworld.openunicorn.Component;
 
 public class Sky {
 

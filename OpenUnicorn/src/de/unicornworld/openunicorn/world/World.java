@@ -1,10 +1,13 @@
-package de.unicornworld.openunicorn;
+package de.unicornworld.openunicorn.world;
 
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Rectangle;
 import java.util.Random;
+
+import de.unicornworld.openunicorn.Component;
+import de.unicornworld.openunicorn.Inventory;
 
 public class World {
 	public static int worldW = 70, worldH = 70;

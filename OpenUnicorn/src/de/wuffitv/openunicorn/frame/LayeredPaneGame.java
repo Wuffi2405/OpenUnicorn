@@ -7,7 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import de.unicornworld.openunicorn.Component;
-import de.wuffitv.openunicorn.OpenUnicorn;
+import de.unicornworld.openunicorn.OpenUnicorn;
 
 public class LayeredPaneGame extends JPanel {
 

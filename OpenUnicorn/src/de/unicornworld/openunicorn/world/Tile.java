@@ -1,4 +1,4 @@
-package de.unicornworld.openunicorn;
+package de.unicornworld.openunicorn.world;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
