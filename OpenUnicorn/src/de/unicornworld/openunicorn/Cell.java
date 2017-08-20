@@ -3,6 +3,8 @@ package de.unicornworld.openunicorn;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
+import de.unicornworld.openunicorn.world.Tile;
+
 public class Cell extends Rectangle {
 
 	private static final long serialVersionUID = 1L;

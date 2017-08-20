@@ -4,8 +4,8 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 
 import de.unicornworld.openunicorn.Component;
-import de.unicornworld.openunicorn.Tile;
-import de.unicornworld.openunicorn.World;
+import de.unicornworld.openunicorn.world.Tile;
+import de.unicornworld.openunicorn.world.World;
 import de.wuffitv.openunicorn.entity.Player;
 import de.wuffitv.openunicorn.world.Block;
 

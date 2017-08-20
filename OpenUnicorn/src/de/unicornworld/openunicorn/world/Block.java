@@ -1,7 +1,9 @@
-package de.unicornworld.openunicorn;
+package de.unicornworld.openunicorn.world;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
+
+import de.unicornworld.openunicorn.Component;
 
 public class Block extends Rectangle {
 

@@ -3,6 +3,8 @@ package de.unicornworld.openunicorn;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
+import de.unicornworld.openunicorn.world.Tile;
+
 public class Inventory {
 
 	public Cell[] inv_bar = new Cell[Tile.invLenght];

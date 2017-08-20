@@ -2,6 +2,9 @@ package de.unicornworld.openunicorn;
 
 import java.awt.Graphics;
 
+import de.unicornworld.openunicorn.world.Tile;
+import de.unicornworld.openunicorn.world.World;
+
 public class Player extends DoubleRectangle {
 
 	private final float gravity = 1.01F;
