@@ -1,5 +1,6 @@
 package de.unicornworld.openunicorn.world;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
@@ -30,9 +31,11 @@ public class World {
 		building(camX, camY, renW, renH);
 	}
 
-	public void render(Graphics g, int camX, int camY, int renW, int renH) {
+	public void render(Graphics g) {
 
-		
+		g.setColor(Color.BLACK);
+		g.drawRect(0, 0, 20, 20);
+
 	}
 
 }

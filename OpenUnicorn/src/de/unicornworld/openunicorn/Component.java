@@ -3,6 +3,7 @@ package de.unicornworld.openunicorn;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.Point;
 
 import de.unicornworld.openunicorn.world.Sky;
@@ -40,6 +41,8 @@ public class Component extends Canvas {
 		System.out.println("[OpenUnicorn] [Initialisation] [Initialisation] called");
 
 		player = new Player(20, 20);
+		world = new World();
+
 		readyForLoop = true;
 		System.out.println("[OpenUnicorn] [GameCanvas] [GameCanvas] called");
 
@@ -52,7 +55,6 @@ public class Component extends Canvas {
 	public void update() {
 		if (readyForLoop) {
 			player.tick();
-			world.tick(0, 0, 100, 100);
 
 		}
 
@@ -60,13 +62,19 @@ public class Component extends Canvas {
 
 	public void render() {
 
-		getGraphics().setColor(new Color(100, 50, 150));
-		getGraphics().drawRect(0, 0, 1000, 1000);
+		Graphics g = getGraphics();
+
+		g.setColor(new Color(100, 50, 150));
+		g.drawRect(0, 0, 1000, 1000);
 		if (readyForLoop) {
-			player.render(getGraphics());
+			
+			world.render(g);
+
+			player.render(g);
+
 		}
 
-		getGraphics().dispose();
+		g.dispose();
 	}
 
 }
