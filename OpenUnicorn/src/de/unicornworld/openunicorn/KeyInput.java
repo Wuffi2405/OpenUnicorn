@@ -106,23 +106,23 @@ public class KeyInput implements KeyListener, MouseListener, MouseMotionListener
 	}
 
 	public void mouseWheelMoved(MouseWheelEvent e) {
-		if (e.getWheelRotation() > 0) {
-			if (Inventory.selected < Tile.invLenght - 1) {
-
-				Inventory.selected += 1;
-
-			}else {
-				Inventory.selected = 0; 
-			}
-		} else if (e.getWheelRotation() < 0) {
-			if (Inventory.selected > 0) {
-
-				Inventory.selected -= 1;
-
-			}else {
-				Inventory.selected = Tile.invLenght-1; 
-			}
-		}
+//		if (e.getWheelRotation() > 0) {
+//			if (Inventory.selected < Tile.invLenght - 1) {
+//
+//				Inventory.selected += 1;
+//
+//			}else {
+//				Inventory.selected = 0; 
+//			}
+//		} else if (e.getWheelRotation() < 0) {
+//			if (Inventory.selected > 0) {
+//
+//				Inventory.selected -= 1;
+//
+//			}else {
+//				Inventory.selected = Tile.invLenght-1; 
+//			}
+//		}
 	}
 
 }
