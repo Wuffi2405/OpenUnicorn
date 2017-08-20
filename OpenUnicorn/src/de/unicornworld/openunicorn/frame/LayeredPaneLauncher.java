@@ -17,6 +17,7 @@ public class LayeredPaneLauncher extends JPanel {
 
 	public static JButton button_startGame;
 	
+	
 	public LayeredPaneLauncher(){
 		setBounds(0, 0, 800, 600);
 		setBackground(Color.DARK_GRAY);
@@ -39,9 +40,9 @@ public class LayeredPaneLauncher extends JPanel {
 		
 	}
 	
-	@Override
-	public void paint(Graphics g) {
-//		g.drawImage(SourceLoader.loadImage("/assets/texture/launcher/launcher-background.png"), 0, 0, Window.getJFrame().getWidth(), Window.getJFrame().getHeight(), null);
-	}
+//	@Override
+//	public void paint(Graphics g) {
+////		g.drawImage(SourceLoader.loadImage("/assets/texture/launcher/launcher-background.png"), 0, 0, Window.getJFrame().getWidth(), Window.getJFrame().getHeight(), null);
+//	}
 	
 }
