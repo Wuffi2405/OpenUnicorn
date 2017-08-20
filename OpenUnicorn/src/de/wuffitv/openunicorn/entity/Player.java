@@ -22,7 +22,7 @@ public class Player {
 	
 	public void update(){
 		if(move_permission){
-			if(KeyInput.W) player_y -= player_speed_y; 
+			if(KeyInput.W) player_y -= player_speed_y;
 		}		
 		
 	}

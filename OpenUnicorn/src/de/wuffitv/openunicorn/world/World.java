@@ -73,7 +73,6 @@ public class World {
 				Player.player_y += Player.player_speed_y;
 				System.out.println("2: " + Player.player_y);
 			}
-//			world_y -= Player.player_speed_y;
 		}
 		
 		if(KeyInput.D){ //rechts
