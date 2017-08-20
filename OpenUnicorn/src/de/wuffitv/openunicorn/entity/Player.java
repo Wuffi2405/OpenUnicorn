@@ -16,7 +16,12 @@ public class Player extends Entity{
 	public static boolean move_permission = true;
 	public static boolean isMoving = false;
 	
+	public static int speed = 0;
+	
+	public static int x,y;
+	
 	public Player(){
+		
 		super(0, 0, 0, 0);
 		System.out.println("[OpenUnicorn] [Player] [Player] called");
 	}
