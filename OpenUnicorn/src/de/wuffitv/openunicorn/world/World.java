@@ -56,7 +56,7 @@ public class World {
 				Player.player_x -= Player.player_speed_x;
 			}
 		}
-		 
+		
 		if(KeyInput.S) {
 			/**
 			 * untere Hälfte

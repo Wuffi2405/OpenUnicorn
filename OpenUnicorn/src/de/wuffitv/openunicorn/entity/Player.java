@@ -23,9 +23,6 @@ public class Player {
 	public void update(){
 		if(move_permission){
 			if(KeyInput.W) player_y -= player_speed_y;
-//			if(KeyInput.A) player_x -= player_speed_x;
-//			if(KeyInput.S) player_y += player_speed_y;
-//			if(KeyInput.D) player_x += player_speed_x;
 		}		
 		
 	}
