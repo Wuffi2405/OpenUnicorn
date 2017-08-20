@@ -2,6 +2,7 @@ package de.wuffitv.openunicorn.entity;
 
 import java.awt.Graphics;
 
+import de.wuffitv.openunicorn.Initialisation;
 import de.wuffitv.openunicorn.KeyInput;
 import de.wuffitv.openunicorn.util.SourceLoader;
 
@@ -12,7 +13,7 @@ public class Player {
 	public static int player_width = 64;
 	public static int player_height = 128;
 	public static int player_speed_x = 2;
-	public static int player_speed_y = 1;
+	public static int player_speed_y = 2;
 	public static boolean move_permission = true;
 	public static boolean isMoving = false;
 	
@@ -24,8 +25,13 @@ public class Player {
 		if(move_permission){
 			if(KeyInput.W) player_y -= player_speed_y;
 			if(KeyInput.A) player_x -= player_speed_x;
-			if(KeyInput.S) player_y += player_speed_x;
-			if(KeyInput.D) player_x += player_speed_y;
+			if(KeyInput.S) player_y += player_speed_y;
+			if(KeyInput.D) player_x += player_speed_x;
+			
+			if(KeyInput.W) Initialisation.sy -= player_speed_y;
+			if(KeyInput.A) Initialisation.sx -= player_speed_x;
+			if(KeyInput.S) Initialisation.sy += player_speed_y;
+			if(KeyInput.D) Initialisation.sx += player_speed_x;
 		}		
 		
 	}
