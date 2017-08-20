@@ -50,7 +50,7 @@ public class Initialisation {
 	
 	public void update(){
 		if(readyForLoop){
-			world.update();
+			world.tick((int) sx, (int) sy, (int) (pixel.width / Block.BLOCKSIZE + 2), (int) (pixel.height / Block.BLOCKSIZE + 2));
 			player.update();
 		}
 	}
