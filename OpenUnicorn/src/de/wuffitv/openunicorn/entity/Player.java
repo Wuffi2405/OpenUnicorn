@@ -16,9 +16,9 @@ public class Player extends Entity{
 	public static boolean move_permission = true;
 	public static boolean isMoving = false;
 	
-	public static int speed = 0;
+	public int speed = 0;
 	
-	public static int x,y;
+	public int x,y;
 	
 	public Player(){
 		

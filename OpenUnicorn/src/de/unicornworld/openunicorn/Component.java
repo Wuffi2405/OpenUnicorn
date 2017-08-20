@@ -7,7 +7,6 @@ import java.awt.Point;
 
 import de.unicornworld.openunicorn.world.Sky;
 import de.unicornworld.openunicorn.world.World;
-import de.wuffitv.openunicorn.entity.Player;
 
 public class Component extends Canvas {
 
@@ -16,13 +15,12 @@ public class Component extends Canvas {
 	public static double sx = 0;
 	public static double sy = 0;
 	private boolean readyForLoop = false;
-	
+
 	public static Dimension realsize;
 
-	public static Player character;
+	public static Player player;
 
 	public static Dimension size = new Dimension(1300, 700);
-	private Player player;
 
 	public static int pixelsize = 2;
 	public static Dimension pixel = new Dimension(size.width / pixelsize, size.height / pixelsize);
@@ -37,16 +35,15 @@ public class Component extends Canvas {
 	public static World world;
 	public static Sky sky;
 
-
 	public Component() {
-		
+
 		System.out.println("[OpenUnicorn] [Initialisation] [Initialisation] called");
 
-		player = new Player();
+		player = new Player(20, 20);
 		readyForLoop = true;
 		System.out.println("[OpenUnicorn] [GameCanvas] [GameCanvas] called");
 
-		setBounds(0, 0, 800, 600); // test
+		setBounds(0, 0, 1000, 600); // test
 
 		addKeyListener(new KeyInput());
 
@@ -54,17 +51,22 @@ public class Component extends Canvas {
 
 	public void update() {
 		if (readyForLoop) {
-			player.update();
+			player.tick();
+			world.tick(0, 0, 100, 100);
 
 		}
+
 	}
 
 	public void render() {
 
-		this.setBackground(new Color(100, 50, 150));
+		getGraphics().setColor(new Color(100, 50, 150));
+		getGraphics().drawRect(0, 0, 1000, 1000);
 		if (readyForLoop) {
 			player.render(getGraphics());
 		}
+
+		getGraphics().dispose();
 	}
 
 }

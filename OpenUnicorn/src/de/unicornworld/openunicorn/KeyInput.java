@@ -9,7 +9,6 @@ import java.awt.event.MouseMotionListener;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 
-import de.wuffitv.openunicorn.entity.Player;
 
 
 public class KeyInput implements KeyListener, MouseListener, MouseMotionListener, MouseWheelListener {
@@ -24,13 +23,13 @@ public class KeyInput implements KeyListener, MouseListener, MouseMotionListener
 		case KeyEvent.VK_D:
 
 			Component.isMoving = true;
-			Component.dir = Player.speed;
+			Component.dir = Component.player.speed;
 			break;
 
 		case KeyEvent.VK_A:
 
 			Component.isMoving = true;
-			Component.dir = -Player.speed;
+			Component.dir = -Component.player.speed;
 			break;
 
 		case KeyEvent.VK_SPACE:
@@ -47,13 +46,13 @@ public class KeyInput implements KeyListener, MouseListener, MouseMotionListener
 
 		switch (key) {
 		case KeyEvent.VK_D:
-			if (Component.dir == Player.speed) {
+			if (Component.dir == Component.player.speed) {
 				Component.isMoving = false;
 			}
 			break;
 
 		case KeyEvent.VK_A:
-			if (Component.dir == -Player.speed) {
+			if (Component.dir == -Component.player.speed) {
 				Component.isMoving = false;
 			}
 			break;

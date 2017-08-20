@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 import de.unicornworld.openunicorn.Component;
-import de.wuffitv.openunicorn.entity.Player;
 
 public class Sky {
 
@@ -22,8 +21,8 @@ public class Sky {
 
 	public int r = r1, g = g1, b = b1;
 
-	public double sunx = Player.x - Component.sx;
-	public double suny = Player.y - Component.sy;
+	public double sunx = Component.player.x - Component.sx;
+	public double suny = Component.player.y - Component.sy;
 	public int dayFrame = 750, dayTime = 1000;
 
 	public double sunRotationTime = dayTime * 2;
@@ -122,8 +121,8 @@ public class Sky {
 
 		gr.setColor(new Color(Color.YELLOW.getRed(), Color.YELLOW.getGreen(), Color.YELLOW.getBlue(), alpha));
 
-		gr.fillRect((int) (Math.round(sunx) + (Player.x - Component.sx)),
-				(int) (Math.round(suny) / 2 + (Player.y - Component.sy)), Tile.tileSize, Tile.tileSize);
+		gr.fillRect((int) (Math.round(sunx) + (Component.player.x - Component.sx)),
+				(int) (Math.round(suny) / 2 + (Component.player.y - Component.sy)), Tile.tileSize, Tile.tileSize);
 
 	}
 }
