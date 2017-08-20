@@ -1,8 +1,8 @@
-package de.wuffitv.openunicorn;
+package de.unicornworld.openunicorn;
 
 import java.awt.Canvas;
 
-import de.unicornworld.openunicorn.Component;
+import de.wuffitv.openunicorn.PreInitialisation;
 import de.wuffitv.openunicorn.frame.LayeredPaneGame;
 
 public class OpenUnicorn extends Canvas implements Runnable {

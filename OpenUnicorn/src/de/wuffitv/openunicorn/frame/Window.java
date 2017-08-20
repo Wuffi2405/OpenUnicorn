@@ -5,8 +5,6 @@ import java.awt.Canvas;
 import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
 
-import de.wuffitv.openunicorn.Initialisation;
-
 public class Window extends Canvas{
 
 	private static final long serialVersionUID = 8904967363319735435L;
@@ -29,7 +27,7 @@ public class Window extends Canvas{
 		
 		MenuPane(frame);
 		
-		Initialisation.setFrame_widthWithoutInsets(frame.getWidth()-(frame.getInsets().left+frame.getInsets().right));
+//		Initialisation.setFrame_widthWithoutInsets(frame.getWidth()-(frame.getInsets().left+frame.getInsets().right));
 		
 	}
 	
