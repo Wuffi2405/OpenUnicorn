@@ -34,7 +34,7 @@ public class Player extends DoubleRectangle {
 		Component.sx = Component.player.x - Component.pixel.width / 2 - (width / 2);
 
 		if (Component.isMoving == true) {
-			x += Component.dir/20;
+			x += Component.dir / 20;
 		}
 
 	}
@@ -44,4 +44,5 @@ public class Player extends DoubleRectangle {
 		g.drawRect((int) x, (int) y, (int) width, (int) height);
 
 	}
+
 }

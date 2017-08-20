@@ -63,7 +63,7 @@ public class OpenUnicorn extends Canvas implements Runnable {
 					delta --;
 				}
 				render();
-				update();
+//				update();
 				frames ++;
 				
 				if(System.currentTimeMillis() - timer > 1000){
@@ -78,7 +78,6 @@ public class OpenUnicorn extends Canvas implements Runnable {
 	}
 	
 	public void update(){
-		
 		LayeredPaneGame.getGameCanvas().update();
 	}
 	

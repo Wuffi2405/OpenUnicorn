@@ -42,7 +42,7 @@ public class KeyInput implements KeyListener, MouseListener, MouseMotionListener
 	}
 
 	public void keyReleased(KeyEvent e) {
-		int key = e.getKeyCode();
+		int key = e.getKeyCode(); //
 
 		switch (key) {
 		case KeyEvent.VK_D:

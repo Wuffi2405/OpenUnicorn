@@ -1,9 +1,8 @@
 package de.unicornworld.openunicorn.frame;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
-import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import de.unicornworld.openunicorn.Component;
@@ -13,28 +12,49 @@ public class LayeredPaneGame extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
-	public static JButton button_closeGame;
+	public static Button button_closeGame;
 	private static Component gameCanvas;
 
 	public LayeredPaneGame() {
 		setBounds(0, 0, 800, 600);
 		setLayout(null);
 
-		button_closeGame = new JButton("Spiel schlieﬂen");
+		button_closeGame = new Button();
 		button_closeGame.setBounds(200, 0, 150, 50);
-		button_closeGame.addActionListener(new ActionListener() {
-
+		button_closeGame.text.setText("Spiel schlieﬂen");
+		Window.button_game.add(button_closeGame);
+		button_closeGame.addMouseListener(new MouseListener() {
+			
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				Window.layeredPane.moveToFront(Window.layeredPaneLauncher);
-				LayeredPaneLauncher.button_startGame.setVisible(true);
-				LayeredPaneGame.button_closeGame.setVisible(false);
-
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
 				Window.getJFrame().dispose();
 				OpenUnicorn.getOpenUnicorn().stop();
 			}
 		});
-		button_closeGame.setFocusable(false);
 		this.add(button_closeGame, 0);
 
 		gameCanvas = new Component();
