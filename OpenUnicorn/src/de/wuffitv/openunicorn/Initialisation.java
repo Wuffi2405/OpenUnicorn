@@ -3,9 +3,11 @@ package de.wuffitv.openunicorn;
 import java.awt.Dimension;
 import java.awt.Graphics;
 
+import de.unicornworld.openunicorn.Component;
+import de.unicornworld.openunicorn.Tile;
+import de.unicornworld.openunicorn.World;
 import de.wuffitv.openunicorn.entity.Player;
 import de.wuffitv.openunicorn.world.Block;
-import de.wuffitv.openunicorn.world.World;
 
 public class Initialisation {
 
@@ -44,12 +46,20 @@ public class Initialisation {
 	public void update() {
 		if (readyForLoop) {
 			player.update();
+
+			Component.world.tick((int) sx, (int) sy, (int) (pixel.width / Tile.tileSize + 2),
+					(int) (pixel.height / Tile.tileSize + 2));
+			Component.character.tick();
+			Component.sky.tick();
+
 		}
+
 	}
 
 	public void render(Graphics g) {
 		if (readyForLoop) {
-			world.render(g, (int) sx, (int) sy, (int) (pixel.width / Block.BLOCKSIZE + 2), (int) (pixel.height / Block.BLOCKSIZE + 2));
+			world.render(g, (int) sx, (int) sy, (int) (pixel.width / Block.BLOCKSIZE + 2),
+					(int) (pixel.height / Block.BLOCKSIZE + 2));
 			player.render(g);
 		}
 	}
