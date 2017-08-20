@@ -1,24 +1,23 @@
 package de.wuffitv.openunicorn.world;
 
 import java.awt.Graphics;
-import java.awt.image.BufferedImage;
-
-import de.wuffitv.openunicorn.util.SourceLoader;
 
 public class World {
 
-	public static Block block;
 	public static int world_x = 0;
 	public static int world_y = 0;
 	public static int world_width = 1536;
 	public static int world_height = 1536;
-	private BufferedImage background;
-
+	public static Block[][] block = new Block[10][10];
+	
 	public World() {
 		System.out.println("[OpenUnicorn] [World] [World] called");
-		
-		block = new Block(0, 0, 20, 20, null);
-		background = SourceLoader.loadImage("/assets/background.png");
+
+		for (int y = 0; y < 4; y++) {
+			for (int x = 0; x < 4; x++) {
+				block[x][y] = new Block(x * Block.BLOCKSIZE, y * Block.BLOCKSIZE, 20, 20, null);
+			}
+		}
 
 	}
 
@@ -27,7 +26,11 @@ public class World {
 	}
 
 	public void render(Graphics g) {
-		block.render(g);
+		for (int y = 0; y < 4; y++) {
+			for (int x = 0; x < 4; x++) {
+				block[x][y].render(g);
+			}
+		}
 	}
 
 }

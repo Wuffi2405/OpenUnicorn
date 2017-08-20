@@ -8,6 +8,8 @@ import com.sun.javafx.geom.Rectangle;
 
 public class Block extends Rectangle {
 
+	public static final int BLOCKSIZE = 50;
+	
 	public int x, y, width, height;
 
 	public Block(int x, int y, int width, int height, BufferedImage image) {
@@ -19,7 +21,7 @@ public class Block extends Rectangle {
 
 	public void render(Graphics g) {
 		g.setColor(Color.CYAN);
-		g.fillRect(x, y, width, height);
+		g.fillRect(x, y, BLOCKSIZE, BLOCKSIZE);
 	}
 
 }
