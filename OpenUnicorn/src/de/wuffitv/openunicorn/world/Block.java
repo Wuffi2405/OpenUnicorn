@@ -1,5 +1,6 @@
 package de.wuffitv.openunicorn.world;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
@@ -17,6 +18,7 @@ public class Block extends Rectangle {
 	}
 
 	public void render(Graphics g) {
+		g.setColor(Color.CYAN);
 		g.fillRect(x, y, width, height);
 	}
 
