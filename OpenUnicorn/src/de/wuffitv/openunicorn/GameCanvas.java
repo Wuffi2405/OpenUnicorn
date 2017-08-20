@@ -15,7 +15,7 @@ public class GameCanvas extends Canvas {
 	public GameCanvas(){
 		System.out.println("[OpenUnicorn] [GameCanvas] [GameCanvas] called");
 		
-		setBounds(0, 0, 800, 600);
+		setBounds(0, 0, 800, 600); // test
 		
 		Initialisation.setFrame_widthWithoutInsets(Window.getJFrame().getWidth()-(Window.getJFrame().getInsets().left+Window.getJFrame().getInsets().right));
 		Initialisation.setFrame_heightWithoutInsets(Window.getJFrame().getHeight()-(Window.getJFrame().getInsets().top+Window.getJFrame().getInsets().bottom));
