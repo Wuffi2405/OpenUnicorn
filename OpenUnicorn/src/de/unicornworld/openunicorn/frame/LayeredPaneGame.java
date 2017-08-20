@@ -26,10 +26,7 @@ public class LayeredPaneGame extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				Window.layeredPane.moveToFront(Window.layeredPaneLauncher);
-				LayeredPaneLauncher.button_startGame.setVisible(true);
-				LayeredPaneGame.button_closeGame.setVisible(false);
-
+				//close Thread and Frame
 				Window.getJFrame().dispose();
 				OpenUnicorn.getOpenUnicorn().stop();
 			}

@@ -20,16 +20,12 @@ public class Window extends Canvas{
 		frame = new JFrame();
 		frame.setLayout(null);
 		frame.setSize(800, 600);
+		MenuPane(frame);
 		frame.setLocationRelativeTo(null);
 		frame.setResizable(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
-		frame.setResizable(false);
-		
-		MenuPane(frame);
-		
-//		Initialisation.setFrame_widthWithoutInsets(frame.getWidth()-(frame.getInsets().left+frame.getInsets().right));
-		
+		frame.setResizable(true);	
 	}
 	
 	public void MenuPane(JFrame frame){
@@ -51,7 +47,7 @@ public class Window extends Canvas{
 		/**
 		 * Buttons visible
 		 */
-		LayeredPaneLauncher.button_startGame.setVisible(true);
+		LayeredPaneLauncher.buttonStartGame.setVisible(true);
 		LayeredPaneGame.button_closeGame.setVisible(false);
 		
 		/**

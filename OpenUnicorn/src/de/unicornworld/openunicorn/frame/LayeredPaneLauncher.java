@@ -1,11 +1,11 @@
 package de.unicornworld.openunicorn.frame;
 
 import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
-import javax.swing.JButton;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import de.unicornworld.openunicorn.OpenUnicorn;
@@ -15,7 +15,8 @@ public class LayeredPaneLauncher extends JPanel {
 	
 	private static final long serialVersionUID = 3803108154839418167L;
 
-	public static JButton button_startGame;
+	public static Button buttonStartGame, buttonCloseGame;
+	public static JLabel image;
 	
 	
 	public LayeredPaneLauncher(){
@@ -23,26 +24,85 @@ public class LayeredPaneLauncher extends JPanel {
 		setBackground(Color.DARK_GRAY);
 		setLayout(null);
 		
-		button_startGame = new JButton("Spiel starten");
-		button_startGame.setBounds(0, 0, 150, 50);
-		button_startGame.addActionListener(new ActionListener() {
+		buttonStartGame = new Button();
+		buttonStartGame.setBounds(Window.getJFrame().getWidth()/2-100-Window.getJFrame().getInsets().left-Window.getJFrame().getInsets().right, 300, 200, 50);
+		buttonStartGame.text.setText("Spiel Starten");
+		buttonStartGame.addMouseListener(new MouseListener() {
 			
 			@Override
-			public void actionPerformed(ActionEvent e) {
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
 				Window.layeredPane.moveToFront(Window.layeredPaneGame);
 				LayeredPaneGame.button_closeGame.setVisible(true);
-				LayeredPaneLauncher.button_startGame.setVisible(false);
+				LayeredPaneLauncher.buttonStartGame.setVisible(false);
 				
-				OpenUnicorn.getOpenUnicorn().start();
+				OpenUnicorn.getOpenUnicorn().start();				
 			}
 		});
-		this.add(button_startGame);
+		this.add(buttonStartGame);
+		
+		buttonCloseGame = new Button();
+		buttonCloseGame.setBounds(Window.getJFrame().getWidth()/2-100-Window.getJFrame().getInsets().left-Window.getJFrame().getInsets().right, 500, 200, 50);
+		buttonCloseGame.text.setText("Beenden");
+		buttonCloseGame.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				System.exit(0);			
+			}
+		});
+		this.add(buttonCloseGame);
+		
+		image = new JLabel(new ImageIcon(SourceLoader.loadImage("/assets/texture/launcher/launcher-background.png")));
+		image.setBounds(0, 0, Window.getJFrame().getWidth(), Window.getJFrame().getHeight());
+		this.add(image);
 		
 	}
-	
-//	@Override
-//	public void paint(Graphics g) {
-////		g.drawImage(SourceLoader.loadImage("/assets/texture/launcher/launcher-background.png"), 0, 0, Window.getJFrame().getWidth(), Window.getJFrame().getHeight(), null);
-//	}
-	
 }

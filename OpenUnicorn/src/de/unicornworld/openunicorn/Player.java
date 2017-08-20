@@ -144,6 +144,7 @@ public class Player extends DoubleRectangle {
 					(Tile.character[0] * Tile.tileSize) + (Tile.tileSize * animation), Tile.character[1] * Tile.tileSize + (int) height, null);
 
 		}
+
 	}
 
 }
