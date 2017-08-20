@@ -24,6 +24,7 @@ public class Window extends Canvas{
 		frame.setResizable(true);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
+		frame.setResizable(false);
 		
 		MenuPane(frame);
 		

@@ -41,7 +41,7 @@ public class LayeredPaneLauncher extends JPanel {
 	
 	@Override
 	public void paint(Graphics g) {
-		g.drawImage(SourceLoader.loadImage("/assets/texture/launcher/launcher-background.png"), 0, 0, Window.getJFrame().getWidth(), Window.getJFrame().getHeight(), null);
+//		g.drawImage(SourceLoader.loadImage("/assets/texture/launcher/launcher-background.png"), 0, 0, Window.getJFrame().getWidth(), Window.getJFrame().getHeight(), null);
 	}
 	
 }
