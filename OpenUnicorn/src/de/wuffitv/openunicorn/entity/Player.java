@@ -6,7 +6,7 @@ import de.wuffitv.openunicorn.Initialisation;
 import de.wuffitv.openunicorn.KeyInput;
 import de.wuffitv.openunicorn.util.SourceLoader;
 
-public class Player {
+public class Player extends Entity{
 	
 	public static int player_x = 0;
 	public static int player_y = 0;
@@ -18,6 +18,7 @@ public class Player {
 	public static boolean isMoving = false;
 	
 	public Player(){
+		super(0, 0, 0, 0);
 		System.out.println("[OpenUnicorn] [Player] [Player] called");
 	}
 	
