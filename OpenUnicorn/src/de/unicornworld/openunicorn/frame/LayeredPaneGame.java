@@ -1,4 +1,4 @@
-package de.wuffitv.openunicorn.frame;
+package de.unicornworld.openunicorn.frame;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

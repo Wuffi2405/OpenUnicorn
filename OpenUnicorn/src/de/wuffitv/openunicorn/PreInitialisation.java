@@ -1,6 +1,6 @@
 package de.wuffitv.openunicorn;
 
-import de.wuffitv.openunicorn.frame.Window;
+import de.unicornworld.openunicorn.frame.Window;
 
 public class PreInitialisation {
 	

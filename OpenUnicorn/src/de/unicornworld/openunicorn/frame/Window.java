@@ -1,4 +1,4 @@
-package de.wuffitv.openunicorn.frame;
+package de.unicornworld.openunicorn.frame;
 
 import java.awt.Canvas;
 
@@ -48,7 +48,7 @@ public class Window extends Canvas{
 		layeredPane.add(layeredPaneGame, 1);
 		
 		/**
-		 * Buttons verstecken
+		 * Buttons visible
 		 */
 		LayeredPaneLauncher.button_startGame.setVisible(true);
 		LayeredPaneGame.button_closeGame.setVisible(false);

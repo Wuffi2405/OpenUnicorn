@@ -1,6 +1,7 @@
-package de.wuffitv.openunicorn.frame;
+package de.unicornworld.openunicorn.frame;
 
 import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -8,13 +9,13 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import de.unicornworld.openunicorn.OpenUnicorn;
+import de.wuffitv.openunicorn.util.SourceLoader;
 
 public class LayeredPaneLauncher extends JPanel {
 	
 	private static final long serialVersionUID = 3803108154839418167L;
 
 	public static JButton button_startGame;
-	
 	
 	public LayeredPaneLauncher(){
 		setBounds(0, 0, 800, 600);
@@ -37,5 +38,10 @@ public class LayeredPaneLauncher extends JPanel {
 		this.add(button_startGame);
 		
 	}
-
+	
+	@Override
+	public void paint(Graphics g) {
+		g.drawImage(SourceLoader.loadImage("/assets/texture/launcher/launcher-background.png"), 0, 0, Window.getJFrame().getWidth(), Window.getJFrame().getHeight(), null);
+	}
+	
 }
