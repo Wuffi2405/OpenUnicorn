@@ -5,7 +5,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Point;
 
-import de.unicornworld.openunicorn.frame.Window;
 import de.unicornworld.openunicorn.world.Sky;
 import de.unicornworld.openunicorn.world.World;
 import de.wuffitv.openunicorn.entity.Player;
@@ -56,7 +55,6 @@ public class Component extends Canvas {
 	public void update() {
 		if (readyForLoop) {
 			player.update();
-			System.out.println(Window.getJFrame().getWidth());
 		}
 	}
 

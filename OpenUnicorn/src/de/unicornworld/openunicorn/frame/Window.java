@@ -1,6 +1,7 @@
 package de.unicornworld.openunicorn.frame;
 
 import java.awt.Canvas;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
@@ -11,7 +12,12 @@ public class Window extends Canvas{
 	private static JFrame frame;
 	public static JLayeredPane layeredPane;
 	public static LayeredPaneLauncher layeredPaneLauncher;
+	public static LayeredPaneCredits layeredPaneCredits;
 	public static LayeredPaneGame layeredPaneGame;
+	
+	public static ArrayList<Button> button_launcher = new ArrayList<>();
+	public static ArrayList<Button> button_credits = new ArrayList<>();
+	public static ArrayList<Button> button_game = new ArrayList<>();
 	
 	
 	public Window(){
@@ -36,18 +42,19 @@ public class Window extends Canvas{
 		 * Ebenen initialisieren
 		 */
 		layeredPaneLauncher = new LayeredPaneLauncher();
+		layeredPaneCredits = new LayeredPaneCredits();
 		layeredPaneGame = new LayeredPaneGame();
 		
 		/**
 		 * Ebenen hinzufügen
 		 */
 		layeredPane.add(layeredPaneLauncher, 0);
-		layeredPane.add(layeredPaneGame, 1);
+		layeredPane.add(layeredPaneCredits, 1);
+		layeredPane.add(layeredPaneGame, 2);
 		
 		/**
-		 * Buttons visible
+		 * Buttons visible || alles was nicht auf den Hauptscreen gehört wird unsichtbar
 		 */
-		LayeredPaneLauncher.buttonStartGame.setVisible(true);
 		LayeredPaneGame.button_closeGame.setVisible(false);
 		
 		/**

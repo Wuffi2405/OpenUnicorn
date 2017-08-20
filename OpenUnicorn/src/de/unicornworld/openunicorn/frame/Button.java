@@ -12,7 +12,7 @@ public class Button extends JPanel implements MouseListener {
 	
 	private static final long serialVersionUID = 1385235454596571380L;
 	
-	private Font defaultFont = new Font("Calibri", Font.BOLD, 30);
+	private Font defaultFont = new Font("Calibri", Font.BOLD, 15);
 	private Color defaultColor = Color.decode("#FFFFFF");
 	private Color actionColor = Color.decode("#DCDCDC");
 	
