@@ -22,13 +22,17 @@ public class World {
 	}
 
 	public void update() {
-		
+
 	}
 
-	public void render(Graphics g) {
-		for (int y = 0; y < world_height / Block.BLOCKSIZE; y++) {
-			for (int x = 0; x < world_width / Block.BLOCKSIZE; x++) {
-				block[x][y].render(g);
+	public void render(Graphics g, int camX, int camY, int renW, int renH) {
+		for (int x = (camX / Block.BLOCKSIZE); x < (camX / Block.BLOCKSIZE) + renW; x++) {
+			for (int y = (camY / Block.BLOCKSIZE); y < (camY / Block.BLOCKSIZE) + renH; y++) {
+
+				if (x >= 0 && y >= 0 && x < world_width / Block.BLOCKSIZE && y < world_height / Block.BLOCKSIZE) {
+					block[x][y].render(g);
+
+				}
 			}
 		}
 	}

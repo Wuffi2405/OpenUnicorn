@@ -1,8 +1,10 @@
 package de.wuffitv.openunicorn;
 
+import java.awt.Dimension;
 import java.awt.Graphics;
 
 import de.wuffitv.openunicorn.entity.Player;
+import de.wuffitv.openunicorn.world.Block;
 import de.wuffitv.openunicorn.world.World;
 
 public class Initialisation {
@@ -10,6 +12,15 @@ public class Initialisation {
 	public static Initialisation initialisation;
 	
 	private boolean readyForLoop = false;
+	
+	public static double sx = 0;
+	public static double sy = 0;
+	
+	public static Dimension size = new Dimension(1300, 700);
+
+	
+	public static int pixelsize = 2;
+	public static Dimension pixel = new Dimension(size.width / pixelsize, size.height / pixelsize);
 	
 	private static int frame_widthWithoutInsets = 0;
 	private static int frame_heightWithoutInsets = 0;
@@ -46,7 +57,7 @@ public class Initialisation {
 	
 	public void render(Graphics g){
 		if(readyForLoop){
-			world.render(g);
+			world.render(g, (int) sx, (int) sy, (int) (pixel.width / Block.BLOCKSIZE + 2), (int) (pixel.height / Block.BLOCKSIZE + 2));
 			player.render(g);
 		}
 	}
