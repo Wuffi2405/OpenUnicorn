@@ -1,6 +1,5 @@
 package de.unicornworld.openunicorn;
 
-import java.awt.Dimension;
 import java.awt.Graphics;
 
 import de.wuffitv.openunicorn.Initialisation;
