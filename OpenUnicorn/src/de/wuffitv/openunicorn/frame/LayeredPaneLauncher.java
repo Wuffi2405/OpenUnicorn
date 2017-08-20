@@ -35,8 +35,6 @@ public class LayeredPaneLauncher extends JPanel {
 				LayeredPaneLauncher.button_startGame.setVisible(false);
 				
 				OpenUnicorn.getOpenUnicorn().start();
-//				OpenUnicorn.getOpenUnicorn().callInitialisation();
-//				initialisation = new Initialisation();
 			}
 		});
 		this.add(button_startGame);
