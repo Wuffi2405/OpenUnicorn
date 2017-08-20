@@ -1,45 +1,41 @@
 package de.wuffitv.openunicorn.world;
 
 import java.awt.Graphics;
-import java.awt.Rectangle;
 
 public class World {
-	public static int worldW = 10, worldH = 10;
-	public Block[][] block = new Block[worldW][worldH];
+
+	public static int world_x = 0;
+	public static int world_y = 0;
+	public static int world_width = 1536;
+	public static int world_height = 1536;
+	public static Block[][] block = new Block[world_width / Block.BLOCKSIZE][world_height / Block.BLOCKSIZE];
+
+	public static int worldW = world_width / Block.BLOCKSIZE;
+	public static int worldH = world_height / Block.BLOCKSIZE;
 
 	public World() {
-		for (int x = 0; x < block.length; x++) {
-			for (int y = 0; y < block[0].length; y++) {
-				block[x][y] = new Block(
-						new Rectangle(x * Block.BLOCKSIZE, y * Block.BLOCKSIZE, Block.BLOCKSIZE, Block.BLOCKSIZE),
-						null);
+		System.out.println("[OpenUnicorn] [World] [World] called");
+
+		for (int y = 0; y < world_height / Block.BLOCKSIZE; y++) {
+			for (int x = 0; x < world_width / Block.BLOCKSIZE; x++) {
+				block[x][y] = new Block(x * Block.BLOCKSIZE, y * Block.BLOCKSIZE, 20, 20, null);
 			}
 		}
 
-		generateLevel();
 	}
 
-	public void generateLevel() {
+	public void update() {
 
-	}
-
-	public void building(int camX, int camY, int renW, int renH) {
-
-	}
-
-	public void tick(int camX, int camY, int renW, int renH) {
-
-		building(camX, camY, renW, renH);
 	}
 
 	public void render(Graphics g, int camX, int camY, int renW, int renH) {
-		for (int x = 0; x < worldW; x++) {
-			for (int y = 0; y < worldH; y++) {
+		for (int x = (camX / Block.BLOCKSIZE); x < (camX / Block.BLOCKSIZE) + renW; x++) {
+			for (int y = (camY / Block.BLOCKSIZE); y < (camY / Block.BLOCKSIZE) + renH; y++) {
 
-				block[x][y].render(g);
-
+				if (x >= 0 && y >= 0 && x < worldW && y < worldH) {
+					block[x][y].render(g);
+				}
 			}
 		}
 	}
-
 }

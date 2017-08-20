@@ -8,55 +8,47 @@ import de.wuffitv.openunicorn.world.Block;
 import de.wuffitv.openunicorn.world.World;
 
 public class Initialisation {
-	
+
 	public static Initialisation initialisation;
-	
+
 	private boolean readyForLoop = false;
-	
+
 	public static double sx = 0;
 	public static double sy = 0;
-	
+
 	public static Dimension size = new Dimension(1300, 700);
 
-	
 	public static int pixelsize = 2;
 	public static Dimension pixel = new Dimension(size.width / pixelsize, size.height / pixelsize);
-	
+
 	private static int frame_widthWithoutInsets = 0;
 	private static int frame_heightWithoutInsets = 0;
 	private Player player;
 	private World world;
-	
-	public Initialisation(){
+
+	public Initialisation() {
 		System.out.println("[OpenUnicorn] [Initialisation] [Initialisation] called");
-		
+
 		world = new World();
 		player = new Player();
-		
-//		World.background = SourceLoader.loadImage("assets/de/wuffitv/openunicorn/images/background.png");
-//		world = new World();
-//		player = new Player();
-//		
+
 		readyForLoop = true;
 		/**
-		 * init KeyListener
-		 * Updater
-		 * Renderer
+		 * init KeyListener Updater Renderer
 		 * 
-		 * load World		
+		 * load World
 		 */
-		
+
 	}
-	
-	public void update(){
-		if(readyForLoop){
-			world.tick((int) sx, (int) sy, (int) (pixel.width / Block.BLOCKSIZE + 2), (int) (pixel.height / Block.BLOCKSIZE + 2));
+
+	public void update() {
+		if (readyForLoop) {
 			player.update();
 		}
 	}
-	
-	public void render(Graphics g){
-		if(readyForLoop){
+
+	public void render(Graphics g) {
+		if (readyForLoop) {
 			world.render(g, (int) sx, (int) sy, (int) (pixel.width / Block.BLOCKSIZE + 2), (int) (pixel.height / Block.BLOCKSIZE + 2));
 			player.render(g);
 		}
@@ -77,5 +69,5 @@ public class Initialisation {
 	public static void setFrame_heightWithoutInsets(int frame_heightWithoutInsets) {
 		Initialisation.frame_heightWithoutInsets = frame_heightWithoutInsets;
 	}
-	
+
 }
