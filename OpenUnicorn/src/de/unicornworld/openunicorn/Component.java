@@ -1,13 +1,19 @@
 package de.unicornworld.openunicorn;
 
 import java.awt.Canvas;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.Point;
+import java.awt.image.BufferStrategy;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
 import de.wuffitv.openunicorn.Initialisation;
+import de.wuffitv.openunicorn.KeyInput;
+import de.wuffitv.openunicorn.frame.LayeredPaneLauncher;
+import de.wuffitv.openunicorn.frame.Window;
 
 public class Component extends Canvas {
 
@@ -40,10 +46,18 @@ public class Component extends Canvas {
 	public static Sky sky;
 
 	public static Initialisation init;
-	
-	
-	public Component() {
 
+	public Component() {
+		System.out.println("[OpenUnicorn] [GameCanvas] [GameCanvas] called");
+
+		setBounds(0, 0, 800, 600); // test
+
+		Initialisation.setFrame_widthWithoutInsets(Window.getJFrame().getWidth()
+				- (Window.getJFrame().getInsets().left + Window.getJFrame().getInsets().right));
+		Initialisation.setFrame_heightWithoutInsets(Window.getJFrame().getHeight()
+				- (Window.getJFrame().getInsets().top + Window.getJFrame().getInsets().bottom));
+
+		addKeyListener(new KeyInput());
 	}
 
 	public void start() {
@@ -76,12 +90,31 @@ public class Component extends Canvas {
 		sky.tick();
 	}
 
-	public void render() {
-		
-	}
-
 	public void run() {
 
+	}
+
+	public void render() {
+
+		BufferStrategy bs = getBufferStrategy();
+		if (bs == null) {
+			createBufferStrategy(3);
+			return;
+		}
+
+		Graphics g = bs.getDrawGraphics();
+
+		/**
+		 * set bg, against a bug xD
+		 */
+		g.setColor(Color.BLACK);
+		g.fillRect(0, 0, 20000, 20000);
+
+		// OpenUnicorn.getOpenUnicorn().getInitialisation().render(g);
+		LayeredPaneLauncher.initialisation.render(g);
+
+		g.dispose();
+		bs.show();
 	}
 
 }

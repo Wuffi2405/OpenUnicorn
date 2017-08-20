@@ -77,6 +77,7 @@ public class OpenUnicorn extends Canvas implements Runnable {
 	}
 	
 	public void update(){
+		
 		LayeredPaneGame.getGameCanvas().update(LayeredPaneGame.getGameCanvas().getGraphics());
 	}
 	
