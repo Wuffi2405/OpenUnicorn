@@ -2,6 +2,7 @@ package de.wuffitv.openunicorn;
 
 import java.awt.Canvas;
 
+import de.unicornworld.openunicorn.Component;
 import de.wuffitv.openunicorn.frame.LayeredPaneGame;
 
 public class OpenUnicorn extends Canvas implements Runnable {
@@ -10,7 +11,7 @@ public class OpenUnicorn extends Canvas implements Runnable {
 	
 	private static OpenUnicorn openUnicorn;
 	private PreInitialisation preInitialisation;
-	private Initialisation initialisation;
+	private Component component;
 	private boolean running = false;
 	private Thread thread;
 	
@@ -25,7 +26,7 @@ public class OpenUnicorn extends Canvas implements Runnable {
 	
 	public void callInitialisation(){
 		System.out.println("[OpenUnicorn] [OpenUnicorn] [callInitialisation] called");
-		initialisation = new Initialisation();
+		component = new Component();
 	}
 	
 	public synchronized void start(){
@@ -76,7 +77,7 @@ public class OpenUnicorn extends Canvas implements Runnable {
 	}
 	
 	public void update(){
-		LayeredPaneGame.getGameCanvas().update();
+		LayeredPaneGame.getGameCanvas().update(LayeredPaneGame.getGameCanvas().getGraphics());
 	}
 	
 	public void render(){
@@ -95,8 +96,8 @@ public class OpenUnicorn extends Canvas implements Runnable {
 		return preInitialisation;
 	}
 	
-	public Initialisation getInitialisation(){
-		return initialisation;
+	public Component getInitialisation(){
+		return component;
 	}
 	
 	public static OpenUnicorn getOpenUnicorn(){

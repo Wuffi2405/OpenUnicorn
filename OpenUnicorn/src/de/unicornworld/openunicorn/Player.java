@@ -2,7 +2,7 @@ package de.unicornworld.openunicorn;
 
 import java.awt.Graphics;
 
-public class Character extends DoubleRectangle {
+public class Player extends DoubleRectangle {
 
 	private final float gravity = 1.01F;
 	private float fallinspeed = 1;
@@ -28,7 +28,7 @@ public class Character extends DoubleRectangle {
 	public int animation = 0;
 	public int animationFrame = 0, animationTime = 40;
 
-	public Character(int width, int height) {
+	public Player(int width, int height) {
 		setBounds((Component.pixel.width / 2) - (width / 2), Component.pixel.height / 2 - (height / 2), width, height);
 	}
 
@@ -74,11 +74,11 @@ public class Character extends DoubleRectangle {
 
 	public void claculateCollisions() {
 
-		if (Component.character.y > 0 && Component.character.y < Level.worldH * Tile.tileSize - 2 * Tile.tileSize && Component.character.x > 0
-				&& Component.character.x < Level.worldW * Tile.tileSize - 2 * Tile.tileSize) {
+		if (Component.character.y > 0 && Component.character.y < World.worldH * Tile.tileSize - 2 * Tile.tileSize && Component.character.x > 0
+				&& Component.character.x < World.worldW * Tile.tileSize - 2 * Tile.tileSize) {
 
-			if (Component.level.block[(int) ((Component.character.x) / Tile.tileSize)][(int) (Component.character.y / Tile.tileSize) + 2].id != Tile.air
-					|| Component.level.block[(int) ((Component.character.x - 1) / Tile.tileSize) + 1][(int) (Component.character.y / Tile.tileSize) + 2].id != Tile.air) {
+			if (Component.world.block[(int) ((Component.character.x) / Tile.tileSize)][(int) (Component.character.y / Tile.tileSize) + 2].id != Tile.air
+					|| Component.world.block[(int) ((Component.character.x - 1) / Tile.tileSize) + 1][(int) (Component.character.y / Tile.tileSize) + 2].id != Tile.air) {
 				falling = false;
 				fallinspeed = 1;
 				jumpPerformed = false;
@@ -87,38 +87,38 @@ public class Character extends DoubleRectangle {
 				falling = true;
 			}
 
-			if (Component.level.block[(int) (Component.character.x / Tile.tileSize)][(int) (Component.character.y / Tile.tileSize)].id != Tile.air
-					|| Component.level.block[(int) ((Component.character.x - 1) / Tile.tileSize) + 1][(int) (Component.character.y / Tile.tileSize)].id != Tile.air) {
+			if (Component.world.block[(int) (Component.character.x / Tile.tileSize)][(int) (Component.character.y / Tile.tileSize)].id != Tile.air
+					|| Component.world.block[(int) ((Component.character.x - 1) / Tile.tileSize) + 1][(int) (Component.character.y / Tile.tileSize)].id != Tile.air) {
 				fallinspeed = (float) 0.4;
 				jumpPerformed = false;
 
 			} else {
 			}
 
-			if (Component.level.block[(int) (Component.character.x / Tile.tileSize) + 1][(int) ((Component.character.y - 1) / Tile.tileSize) + 2].id != Tile.air
-					|| Component.level.block[(int) (Component.character.x / Tile.tileSize) + 1][(int) ((Component.character.y) / Tile.tileSize) + 1].id != Tile.air) {
+			if (Component.world.block[(int) (Component.character.x / Tile.tileSize) + 1][(int) ((Component.character.y - 1) / Tile.tileSize) + 2].id != Tile.air
+					|| Component.world.block[(int) (Component.character.x / Tile.tileSize) + 1][(int) ((Component.character.y) / Tile.tileSize) + 1].id != Tile.air) {
 				bottomright = true;
 
 			} else {
 				bottomright = false;
 			}
 
-			if (Component.level.block[(int) (Component.character.x / Tile.tileSize) + 1][(int) (Component.character.y / Tile.tileSize)].id != Tile.air) {
+			if (Component.world.block[(int) (Component.character.x / Tile.tileSize) + 1][(int) (Component.character.y / Tile.tileSize)].id != Tile.air) {
 				topright = true;
 
 			} else {
 				topright = false;
 			}
 
-			if (Component.level.block[(int) ((Component.character.x - 1) / Tile.tileSize)][(int) ((Component.character.y - 1) / Tile.tileSize) + 2].id != Tile.air
-					|| Component.level.block[(int) ((Component.character.x - 1) / Tile.tileSize)][(int) ((Component.character.y) / Tile.tileSize) + 1].id != Tile.air) {
+			if (Component.world.block[(int) ((Component.character.x - 1) / Tile.tileSize)][(int) ((Component.character.y - 1) / Tile.tileSize) + 2].id != Tile.air
+					|| Component.world.block[(int) ((Component.character.x - 1) / Tile.tileSize)][(int) ((Component.character.y) / Tile.tileSize) + 1].id != Tile.air) {
 				bottomleft = true;
 
 			} else {
 				bottomleft = false;
 			}
 
-			if (Component.level.block[(int) ((Component.character.x - 1) / Tile.tileSize)][(int) (Component.character.y / Tile.tileSize)].id != Tile.air) {
+			if (Component.world.block[(int) ((Component.character.x - 1) / Tile.tileSize)][(int) (Component.character.y / Tile.tileSize)].id != Tile.air) {
 				topleft = true;
 
 			} else {

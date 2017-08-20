@@ -6,11 +6,11 @@ import java.awt.Point;
 import java.awt.Rectangle;
 import java.util.Random;
 
-public class Level {
+public class World {
 	public static int worldW = 70, worldH = 70;
 	public Block[][] block = new Block[worldW][worldH];
 
-	public Level() {
+	public World() {
 		for (int x = 0; x < block.length; x++) {
 			for (int y = 0; y < block[0].length; y++) {
 				block[x][y] = new Block(new Rectangle(x * Tile.tileSize, y * Tile.tileSize, Tile.tileSize, Tile.tileSize), Tile.air);

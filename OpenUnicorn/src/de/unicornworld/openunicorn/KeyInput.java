@@ -9,7 +9,7 @@ import java.awt.event.MouseMotionListener;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 
-public class Listening implements KeyListener, MouseListener, MouseMotionListener, MouseWheelListener {
+public class KeyInput implements KeyListener, MouseListener, MouseMotionListener, MouseWheelListener {
 
 	public void keyPressed(KeyEvent e) {
 		int key = e.getKeyCode();
