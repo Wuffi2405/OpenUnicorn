@@ -30,7 +30,8 @@ public class Component extends Canvas {
 	public static Point mse = new Point(0, 0);
 
 	public static boolean isMoving = false;
-	public static boolean isJumping = false;
+	public static boolean isUp = false;
+	public static boolean isDown = false;
 	public static boolean isMouseLeft = false;
 	public static boolean isMouseRight = false;
 

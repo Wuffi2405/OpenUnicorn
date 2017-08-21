@@ -9,14 +9,9 @@ import java.awt.event.MouseMotionListener;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 
-
-
 public class KeyInput implements KeyListener, MouseListener, MouseMotionListener, MouseWheelListener {
 
 	public void keyPressed(KeyEvent e) {
-		
-		System.out.println("g");
-		
 		int key = e.getKeyCode();
 
 		switch (key) {
@@ -32,9 +27,18 @@ public class KeyInput implements KeyListener, MouseListener, MouseMotionListener
 			Component.dir = -Component.player.speed;
 			break;
 
-		case KeyEvent.VK_SPACE:
+		case KeyEvent.VK_W:
 
-			Component.isJumping = true;
+			Component.isUp = true;
+			break;
+
+		case KeyEvent.VK_S:
+
+			Component.isDown = true;
+			break;
+		case KeyEvent.VK_ESCAPE:
+
+			System.exit(1);
 			break;
 
 		}
@@ -42,7 +46,7 @@ public class KeyInput implements KeyListener, MouseListener, MouseMotionListener
 	}
 
 	public void keyReleased(KeyEvent e) {
-		int key = e.getKeyCode(); //
+		int key = e.getKeyCode();
 
 		switch (key) {
 		case KeyEvent.VK_D:
@@ -57,9 +61,14 @@ public class KeyInput implements KeyListener, MouseListener, MouseMotionListener
 			}
 			break;
 
-		case KeyEvent.VK_SPACE:
+		case KeyEvent.VK_W:
 
-			Component.isJumping = false;
+			Component.isUp = false;
+			break;
+
+		case KeyEvent.VK_S:
+
+			Component.isDown = false;
 			break;
 
 		}
@@ -109,23 +118,23 @@ public class KeyInput implements KeyListener, MouseListener, MouseMotionListener
 	}
 
 	public void mouseWheelMoved(MouseWheelEvent e) {
-//		if (e.getWheelRotation() > 0) {
-//			if (Inventory.selected < Tile.invLenght - 1) {
-//
-//				Inventory.selected += 1;
-//
-//			}else {
-//				Inventory.selected = 0; 
-//			}
-//		} else if (e.getWheelRotation() < 0) {
-//			if (Inventory.selected > 0) {
-//
-//				Inventory.selected -= 1;
-//
-//			}else {
-//				Inventory.selected = Tile.invLenght-1; 
-//			}
-//		}
+		// if (e.getWheelRotation() > 0) {
+		// if (Inventory.selected < Tile.invLenght - 1) {
+		//
+		// Inventory.selected += 1;
+		//
+		// }else {
+		// Inventory.selected = 0;
+		// }
+		// } else if (e.getWheelRotation() < 0) {
+		// if (Inventory.selected > 0) {
+		//
+		// Inventory.selected -= 1;
+		//
+		// }else {
+		// Inventory.selected = Tile.invLenght-1;
+		// }
+		// }
 	}
 
 }

@@ -1,8 +1,9 @@
 package de.unicornworld.openunicorn;
 
+import java.awt.Color;
 import java.awt.Graphics;
 
-public class Player extends DoubleRectangle {
+public class Player extends DoubleRectangle  {
 
 	protected float speed = 1;
 	protected float dx;
@@ -37,12 +38,24 @@ public class Player extends DoubleRectangle {
 			x += Component.dir;
 		}
 
+		if (Component.isUp == true) {
+			y -= 1;
+		}
+
+		if (Component.isDown == true) {
+			y += 1;
+		}
+
+		
+		
 	}
 
 	public void render(Graphics g) {
 
-		g.drawRect((int) x, (int) y, (int) width, (int) height);
-
+		g.setColor(Color.BLACK);
+		g.drawRect(0, 0, 20, 20);
+		g.draw3DRect((int)x,(int) y,(int) width,(int) height, false);
+		
 	}
 
 }
