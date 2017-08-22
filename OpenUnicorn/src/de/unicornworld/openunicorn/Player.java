@@ -52,7 +52,7 @@ public class Player extends DoubleRectangle {
 	public void render(Graphics g) {
 
 		g.drawRect((int) x, (int) y, (int) width, (int) height);
-		g.drawImage(SourceLoader.loadImage("/assets/player.png"), (int) x, (int) y, 0, 0, 0, 0, (int) x, (int) y, null);
+		g.drawImage(SourceLoader.loadImage("/assets/player.png"), (int) x, (int) y, 16, 32, null);
 	}
 
 }
