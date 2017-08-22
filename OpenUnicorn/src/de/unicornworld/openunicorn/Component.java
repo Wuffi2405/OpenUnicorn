@@ -30,7 +30,8 @@ public class Component extends Canvas {
 	public static Point mse = new Point(0, 0);
 
 	public static boolean isMoving = false;
-	public static boolean isJumping = false;
+	public static boolean isUp = false;
+	public static boolean isDown = false;
 	public static boolean isMouseLeft = false;
 	public static boolean isMouseRight = false;
 
@@ -62,20 +63,20 @@ public class Component extends Canvas {
 	}
 
 	public void render() {
-		
+
 		BufferStrategy bs = getBufferStrategy();
-		if(bs == null) {
+		if (bs == null) {
 			createBufferStrategy(3);
 			return;
 		}
-		
+
 		Graphics g = bs.getDrawGraphics();
-		
-		//Background
-		g.setColor(Color.CYAN);
+
+		// Background
+		g.setColor(Color.BLUE);
 		g.fillRect(0, 0, 800, 600);
-		//---------
-		
+		// ---------
+
 		g.setColor(new Color(100, 50, 150));
 		g.drawRect(0, 0, 1000, 1000);
 		if (readyForLoop) {

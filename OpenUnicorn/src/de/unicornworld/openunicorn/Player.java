@@ -37,10 +37,20 @@ public class Player extends DoubleRectangle {
 			x += Component.dir;
 		}
 
+		if (Component.isUp == true) {
+			y -= 1;
+		}
+
+		if (Component.isDown == true) {
+			y += 1;
+		}
+
 	}
 
 	public void render(Graphics g) {
+
 		g.drawRect((int) x, (int) y, (int) width, (int) height);
+
 	}
 
 }
