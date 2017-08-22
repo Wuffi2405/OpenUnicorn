@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
+import de.wuffitv.openunicorn.util.SourceLoader;
+
 public class World {
 	public static int worldW = 70, worldH = 70;
 	public Block[][] block = new Block[worldW][worldH];
@@ -35,6 +37,7 @@ public class World {
 
 		g.setColor(Color.BLACK);
 		g.drawRect(0, 0, 20, 20);
+		g.drawImage(SourceLoader.loadImage(""), 0, 0, 20, 20, 0, 0, 20, 20, null);
 
 	}
 
