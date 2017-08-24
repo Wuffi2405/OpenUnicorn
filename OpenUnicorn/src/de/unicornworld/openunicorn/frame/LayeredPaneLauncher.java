@@ -18,9 +18,10 @@ public class LayeredPaneLauncher extends JPanel {
 
 	public static Button buttonStartGame, buttonCredits, buttonCloseGame;
 	public static JLabel image;
+	public static Thread threadCreditsAnimation;
 	
 	
-	public LayeredPaneLauncher(){
+	public LayeredPaneLauncher(Window window){
 		setBounds(0, 0, 800, 600);
 		setBackground(Color.DARK_GRAY);
 		setLayout(null);
@@ -116,8 +117,16 @@ public class LayeredPaneLauncher extends JPanel {
 					Window.button_game.get(i).setVisible(false);
 				}
 				LayeredPaneCredits.credits.setVisible(true);
-				LayeredPaneCredits.animateCredits = true;
-//				LayeredPaneCredits.callRun();
+				
+				threadCreditsAnimation = new Thread(new Runnable() {
+					
+					@Override
+					public void run() {
+						LayeredPaneCredits.animateCredits = true;
+						window.callCreditsAnimation();
+					}
+				});
+				threadCreditsAnimation.start();
 			}
 		});
 		this.add(buttonCredits);

@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import de.unicornworld.openunicorn.OpenUnicorn;
 import de.unicornworld.openunicorn.util.SourceLoader;
 
 public class LayeredPaneCredits extends JPanel {
@@ -19,7 +20,8 @@ public class LayeredPaneCredits extends JPanel {
 	public static JLabel credits;
 	private JLabel image;
 	public static boolean animateCredits = false;
-	private int y = 0;
+//	private int y =  Window.getJFrame().getHeight()-(Window.getJFrame().getInsets().top+Window.getJFrame().getInsets().bottom);
+	private int y =  Window.getJFrame().getHeight() - 100;
 	
 	String credits_text = "<html><body>Projektleitung:<br>Nico Matzke<br><br>Game Design:<br>Markus Krancher<br>Nico Matzke<br><br>Programmierung:<br>Fabius Mayer-Uhma<br>Nico Matzke<br><br>Grafik:<br>Jesko Alexander Kloﬂ<br><br>Sounds:<br>Markus Krancher<br></body></html>";
 	
@@ -29,7 +31,7 @@ public class LayeredPaneCredits extends JPanel {
 		setLayout(null);
 		
 		credits = new JLabel(credits_text);
-		credits.setBounds(y, 0, Window.getJFrame().getWidth(), Window.getJFrame().getHeight());
+		credits.setBounds(0, y, Window.getJFrame().getWidth(), Window.getJFrame().getHeight());
 		credits.setHorizontalAlignment((int) CENTER_ALIGNMENT);
 		credits.setFont(new Font("Calibri", Font.BOLD, 25));
 		credits.setForeground(Color.BLACK);
@@ -90,13 +92,9 @@ public class LayeredPaneCredits extends JPanel {
 		
 	}
 	
-	public synchronized void callRun() {
-		run();
-	}
-	
 	public void run() {
 		System.out.println(9);
-//		OpenUnicorn.getOpenUnicorn().getPreInitialisation().getWindow().requestFocus();
+		OpenUnicorn.getOpenUnicorn().getPreInitialisation().getWindow().requestFocus();
 		long lastTime = System.nanoTime();
 		long timer = System.currentTimeMillis();
 		double ns = 1000000000.0 / 60.0;
@@ -124,8 +122,11 @@ public class LayeredPaneCredits extends JPanel {
 	}
 	
 	public void update() {
-		y+=5;
-		System.out.println(5);
+		y-=1;
+		if(y <= -600) {
+			y = Window.getJFrame().getHeight() - 100;
+		}
+		credits.setBounds(0, y, Window.getJFrame().getWidth(), Window.getJFrame().getHeight());
 		repaint();
 	}
 	

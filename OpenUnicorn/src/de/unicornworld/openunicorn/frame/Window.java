@@ -41,7 +41,7 @@ public class Window extends Canvas{
 		/**
 		 * Ebenen initialisieren
 		 */
-		layeredPaneLauncher = new LayeredPaneLauncher();
+		layeredPaneLauncher = new LayeredPaneLauncher(Window.this);
 		layeredPaneCredits = new LayeredPaneCredits();
 		layeredPaneGame = new LayeredPaneGame();
 		
@@ -61,6 +61,10 @@ public class Window extends Canvas{
 		 * LayeredPane zum Frame hinzufügen
 		 */
 		frame.add(layeredPane);
+	}
+	
+	public void callCreditsAnimation() {
+		layeredPaneCredits.run();
 	}
 	
 	public static JFrame getJFrame(){
