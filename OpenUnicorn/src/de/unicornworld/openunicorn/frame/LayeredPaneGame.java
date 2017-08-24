@@ -18,7 +18,7 @@ public class LayeredPaneGame extends JPanel {
 	public LayeredPaneGame() {
 		setBounds(0, 0, 800, 600);
 		setLayout(null);
-
+ 
 		button_closeGame = new Button();
 		button_closeGame.setBounds(Window.getJFrame().getWidth()-150, 10, 100, 25);
 		button_closeGame.text.setText("Spiel schlieﬂen");
