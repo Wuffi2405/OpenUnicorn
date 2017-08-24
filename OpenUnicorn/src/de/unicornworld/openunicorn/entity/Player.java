@@ -1,12 +1,13 @@
-package de.unicornworld.openunicorn;
+package de.unicornworld.openunicorn.entity;
 
 import java.awt.Graphics;
 
+import de.unicornworld.openunicorn.Component;
 import de.unicornworld.openunicorn.util.SourceLoader;
 
 public class Player extends DoubleRectangle {
 
-	protected float speed = 1;
+	public float speed = 1;
 	protected float dx;
 	protected float dy;
 	protected boolean left;

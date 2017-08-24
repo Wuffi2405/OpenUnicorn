@@ -1,4 +1,4 @@
-package de.unicornworld.openunicorn;
+package de.unicornworld.openunicorn.entity;
 
 public class DoubleRectangle {
 

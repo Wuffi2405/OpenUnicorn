@@ -7,6 +7,7 @@ import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.image.BufferStrategy;
 
+import de.unicornworld.openunicorn.entity.Player;
 import de.unicornworld.openunicorn.world.Sky;
 import de.unicornworld.openunicorn.world.World;
 
