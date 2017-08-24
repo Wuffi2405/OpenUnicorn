@@ -1,4 +1,4 @@
-package de.wuffitv.openunicorn;
+package de.unicornworld.openunicorn;
 
 import de.unicornworld.openunicorn.frame.Window;
 

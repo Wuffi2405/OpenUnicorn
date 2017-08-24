@@ -2,7 +2,7 @@ package de.unicornworld.openunicorn;
 
 import java.awt.Graphics;
 
-import de.wuffitv.openunicorn.util.SourceLoader;
+import de.unicornworld.openunicorn.util.SourceLoader;
 
 public class Player extends DoubleRectangle {
 

@@ -9,7 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import de.wuffitv.openunicorn.util.SourceLoader;
+import de.unicornworld.openunicorn.util.SourceLoader;
 
 public class LayeredPaneCredits extends JPanel {
 

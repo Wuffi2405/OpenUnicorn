@@ -1,4 +1,4 @@
-package de.wuffitv.openunicorn.util;
+package de.unicornworld.openunicorn.util;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;

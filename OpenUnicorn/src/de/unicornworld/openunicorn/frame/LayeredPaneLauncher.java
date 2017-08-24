@@ -10,7 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import de.unicornworld.openunicorn.OpenUnicorn;
-import de.wuffitv.openunicorn.util.SourceLoader;
+import de.unicornworld.openunicorn.util.SourceLoader;
 
 public class LayeredPaneLauncher extends JPanel {
 	

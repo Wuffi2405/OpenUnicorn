@@ -3,7 +3,6 @@ package de.unicornworld.openunicorn;
 import java.awt.Canvas;
 
 import de.unicornworld.openunicorn.frame.LayeredPaneGame;
-import de.wuffitv.openunicorn.PreInitialisation;
 
 public class OpenUnicorn extends Canvas implements Runnable {
 	

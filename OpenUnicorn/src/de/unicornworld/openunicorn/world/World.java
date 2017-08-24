@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 
-import de.wuffitv.openunicorn.util.SourceLoader;
+import de.unicornworld.openunicorn.util.SourceLoader;
 
 public class World {
 	public static int worldW = 70, worldH = 70;
