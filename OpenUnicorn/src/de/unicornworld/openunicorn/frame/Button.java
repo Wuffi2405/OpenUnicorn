@@ -32,6 +32,9 @@ public class Button extends JPanel implements MouseListener {
 
 		public Text(){
 			setFont(defaultFont);
+			//setVerticalAlignment((int) CENTER_ALIGNMENT);
+			//setBounds(0, 0, 500, 500);
+			//setHorizontalAlignment((int) CENTER_ALIGNMENT);
 			Button.this.add(this);
 		}
 	}	
