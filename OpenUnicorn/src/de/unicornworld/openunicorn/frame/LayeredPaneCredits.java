@@ -37,10 +37,10 @@ public class LayeredPaneCredits extends JPanel {
 		credits.setForeground(Color.BLACK);
 		this.add(credits);
 		
-		button_back = new Button();
+		button_back = new Button(100, 30);
 		button_back.setBounds(20, 20, 100, 30);
-		button_back.text.setText("Zurück");
-		button_back.text.setFont(new Font("Calibri", Font.BOLD, 17));
+		button_back.getText().setText("Zurück");
+		button_back.getText().setFont(new Font("Calibri", Font.BOLD, 17));
 		Window.button_credits.add(button_back);
 		button_back.addMouseListener(new MouseListener() {
 			 

@@ -26,10 +26,10 @@ public class LayeredPaneLauncher extends JPanel {
 		setBackground(Color.DARK_GRAY);
 		setLayout(null);
 		
-		buttonStartGame = new Button();
+		buttonStartGame = new Button(200, 50);
 		buttonStartGame.setBounds(Window.getJFrame().getWidth()/2-100-Window.getJFrame().getInsets().left-Window.getJFrame().getInsets().right, 300, 200, 50);
-		buttonStartGame.text.setText("Spiel Starten");
-		buttonStartGame.text.setFont(new Font("Calibri", Font.BOLD, 30));
+		buttonStartGame.getText().setText("Spiel Starten");
+		buttonStartGame.getText().setFont(new Font("Calibri", Font.BOLD, 30));
 		Window.button_launcher.add(buttonStartGame);
 		buttonStartGame.addMouseListener(new MouseListener() {
 			
@@ -73,10 +73,10 @@ public class LayeredPaneLauncher extends JPanel {
 		});
 		this.add(buttonStartGame);
 		
-		buttonCredits = new Button();
+		buttonCredits = new Button(200, 50);
 		buttonCredits.setBounds(Window.getJFrame().getWidth()/2-100-Window.getJFrame().getInsets().left-Window.getJFrame().getInsets().right, 400, 200, 50);
-		buttonCredits.text.setText("Credits");
-		buttonCredits.text.setFont(new Font("Calibri", Font.BOLD, 30));
+		buttonCredits.getText().setText("Credits");
+		buttonCredits.getText().setFont(new Font("Calibri", Font.BOLD, 30));
 		Window.button_launcher.add(buttonCredits);
 		buttonCredits.addMouseListener(new MouseListener() {
 			
@@ -131,10 +131,10 @@ public class LayeredPaneLauncher extends JPanel {
 		});
 		this.add(buttonCredits);
 		
-		buttonCloseGame = new Button();
+		buttonCloseGame = new Button(200, 50);
 		buttonCloseGame.setBounds(Window.getJFrame().getWidth()/2-100-Window.getJFrame().getInsets().left-Window.getJFrame().getInsets().right, 500, 200, 50);
-		buttonCloseGame.text.setText("Beenden");
-		buttonCloseGame.text.setFont(new Font("Calibri", Font.BOLD, 30));
+		buttonCloseGame.getText().setText("Beenden");
+		buttonCloseGame.getText().setFont(new Font("Calibri", Font.BOLD, 30));
 		Window.button_launcher.add(buttonCloseGame);
 		buttonCloseGame.addMouseListener(new MouseListener() {
 			

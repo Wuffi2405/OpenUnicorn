@@ -7,6 +7,7 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 public class Button extends JPanel implements MouseListener {
 	
@@ -16,10 +17,12 @@ public class Button extends JPanel implements MouseListener {
 	private Color defaultColor = Color.decode("#FFFFFF");
 	private Color actionColor = Color.decode("#DCDCDC");
 	
-	public Text text;
+	private Text text;
 	
-	public Button(){
-		text = new Button.Text();
+	public Button(int width, int height){
+		setLayout(null);
+		text = new Text(width, height);
+		add(text);
 		setBorder(null);
 		setBackground(defaultColor);
 		setFocusable(false);
@@ -30,11 +33,11 @@ public class Button extends JPanel implements MouseListener {
 	public class Text extends JLabel{
 		private static final long serialVersionUID = -8590496082145124099L;
 
-		public Text(){
+		public Text(int width, int height){
 			setFont(defaultFont);
-			//setVerticalAlignment((int) CENTER_ALIGNMENT);
-			//setBounds(0, 0, 500, 500);
-			//setHorizontalAlignment((int) CENTER_ALIGNMENT);
+			setBounds(0, 0, width, height);
+			setVerticalAlignment(SwingConstants.CENTER);
+			setHorizontalAlignment(SwingConstants.CENTER);
 			Button.this.add(this);
 		}
 	}	
@@ -83,6 +86,10 @@ public class Button extends JPanel implements MouseListener {
 
 	public void setActionColor(Color actionColor) {
 		this.actionColor = actionColor;
+	}
+	
+	public Text getText() {
+		return text;
 	}
 	
 }
