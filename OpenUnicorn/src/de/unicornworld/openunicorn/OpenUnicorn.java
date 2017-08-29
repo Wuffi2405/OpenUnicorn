@@ -20,7 +20,7 @@ public class OpenUnicorn extends Canvas implements Runnable {
 	
 	public OpenUnicorn(){		
 		preInitialisation = new PreInitialisation();
-		//if start button was pushed, the loop begins
+		//if start button was pushed, the loop begins --> callInitialisation will called
 	}
 	
 	public void callInitialisation(){
