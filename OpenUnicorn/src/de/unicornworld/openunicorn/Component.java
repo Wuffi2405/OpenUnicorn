@@ -6,8 +6,13 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.image.BufferStrategy;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 import de.unicornworld.openunicorn.entity.Player;
+import de.unicornworld.openunicorn.util.SourceLoader;
+import de.unicornworld.openunicorn.world.Block;
 import de.unicornworld.openunicorn.world.Tile;
 import de.unicornworld.openunicorn.world.World;
 
@@ -19,6 +24,8 @@ public class Component extends Canvas {
 	public static double dirHor = 0;
 	public static double sx = 0;
 	public static double sy = 0;
+
+	public static int state = 0;
 
 	private boolean readyForLoop = false;
 
@@ -48,6 +55,17 @@ public class Component extends Canvas {
 		world = new World();
 		player = new Player(Tile.tileSize, Tile.tileSize);
 
+		try {
+			
+			Block.grass = ImageIO.read(SourceLoader.class.getResourceAsStream("/assets/texture/block/grass.png"));
+			Block.steinWeg_1 = ImageIO.read(SourceLoader.class.getResourceAsStream("/assets/texture/block/Steinweg1.png"));
+			Player.player = ImageIO.read(SourceLoader.class.getResourceAsStream("/assets/player.png"));
+			Player.player_left = ImageIO.read(SourceLoader.class.getResourceAsStream("/assets/player_left.png"));
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
 		readyForLoop = true;
 		System.out.println("[OpenUnicorn] [GameCanvas] [GameCanvas] called");
 
@@ -60,11 +78,9 @@ public class Component extends Canvas {
 	public void update() {
 		if (readyForLoop) {
 
-
 			world.tick((int) sx, (int) sy, (int) (pixel.width / Tile.tileSize + 2), (int) (pixel.height / Tile.tileSize + 2));
 			player.tick();
-			
-			
+
 		}
 
 	}
@@ -82,12 +98,10 @@ public class Component extends Canvas {
 		// Background
 		g.setColor(Color.BLUE);
 		g.fillRect(0, 0, 800, 600);
-		
-		
+
 		world.render(g, (int) sx, (int) sy, (int) (pixel.width / Tile.tileSize + 2), (int) (pixel.height / Tile.tileSize + 2));
 		player.render(g);
 
-		
 		// ---------
 
 		g.setColor(new Color(100, 50, 150));

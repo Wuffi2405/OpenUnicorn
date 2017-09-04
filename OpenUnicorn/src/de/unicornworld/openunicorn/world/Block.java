@@ -3,8 +3,12 @@ package de.unicornworld.openunicorn.world;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
 
 public class Block extends Rectangle {
+
+	public static BufferedImage grass;
+	public static BufferedImage steinWeg_1;
 
 	private static final long serialVersionUID = 1L;
 
@@ -12,6 +16,7 @@ public class Block extends Rectangle {
 
 	public Block(Rectangle size, int[] id) {
 		setBounds(size);
+
 		this.id = id;
 	}
 
@@ -23,6 +28,17 @@ public class Block extends Rectangle {
 			g.fillRect(x, y, width, height);
 
 		}
+
+		if (id == Tile.stone) {
+			g.drawImage(steinWeg_1, x, y, 40, 40, null);
+
+		}
+
+		if (id == Tile.earth) {
+			g.drawImage(grass, x, y, 40, 40, null);
+
+		}
+
 	}
 
 }

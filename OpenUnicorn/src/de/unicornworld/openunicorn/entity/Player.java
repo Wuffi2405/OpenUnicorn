@@ -1,25 +1,25 @@
 package de.unicornworld.openunicorn.entity;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
 
 import de.unicornworld.openunicorn.Component;
 import de.unicornworld.openunicorn.world.Tile;
 
 public class Player extends Rectangle {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
-	public static float speed = 1;
+	public static float speed = 2;
 	protected float dx;
 	protected float dy;
 	protected boolean falling = true;
 	protected boolean jumping;
 
 	protected boolean jumpPerformed;
+
+	public static BufferedImage player;
+	public static BufferedImage player_left;
 
 	protected boolean top;
 	protected boolean left;
@@ -30,7 +30,7 @@ public class Player extends Rectangle {
 	public int animationFrame = 0, animationTime = 40;
 
 	public Player(int width, int height) {
-		setBounds(Tile.tileSize, 0, width, height);
+		setBounds(Tile.tileSize, Tile.tileSize, width, height);
 	}
 
 	public void tick() {
@@ -52,10 +52,12 @@ public class Player extends Rectangle {
 		if (Component.isMovingVert == true) {
 
 			if (Component.dirVert == Player.speed && right != true) {
-				x += 1;
+				x += Player.speed;
+
 			}
 			if (Component.dirVert == -Player.speed && left != true) {
-				x -= 1;
+				x -= Player.speed;
+
 			}
 
 		}
@@ -63,10 +65,12 @@ public class Player extends Rectangle {
 		if (Component.isMovingHor == true) {
 
 			if (Component.dirHor == Player.speed && bottom != true) {
-				y += 1;
+				y += Player.speed;
+
 			}
 			if (Component.dirHor == -Player.speed && top != true) {
-				y -= 1;
+				y -= Player.speed;
+
 			}
 
 		}
@@ -87,37 +91,25 @@ public class Player extends Rectangle {
 			top = false;
 		}
 
-		if (Component.world.block[(int) ((Component.player.x - 1) / Tile.tileSize)][(int) (((Component.player.y)
-				/ Tile.tileSize))].id == Tile.stone
-				|| Component.world.block[(int) ((Component.player.x - 1)
-						/ Tile.tileSize)][(int) (((Component.player.y - 1) / Tile.tileSize) + 1)].id == Tile.stone) {
+		if (Component.world.block[(int) ((Component.player.x - 1) / Tile.tileSize)][(int) (((Component.player.y) / Tile.tileSize))].id == Tile.stone || Component.world.block[(int) ((Component.player.x - 1) / Tile.tileSize)][(int) (((Component.player.y - 1) / Tile.tileSize) + 1)].id == Tile.stone) {
 			left = true;
 		} else {
 			left = false;
 		}
 
-		if (Component.world.block[(int) ((Component.player.x) / Tile.tileSize)
-				+ 1][(int) (((Component.player.y) / Tile.tileSize))].id == Tile.stone
-				|| Component.world.block[(int) ((Component.player.x) / Tile.tileSize)
-						+ 1][(int) (((Component.player.y - 1) / Tile.tileSize) + 1)].id == Tile.stone) {
+		if (Component.world.block[(int) ((Component.player.x) / Tile.tileSize) + 1][(int) (((Component.player.y) / Tile.tileSize))].id == Tile.stone || Component.world.block[(int) ((Component.player.x) / Tile.tileSize) + 1][(int) (((Component.player.y - 1) / Tile.tileSize) + 1)].id == Tile.stone) {
 			right = true;
 		} else {
 			right = false;
 		}
 
-		if (Component.world.block[(int) (Component.player.x / Tile.tileSize)][(int) (((Component.player.y - 1)
-				/ Tile.tileSize))].id == Tile.stone
-				|| Component.world.block[(int) ((Component.player.x - 1) / Tile.tileSize)
-						+ 1][(int) (((Component.player.y - 1) / Tile.tileSize))].id == Tile.stone) {
+		if (Component.world.block[(int) (Component.player.x / Tile.tileSize)][(int) (((Component.player.y - 1) / Tile.tileSize))].id == Tile.stone || Component.world.block[(int) ((Component.player.x - 1) / Tile.tileSize) + 1][(int) (((Component.player.y - 1) / Tile.tileSize))].id == Tile.stone) {
 			top = true;
 		} else {
 			top = false;
 		}
 
-		if (Component.world.block[(int) (Component.player.x
-				/ Tile.tileSize)][(int) (((Component.player.y) / Tile.tileSize) + 1)].id == Tile.stone
-				|| Component.world.block[(int) ((Component.player.x - 1) / Tile.tileSize)
-						+ 1][(int) (((Component.player.y) / Tile.tileSize) + 1)].id == Tile.stone) {
+		if (Component.world.block[(int) (Component.player.x / Tile.tileSize)][(int) (((Component.player.y) / Tile.tileSize) + 1)].id == Tile.stone || Component.world.block[(int) ((Component.player.x - 1) / Tile.tileSize) + 1][(int) (((Component.player.y) / Tile.tileSize) + 1)].id == Tile.stone) {
 			bottom = true;
 		} else {
 			bottom = false;
@@ -129,13 +121,11 @@ public class Player extends Rectangle {
 
 		if (Component.dirVert == speed) {
 
-			g.setColor(Color.green);
-			g.fillRect(x, y, width, height);
+			g.drawImage(player, x, y, 40, 40, null);
 
 		} else {
-			g.setColor(Color.cyan);
-			g.fillRect(x, y, width, height);
 
+			g.drawImage(player_left, x, y, 40, 40, null);
 		}
 	}
 

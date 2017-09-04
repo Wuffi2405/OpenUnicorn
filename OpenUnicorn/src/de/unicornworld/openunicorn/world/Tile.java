@@ -7,7 +7,7 @@ import javax.imageio.ImageIO;
 
 public class Tile {
 
-	public static int tileSize = 20;
+	public static int tileSize = 40;
 
 	public static int[] air = { -1, -1 };
 	public static int[] stone = { 0, 0 };
@@ -31,9 +31,9 @@ public class Tile {
 	public Tile() {
 
 		try {
-			Tile.tileset_terrain = ImageIO.read(new File("res/tileset_terrain.png"));
-			Tile.tile_cell = ImageIO.read(new File("res/tile_cell.png"));
-			Tile.tile_select = ImageIO.read(new File("res/tile_select.png"));
+			Tile.tileset_terrain = ImageIO.read(new File("/assets/texture/block/grass.png"));
+			Tile.tile_cell = ImageIO.read(new File("/assets/texture/block/grass.png"));
+			Tile.tile_select = ImageIO.read(new File("/assets/texture/block/grass.png"));
 
 		} catch (Exception e) {
 
