@@ -56,12 +56,13 @@ public class Component extends Canvas {
 		player = new Player(Tile.tileSize, Tile.tileSize);
 
 		try {
-			
+
+			Block.earth = ImageIO.read(SourceLoader.class.getResourceAsStream("/assets/texture/block/Erde1.png"));
 			Block.grass = ImageIO.read(SourceLoader.class.getResourceAsStream("/assets/texture/block/grass.png"));
 			Block.steinWeg_1 = ImageIO.read(SourceLoader.class.getResourceAsStream("/assets/texture/block/Steinweg1.png"));
 			Player.player = ImageIO.read(SourceLoader.class.getResourceAsStream("/assets/player.png"));
 			Player.player_left = ImageIO.read(SourceLoader.class.getResourceAsStream("/assets/player_left.png"));
-			
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

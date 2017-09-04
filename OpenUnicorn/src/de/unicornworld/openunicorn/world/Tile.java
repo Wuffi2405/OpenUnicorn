@@ -14,7 +14,10 @@ public class Tile {
 	public static int[] earth = { 1, 0 };
 	public static int[] sand = { 2, 0 };
 	public static int[] wood = { 3, 0 };
+	public static int[] grass = { 5, 0 };
 
+	
+	
 	public static int invItemBorder = 3;
 	public static int invLenght = 8;
 	public static int invCellSize = 25;

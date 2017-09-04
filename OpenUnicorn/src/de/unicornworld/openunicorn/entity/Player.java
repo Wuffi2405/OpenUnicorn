@@ -5,7 +5,9 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 import de.unicornworld.openunicorn.Component;
+import de.unicornworld.openunicorn.frame.Window;
 import de.unicornworld.openunicorn.world.Tile;
+import de.unicornworld.openunicorn.world.World;
 
 public class Player extends Rectangle {
 
@@ -35,15 +37,14 @@ public class Player extends Rectangle {
 
 	public void tick() {
 
-		if (Component.player.x > Component.pixel.getWidth() / 2) {
+		if (Component.player.x > Window.getJFrame().getWidth() / 2) {
 
-			Component.sx = Component.player.x - Component.pixel.getWidth() / 2;
-
+			Component.sx = Component.player.x - Window.getJFrame().getWidth() / 2;
 		}
 
-		if (Component.player.y > Component.pixel.getHeight() / 2) {
+		if (Component.player.y > Window.getJFrame().getHeight() / 2) {
 
-			Component.sy = Component.player.y - Component.pixel.getHeight() / 2;
+			Component.sy = Component.player.y - Window.getJFrame().getHeight() / 2;
 
 		}
 

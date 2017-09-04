@@ -12,11 +12,13 @@ public class World {
 	public Block[][] block = new Block[worldW][worldH];
 	private static BufferedReader reader;
 
+	public static int plusx = 0;
+	public static int plusy = 0;
+
 	public World() {
 		for (int x = 0; x < block.length; x++) {
 			for (int y = 0; y < block[0].length; y++) {
-				block[x][y] = new Block(
-						new Rectangle(x * Tile.tileSize, y * Tile.tileSize, Tile.tileSize, Tile.tileSize), Tile.air);
+				block[x][y] = new Block(new Rectangle(x * Tile.tileSize + plusx, y * Tile.tileSize + plusy, Tile.tileSize, Tile.tileSize), Tile.air);
 			}
 		}
 
@@ -36,13 +38,11 @@ public class World {
 					for (int y = 0; y < worldW; y++) {
 
 						if (Integer.parseInt(numbers[y]) == 1) {
-							block[y][x] = new Block(
-									new Rectangle(y * Tile.tileSize, x * Tile.tileSize, Tile.tileSize, Tile.tileSize),
-									Tile.stone);
+							block[y][x] = new Block(new Rectangle(y * Tile.tileSize, x * Tile.tileSize, Tile.tileSize, Tile.tileSize), Tile.stone);
+						} else if (Integer.parseInt(numbers[y]) == 2) {
+							block[y][x] = new Block(new Rectangle(y * Tile.tileSize, x * Tile.tileSize, Tile.tileSize, Tile.tileSize), Tile.earth);
 						} else {
-							block[y][x] = new Block(
-									new Rectangle(y * Tile.tileSize, x * Tile.tileSize, Tile.tileSize, Tile.tileSize),
-									Tile.earth);
+							block[y][x] = new Block(new Rectangle(y * Tile.tileSize, x * Tile.tileSize, Tile.tileSize, Tile.tileSize), Tile.grass);
 
 						}
 					}

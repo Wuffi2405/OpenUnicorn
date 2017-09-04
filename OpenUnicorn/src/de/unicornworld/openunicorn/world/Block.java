@@ -8,6 +8,8 @@ import java.awt.image.BufferedImage;
 public class Block extends Rectangle {
 
 	public static BufferedImage grass;
+
+	public static BufferedImage earth;
 	public static BufferedImage steinWeg_1;
 
 	private static final long serialVersionUID = 1L;
@@ -34,8 +36,13 @@ public class Block extends Rectangle {
 
 		}
 
-		if (id == Tile.earth) {
+		if (id == Tile.grass) {
 			g.drawImage(grass, x, y, 40, 40, null);
+
+		}
+
+		if (id == Tile.earth) {
+			g.drawImage(earth, x, y, 40, 40, null);
 
 		}
 
