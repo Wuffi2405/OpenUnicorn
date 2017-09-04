@@ -11,7 +11,7 @@ public class World {
 	public static int worldW = 100, worldH = 100;
 	public Block[][] block = new Block[worldW][worldH];
 	private static BufferedReader reader;
-
+ 
 	public static int sumx;
 	public static int sumy;
 
