@@ -8,7 +8,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class World {
-	public static int worldW = 100, worldH = 100;
+	public static int worldW = 100, worldH = 100; 
 	public Block[][] block = new Block[worldW][worldH];
 	private static BufferedReader reader;
  
