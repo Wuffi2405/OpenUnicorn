@@ -1,9 +1,8 @@
 package de.unicornworld.openunicorn.world;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
-
-import de.unicornworld.openunicorn.Component;
 
 public class Block extends Rectangle {
 
@@ -19,10 +18,9 @@ public class Block extends Rectangle {
 	public void render(Graphics g) {
 
 		if (id != Tile.air) {
-			g.drawImage(Tile.tileset_terrain, x - (int) Component.sx, y - (int) Component.sy,
-					x + width - (int) Component.sx, y + height - (int) Component.sy, id[0] * Tile.tileSize,
-					id[1] * Tile.tileSize, id[0] * Tile.tileSize + Tile.tileSize, id[1] * Tile.tileSize + Tile.tileSize,
-					null);
+
+			g.setColor(Color.RED);
+			g.fillRect(x, y, width, height);
 
 		}
 	}

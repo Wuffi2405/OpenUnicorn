@@ -8,43 +8,45 @@ import java.awt.Point;
 import java.awt.image.BufferStrategy;
 
 import de.unicornworld.openunicorn.entity.Player;
-import de.unicornworld.openunicorn.world.Sky;
+import de.unicornworld.openunicorn.world.Tile;
 import de.unicornworld.openunicorn.world.World;
 
 public class Component extends Canvas {
 
 	private static final long serialVersionUID = 1L;
-	public static double dir = 0;
+
+	public static double dirVert = 0;
+	public static double dirHor = 0;
 	public static double sx = 0;
 	public static double sy = 0;
+
 	private boolean readyForLoop = false;
 
 	public static Dimension realsize;
 
-	public static Player player;
-
 	public static Dimension size = new Dimension(1300, 700);
 
-	public static int pixelsize = 2;
-	public static Dimension pixel = new Dimension(size.width / pixelsize, size.height / pixelsize);
-
-	public static Point mse = new Point(0, 0);
-
-	public static boolean isMoving = false;
-	public static boolean isUp = false;
-	public static boolean isDown = false;
+	public static boolean isRunning = false;
+	public static boolean isMovingVert = false;
+	public static boolean isMovingHor = false;
+	public static boolean isJumping = false;
 	public static boolean isMouseLeft = false;
 	public static boolean isMouseRight = false;
 
+	public static Player player;
 	public static World world;
-	public static Sky sky;
+
+	public static int pixelsize = 1;
+	public static Dimension pixel = new Dimension(size.width / pixelsize, size.height / pixelsize);
+
+	public static Point mse = new Point(0, 0);
 
 	public Component() {
 
 		System.out.println("[OpenUnicorn] [Initialisation] [Initialisation] called");
 
-		player = new Player(20, 20);
 		world = new World();
+		player = new Player(Tile.tileSize, Tile.tileSize);
 
 		readyForLoop = true;
 		System.out.println("[OpenUnicorn] [GameCanvas] [GameCanvas] called");
@@ -57,8 +59,12 @@ public class Component extends Canvas {
 
 	public void update() {
 		if (readyForLoop) {
-			player.tick();
 
+
+			world.tick((int) sx, (int) sy, (int) (pixel.width / Tile.tileSize + 2), (int) (pixel.height / Tile.tileSize + 2));
+			player.tick();
+			
+			
 		}
 
 	}
@@ -76,15 +82,17 @@ public class Component extends Canvas {
 		// Background
 		g.setColor(Color.BLUE);
 		g.fillRect(0, 0, 800, 600);
+		
+		
+		world.render(g, (int) sx, (int) sy, (int) (pixel.width / Tile.tileSize + 2), (int) (pixel.height / Tile.tileSize + 2));
+		player.render(g);
+
+		
 		// ---------
 
 		g.setColor(new Color(100, 50, 150));
 		g.drawRect(0, 0, 1000, 1000);
 		if (readyForLoop) {
-
-			world.render(g);
-
-			player.render(g);
 
 		}
 

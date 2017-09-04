@@ -6,13 +6,15 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 public class SourceLoader {
-	
-	private static BufferedImage image;	
 
-	public static BufferedImage loadImage(String path){
+	private static BufferedImage image;
+
+	public static BufferedImage loadImage(String path) {
 		try {
+
 			image = ImageIO.read(SourceLoader.class.getResourceAsStream(path));
-//			image = ImageIO.read(SourceLoader.class.getClassLoader().getResourceAsStream(path));
+			// image =
+			// ImageIO.read(SourceLoader.class.getClassLoader().getResourceAsStream(path));
 			return image;
 		} catch (IOException e) {
 			System.err.println("ERROR");
@@ -20,5 +22,5 @@ public class SourceLoader {
 			return null;
 		}
 	}
-	
+
 }

@@ -1,14 +1,16 @@
 package de.unicornworld.openunicorn.world;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
-
-import de.unicornworld.openunicorn.util.SourceLoader;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class World {
-	public static int worldW = 70, worldH = 70;
+	public static int worldW = 100, worldH = 100;
 	public Block[][] block = new Block[worldW][worldH];
+	private static BufferedReader reader;
 
 	public World() {
 		for (int x = 0; x < block.length; x++) {
@@ -18,27 +20,58 @@ public class World {
 			}
 		}
 
+		generateLevel();
 	}
 
 	public void generateLevel() {
 
-	}
+		try {
+			reader = new BufferedReader(new FileReader(new File("OpenUnicorn/src/assets/files/world.uwwf")));
 
-	public void building(int camX, int camY, int renW, int renH) {
+			for (int x = 0; x < worldH; x++) {
+				try {
+
+					String[] numbers = reader.readLine().split("");
+
+					for (int y = 0; y < worldW; y++) {
+
+						if (Integer.parseInt(numbers[y]) == 1) {
+							block[y][x] = new Block(
+									new Rectangle(y * Tile.tileSize, x * Tile.tileSize, Tile.tileSize, Tile.tileSize),
+									Tile.stone);
+						} else {
+							block[y][x] = new Block(
+									new Rectangle(y * Tile.tileSize, x * Tile.tileSize, Tile.tileSize, Tile.tileSize),
+									Tile.earth);
+
+						}
+					}
+				} catch (Exception e) {
+
+				}
+
+			}
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
 	}
 
 	public void tick(int camX, int camY, int renW, int renH) {
 
-		building(camX, camY, renW, renH);
 	}
 
-	public void render(Graphics g) {
+	public void render(Graphics g, int camX, int camY, int renW, int renH) {
+		for (int x = (camX / Tile.tileSize); x < (camX / Tile.tileSize) + renW; x++) {
+			for (int y = (camY / Tile.tileSize); y < (camY / Tile.tileSize) + renH; y++) {
 
-		g.setColor(Color.BLACK);
-		g.drawRect(0, 0, 20, 20);
-		g.drawImage(SourceLoader.loadImage(""), 0, 0, 20, 20, 0, 0, 20, 20, null);
+				if (x >= 0 && y >= 0 && x < worldW && y < worldH) {
+					block[x][y].render(g);
 
+				}
+			}
+		}
 	}
 
 }
