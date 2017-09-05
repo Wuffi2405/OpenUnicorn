@@ -8,10 +8,10 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class World {
-	public static int worldW = 100, worldH = 100; 
+	public static int worldW = 30, worldH = 30;
 	public Block[][] block = new Block[worldW][worldH];
 	private static BufferedReader reader;
- 
+
 	public static int sumx;
 	public static int sumy;
 
@@ -31,24 +31,25 @@ public class World {
 		try {
 			reader = new BufferedReader(new FileReader(new File("OpenUnicorn/src/assets/files/world.uwwf")));
 
-			for (int x = 0; x < worldH; x++) {
+			for (int y = 0; y < worldH; y++) {
 				try {
 
 					String[] numbers = reader.readLine().split("");
 
-					for (int y = 0; y < worldW; y++) {
+					for (int x = 0; x < worldW; x++) {
 
-						if (Integer.parseInt(numbers[y]) == 1) {
-							block[y][x] = new Block(
-									new Rectangle(y * Tile.tileSize, x * Tile.tileSize, Tile.tileSize, Tile.tileSize),
+						if (Integer.parseInt(numbers[x]) == 1) {
+							block[x][y] = new Block(
+									new Rectangle(x * Tile.tileSize, y * Tile.tileSize, Tile.tileSize, Tile.tileSize),
 									Tile.stone);
-						} else if (Integer.parseInt(numbers[y]) == 2) {
-							block[y][x] = new Block(
-									new Rectangle(y * Tile.tileSize, x * Tile.tileSize, Tile.tileSize, Tile.tileSize),
+
+						} else if (Integer.parseInt(numbers[x]) == 2) {
+							block[x][y] = new Block(
+									new Rectangle(x * Tile.tileSize, y * Tile.tileSize, Tile.tileSize, Tile.tileSize),
 									Tile.earth);
 						} else {
-							block[y][x] = new Block(
-									new Rectangle(y * Tile.tileSize, x * Tile.tileSize, Tile.tileSize, Tile.tileSize),
+							block[x][y] = new Block(
+									new Rectangle(x * Tile.tileSize, y * Tile.tileSize, Tile.tileSize, Tile.tileSize),
 									Tile.grass);
 
 						}
@@ -66,13 +67,15 @@ public class World {
 	}
 
 	public void tick(int camX, int camY, int renW, int renH) {
-
 		
 	}
 
 	public void render(Graphics g, int camX, int camY, int renW, int renH) {
-		for (int x = (camX / Tile.tileSize); x < (camX / Tile.tileSize) + renW; x++) {
-			for (int y = (camY / Tile.tileSize); y < (camY / Tile.tileSize) + renH; y++) {
+
+		// cam has to be used against lags coming soon!
+
+		for (int x = 0; x < worldW; x++) {
+			for (int y = 0; y < worldH + renH; y++) {
 
 				if (x >= 0 && y >= 0 && x < worldW && y < worldH) {
 					block[x][y].render(g);

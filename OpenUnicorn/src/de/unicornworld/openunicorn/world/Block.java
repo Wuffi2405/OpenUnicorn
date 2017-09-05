@@ -24,17 +24,17 @@ public class Block extends Rectangle {
 	public void render(Graphics g) {
 
 		if (id == Tile.stone) {
-			g.drawImage(steinWeg_1, x + World.sumx, y + World.sumy, 40, 40, null);
+			g.drawImage(steinWeg_1, x + World.sumx, y + World.sumy, Tile.tileSize, Tile.tileSize, null);
 
 		}
 
 		if (id == Tile.grass) {
-			g.drawImage(grass, x + World.sumx, y + World.sumy, 40, 40, null);
+			g.drawImage(grass, x + World.sumx, y + World.sumy, Tile.tileSize, Tile.tileSize, null);
 
 		}
 
 		if (id == Tile.earth) {
-			g.drawImage(earth, x + World.sumx, y + World.sumy, 40, 40, null);
+			g.drawImage(earth, x + World.sumx, y + World.sumy, Tile.tileSize, Tile.tileSize, null);
 
 		}
 

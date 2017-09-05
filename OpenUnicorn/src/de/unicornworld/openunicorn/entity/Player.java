@@ -37,24 +37,19 @@ public class Player extends Rectangle {
 
 	public void tick() {
 
-		// if (Component.player.x > Window.getJFrame().getWidth() / 2) {
-		//
-		// Component.sx = Component.player.x - Window.getJFrame().getWidth() / 2;
-		// }
-		//
-		// if (Component.player.y > Window.getJFrame().getHeight() / 2) {
-		//
-		// Component.sy = Component.player.y - Window.getJFrame().getHeight() / 2;
-		//
-		// }
-
 		calculateCollisions();
 
 		if (Component.isMovingVert == true) {
 
+			if (Component.player.x - World.sumx < 19) {
+
+				System.out.println(Component.player.x - World.sumx);
+
+			}
+
 			if (Component.dirVert == Player.speed && right != true) {
 
-				if (Component.player.x < Window.getJFrame().getWidth() / 2) {
+				if ((Component.player.x - World.sumx) < ((Window.getJFrame().getWidth() - Component.player.width) / 2)) {
 
 					x += Player.speed;
 
@@ -79,7 +74,7 @@ public class Player extends Rectangle {
 
 			if (Component.dirHor == Player.speed && bottom != true) {
 
-				if (Component.player.y < Window.getJFrame().getHeight() / 2) {
+				if ((Component.player.y - World.sumy) < ((Window.getJFrame().getHeight() - Component.player.height) / 2)) {
 
 					y += Player.speed;
 
@@ -104,58 +99,45 @@ public class Player extends Rectangle {
 
 	public void calculateCollisions() {
 
-		if (Component.player.x == 0) {
+		if ((Component.player.x - World.sumx) == 0) {
 			left = true;
 		} else {
 			left = false;
 		}
 
-		if (Component.player.y == 0) {
+		if ((Component.player.y - World.sumy) == 0) {
 			top = true;
 		} else {
 			top = false;
 		}
-		//
-		// if (Component.world.block[(int) ((Component.player.x - 1) /
-		// Tile.tileSize)][(int) (((Component.player.y)
-		// / Tile.tileSize))].id == Tile.stone
-		// || Component.world.block[(int) ((Component.player.x - 1)
-		// / Tile.tileSize)][(int) (((Component.player.y - 1) / Tile.tileSize) + 1)].id
-		// == Tile.stone) {
-		// left = true;
-		// } else {
-		// left = false;
-		// }
-		//
-		// if (Component.world.block[(int) ((Component.player.x) / Tile.tileSize)
-		// + 1][(int) (((Component.player.y) / Tile.tileSize))].id == Tile.stone
-		// || Component.world.block[(int) ((Component.player.x) / Tile.tileSize)
-		// + 1][(int) (((Component.player.y - 1) / Tile.tileSize) + 1)].id ==
-		// Tile.stone) {
-		// right = true;
-		// } else {
-		// right = false;
-		// }
-		//
-		// if (Component.world.block[(int) (Component.player.x / Tile.tileSize)][(int)
-		// (((Component.player.y - 1)
-		// / Tile.tileSize))].id == Tile.stone
-		// || Component.world.block[(int) ((Component.player.x - 1) / Tile.tileSize)
-		// + 1][(int) (((Component.player.y - 1) / Tile.tileSize))].id == Tile.stone) {
-		// top = true;
-		// } else {
-		// top = false;
-		// }
-		//
-		// if (Component.world.block[(int) (Component.player.x
-		// / Tile.tileSize)][(int) (((Component.player.y) / Tile.tileSize) + 1)].id ==
-		// Tile.stone
-		// || Component.world.block[(int) ((Component.player.x - 1) / Tile.tileSize)
-		// + 1][(int) (((Component.player.y) / Tile.tileSize) + 1)].id == Tile.stone) {
-		// bottom = true;
-		// } else {
-		// bottom = false;
-		// }
+
+		if (Component.world.block[(int) (((Component.player.x - World.sumx) - 1) / Tile.tileSize)][(int) ((((Component.player.y - World.sumy)) / Tile.tileSize))].id == Tile.stone
+				|| Component.world.block[(int) (((Component.player.x - World.sumx) - 1) / Tile.tileSize)][(int) ((((Component.player.y - World.sumy) - 1) / Tile.tileSize) + 1)].id == Tile.stone) {
+			left = true;
+		} else {
+			left = false;
+		}
+
+		if (Component.world.block[(int) (((Component.player.x - World.sumx)) / Tile.tileSize) + 1][(int) ((((Component.player.y - World.sumy)) / Tile.tileSize))].id == Tile.stone
+				|| Component.world.block[(int) (((Component.player.x - World.sumx)) / Tile.tileSize) + 1][(int) ((((Component.player.y - World.sumy) - 1) / Tile.tileSize) + 1)].id == Tile.stone) {
+			right = true;
+		} else {
+			right = false;
+		}
+
+		if (Component.world.block[(int) ((Component.player.x - World.sumx) / Tile.tileSize)][(int) ((((Component.player.y - World.sumy) - 1) / Tile.tileSize))].id == Tile.stone
+				|| Component.world.block[(int) (((Component.player.x - World.sumx) - 1) / Tile.tileSize) + 1][(int) ((((Component.player.y - World.sumy) - 1) / Tile.tileSize))].id == Tile.stone) {
+			top = true;
+		} else {
+			top = false;
+		}
+
+		if (Component.world.block[(int) ((Component.player.x - World.sumx) / Tile.tileSize)][(int) ((((Component.player.y - World.sumy)) / Tile.tileSize) + 1)].id == Tile.stone
+				|| Component.world.block[(int) (((Component.player.x - World.sumx) - 1) / Tile.tileSize) + 1][(int) ((((Component.player.y - World.sumy)) / Tile.tileSize) + 1)].id == Tile.stone) {
+			bottom = true;
+		} else {
+			bottom = false;
+		}
 
 	}
 
