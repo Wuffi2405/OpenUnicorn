@@ -30,7 +30,7 @@ public class Player extends Rectangle {
 
 	public int animation = 0;
 	public int animationFrame = 0, animationTime = 40;
-
+ 
 	public Player(int width, int height) {
 		setBounds(Tile.tileSize, Tile.tileSize, width, height);
 	}
