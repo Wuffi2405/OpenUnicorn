@@ -18,38 +18,38 @@ public class LayeredPaneGame extends JPanel {
 	public LayeredPaneGame() {
 		setBounds(0, 0, 800, 600);
 		setLayout(null);
- 
+
 		button_closeGame = new Button(150, 50);
-		button_closeGame.setBounds(Window.getJFrame().getWidth()-250, 10, 150, 50);
+		button_closeGame.setBounds(Window.getJFrame().getWidth() - 150, 0, 150, 50);
 		button_closeGame.getText().setText("Spiel schlieﬂen");
-		//button_closeGame.text.setVerticalAlignment((int) CENTER_ALIGNMENT);
+		// button_closeGame.text.setVerticalAlignment((int) CENTER_ALIGNMENT);
 		Window.button_game.add(button_closeGame);
 		button_closeGame.addMouseListener(new MouseListener() {
-			
+
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				// TODO Auto-generated method stub
-				
+
 			}
-			
+
 			@Override
 			public void mousePressed(MouseEvent e) {
 				// TODO Auto-generated method stub
-				
+
 			}
-			
+
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
-				
+
 			}
-			
+
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				// TODO Auto-generated method stub
-				
+
 			}
-			
+
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				Window.getJFrame().dispose();

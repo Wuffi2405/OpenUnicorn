@@ -14,7 +14,7 @@ public class CreateNPCs {
 
 		createPaths();
 
-		markens = new NPC(markens_path, "markens");
+		markens = new NPC(markens_path, "markens", 1);
 
 	}
 
@@ -36,6 +36,11 @@ public class CreateNPCs {
 		markens_path.pushX(200);
 		markens_path.pushY(40);
 		markens_path.pushX(300);
+
+		markens_path.pushX(700);
+
+		markens_path.pushY(30);
+
 		markens_path.pushY(30);
 	}
 

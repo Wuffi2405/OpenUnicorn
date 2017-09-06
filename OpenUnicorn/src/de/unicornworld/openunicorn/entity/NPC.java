@@ -9,14 +9,19 @@ import de.unicornworld.openunicorn.world.Tile;
 public class NPC {
 
 	private int x, y;
-	private int checkpointx = 0;
-	private int checkpointy = 0;
+	private int checkpointx = 1;
+	private int checkpointy = 1;
+	private int speed;
 	private Path path;
 	private String NPCName;
 
-	public NPC(Path path, String nPCName) {
+	public NPC(Path path, String nPCName, int speed) {
 		this.path = path;
+		this.speed = speed;
 		NPCName = nPCName;
+
+		x = path.getX().get(checkpointx - 1);
+		y = path.getY().get(checkpointy - 1);
 
 	}
 
@@ -39,12 +44,27 @@ public class NPC {
 
 	public void update() {
 
-		x = path.getX().get(checkpointx);
+		try {
 
-		path.getX().remove(checkpointx);
-		path.getX().add(checkpointx, x + 1);
+			if (path.getX().get(checkpointx) == x) {
+				checkpointx += 1;
+				System.out.println("hier!");
 
-		y = path.getY().get(checkpointy);
+			}
+
+			if (path.getX().get(checkpointx) > x) {
+				x += speed;
+			}
+
+		} catch (Exception e) {
+
+		}
+
+		try {
+			
+		} catch (Exception e) {
+			
+		}
 
 	}
 
