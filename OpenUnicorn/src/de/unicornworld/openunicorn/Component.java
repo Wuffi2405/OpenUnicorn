@@ -137,6 +137,9 @@ public class Component extends Canvas {
 		Component.world = new World(worldName);
 		Component.player.x = Tile.tileSize;
 		Component.player.y = Tile.tileSize;
+		World.sumx = 0;
+		World.sumy = 0;
+
 	}
 
 }

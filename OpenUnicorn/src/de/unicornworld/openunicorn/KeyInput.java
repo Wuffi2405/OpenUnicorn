@@ -38,6 +38,7 @@ public class KeyInput implements KeyListener {
 		case KeyEvent.VK_C:
 
 			Component.state = 1;
+			ConsoleListener.keyChar = "";
 
 			break;
 

@@ -7,6 +7,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
+import de.unicornworld.openunicorn.util.CreateNPCs;
+
 public class World {
 	public static int worldW = 30, worldH = 30;
 	public Block[][] block = new Block[worldW][worldH];
@@ -15,11 +17,15 @@ public class World {
 	public static int sumx;
 	public static int sumy;
 
+	public static CreateNPCs initNPCs;
+
 	private String uwwfName;
 
 	public World(String uwwfName) {
 
 		this.uwwfName = uwwfName;
+
+		initNPCs = new CreateNPCs();
 
 		for (int x = 0; x < block.length; x++) {
 			for (int y = 0; y < block[0].length; y++) {
@@ -66,6 +72,8 @@ public class World {
 
 	public void tick(int camX, int camY, int renW, int renH) {
 
+		initNPCs.update();
+
 	}
 
 	public void render(Graphics g, int camX, int camY, int renW, int renH) {
@@ -81,6 +89,9 @@ public class World {
 				}
 			}
 		}
+
+		initNPCs.render(g);
+
 	}
 
 }
