@@ -15,11 +15,15 @@ public class World {
 	public static int sumx;
 	public static int sumy;
 
-	public World() {
+	private String uwwfName;
+
+	public World(String uwwfName) {
+
+		this.uwwfName = uwwfName;
+
 		for (int x = 0; x < block.length; x++) {
 			for (int y = 0; y < block[0].length; y++) {
-				block[x][y] = new Block(
-						new Rectangle(x * Tile.tileSize, y * Tile.tileSize, Tile.tileSize, Tile.tileSize), Tile.air);
+				block[x][y] = new Block(new Rectangle(x * Tile.tileSize, y * Tile.tileSize, Tile.tileSize, Tile.tileSize), Tile.air);
 			}
 		}
 
@@ -29,7 +33,7 @@ public class World {
 	public void generateLevel() {
 
 		try {
-			reader = new BufferedReader(new FileReader(new File("OpenUnicorn/src/assets/files/world.uwwf")));
+			reader = new BufferedReader(new FileReader(new File("OpenUnicorn/src/assets/files/worlds/" + uwwfName + ".uwwf")));
 
 			for (int y = 0; y < worldH; y++) {
 				try {
@@ -39,18 +43,12 @@ public class World {
 					for (int x = 0; x < worldW; x++) {
 
 						if (Integer.parseInt(numbers[x]) == 1) {
-							block[x][y] = new Block(
-									new Rectangle(x * Tile.tileSize, y * Tile.tileSize, Tile.tileSize, Tile.tileSize),
-									Tile.stone);
+							block[x][y] = new Block(new Rectangle(x * Tile.tileSize, y * Tile.tileSize, Tile.tileSize, Tile.tileSize), Tile.stone);
 
 						} else if (Integer.parseInt(numbers[x]) == 2) {
-							block[x][y] = new Block(
-									new Rectangle(x * Tile.tileSize, y * Tile.tileSize, Tile.tileSize, Tile.tileSize),
-									Tile.earth);
+							block[x][y] = new Block(new Rectangle(x * Tile.tileSize, y * Tile.tileSize, Tile.tileSize, Tile.tileSize), Tile.earth);
 						} else {
-							block[x][y] = new Block(
-									new Rectangle(x * Tile.tileSize, y * Tile.tileSize, Tile.tileSize, Tile.tileSize),
-									Tile.grass);
+							block[x][y] = new Block(new Rectangle(x * Tile.tileSize, y * Tile.tileSize, Tile.tileSize, Tile.tileSize), Tile.grass);
 
 						}
 					}
@@ -67,7 +65,7 @@ public class World {
 	}
 
 	public void tick(int camX, int camY, int renW, int renH) {
-		
+
 	}
 
 	public void render(Graphics g, int camX, int camY, int renW, int renH) {

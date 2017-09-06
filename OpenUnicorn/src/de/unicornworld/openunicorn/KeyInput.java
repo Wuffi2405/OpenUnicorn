@@ -35,6 +35,20 @@ public class KeyInput implements KeyListener {
 			Component.isMovingHor = true;
 			break;
 
+		case KeyEvent.VK_C:
+
+			Component.state = 1;
+
+			break;
+
+		case KeyEvent.VK_ESCAPE:
+
+			if (Component.state == 1) {
+				Component.state = 0;
+			}
+
+			break;
+
 		}
 
 	}
@@ -75,6 +89,5 @@ public class KeyInput implements KeyListener {
 	public void keyTyped(KeyEvent e) {
 
 	}
-
 
 }

@@ -42,6 +42,9 @@ public class Component extends Canvas {
 
 	public static Player player;
 	public static World world;
+	public static Console console;
+
+	public static String worldName = "world";
 
 	public static int pixelsize = 1;
 	public static Dimension pixel = new Dimension(size.width / pixelsize, size.height / pixelsize);
@@ -52,8 +55,9 @@ public class Component extends Canvas {
 
 		System.out.println("[OpenUnicorn] [Initialisation] [Initialisation] called");
 
-		world = new World();
+		world = new World(worldName);
 		player = new Player(Tile.tileSize, Tile.tileSize);
+		console = new Console();
 
 		try {
 
@@ -73,14 +77,23 @@ public class Component extends Canvas {
 		setBounds(0, 0, 1000, 600); // test
 
 		addKeyListener(new KeyInput());
+		addKeyListener(new ConsoleListener());
 
 	}
 
 	public void update() {
 		if (readyForLoop) {
 
-			world.tick((int) sx, (int) sy, (int) (pixel.width / Tile.tileSize + 2), (int) (pixel.height / Tile.tileSize + 2));
-			player.tick();
+			if (state == 0) {
+
+				world.tick((int) sx, (int) sy, (int) (pixel.width / Tile.tileSize + 2), (int) (pixel.height / Tile.tileSize + 2));
+				player.tick();
+
+			} else if (state == 1) {
+
+				console.update();
+
+			}
 
 		}
 
@@ -96,23 +109,34 @@ public class Component extends Canvas {
 
 		Graphics g = bs.getDrawGraphics();
 
-		// Background
-		g.setColor(Color.BLUE);
-		g.fillRect(0, 0, 800, 600);
+		if (state == 0) {
+			g.setColor(Color.LIGHT_GRAY);
+			g.fillRect(0, 0, 800, 600);
 
-		world.render(g, (int) sx, (int) sy, (int) (pixel.width / Tile.tileSize + 2), (int) (pixel.height / Tile.tileSize + 2));
-		player.render(g);
+			world.render(g, (int) sx, (int) sy, (int) (pixel.width / Tile.tileSize + 2), (int) (pixel.height / Tile.tileSize + 2));
+			player.render(g);
 
-		// ---------
+			g.setColor(new Color(100, 50, 150));
+			g.drawRect(0, 0, 1000, 1000);
 
-		g.setColor(new Color(100, 50, 150));
-		g.drawRect(0, 0, 1000, 1000);
+		} else if (state == 1) {
+
+			console.render(g);
+
+		}
+
 		if (readyForLoop) {
 
 		}
 
 		g.dispose();
 		bs.show();
+	}
+
+	public static void switchWorld(String worldName) {
+		Component.world = new World(worldName);
+		Component.player.x = Tile.tileSize;
+		Component.player.y = Tile.tileSize;
 	}
 
 }
