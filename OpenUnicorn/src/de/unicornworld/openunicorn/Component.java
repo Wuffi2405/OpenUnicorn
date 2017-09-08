@@ -10,6 +10,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import de.unicornworld.openunicorn.entity.NPC;
 import de.unicornworld.openunicorn.entity.Player;
 import de.unicornworld.openunicorn.util.SourceLoader;
 import de.unicornworld.openunicorn.world.Block;
@@ -55,8 +56,10 @@ public class Component extends Canvas {
 
 		System.out.println("[OpenUnicorn] [Initialisation] [Initialisation] called");
 
+		
 		world = new World(worldName);
-		player = new Player(Tile.tileSize, Tile.tileSize);
+		
+		player = new Player(Tile.tileSize, Tile.tileSize, Tile.tileSize, Tile.tileSize, 2);
 		console = new Console();
 
 		try {
@@ -66,6 +69,7 @@ public class Component extends Canvas {
 			Block.steinWeg_1 = ImageIO.read(SourceLoader.class.getResourceAsStream("/assets/texture/block/Steinweg1.png"));
 			Player.player = ImageIO.read(SourceLoader.class.getResourceAsStream("/assets/player.png"));
 			Player.player_left = ImageIO.read(SourceLoader.class.getResourceAsStream("/assets/player_left.png"));
+			NPC.markens_img = ImageIO.read(SourceLoader.class.getResourceAsStream("/assets/texture/block/NPC1.png"));
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -137,8 +141,8 @@ public class Component extends Canvas {
 		Component.world = new World(worldName);
 		Component.player.x = Tile.tileSize;
 		Component.player.y = Tile.tileSize;
-		World.sumx = 0;
-		World.sumy = 0;
+		World.difx = 0;
+		World.dify = 0;
 
 	}
 

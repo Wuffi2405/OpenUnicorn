@@ -1,77 +1,36 @@
 package de.unicornworld.openunicorn.entity;
 
-import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 
+import de.unicornworld.openunicorn.frame.Window;
 import de.unicornworld.openunicorn.util.Path;
-import de.unicornworld.openunicorn.world.Tile;
+import de.unicornworld.openunicorn.world.World;
 
-public class NPC {
+public class NPC extends Entity {
 
-	private int x, y;
-	private int checkpointx = 1;
-	private int checkpointy = 1;
-	private int speed;
-	private Path path;
-	private String NPCName;
+	public static BufferedImage markens_img;
 
-	public NPC(Path path, String nPCName, int speed) {
+	public String name;
+	public Path path;
+
+	public NPC(int x, int y, int width, int height, double speed, String name, Path path) {
+		super(x, y, width, height, speed);
+
+		this.name = name;
 		this.path = path;
-		this.speed = speed;
-		NPCName = nPCName;
-
-		x = path.getX().get(checkpointx - 1);
-		y = path.getY().get(checkpointy - 1);
-
-	}
-
-	public Path getPath() {
-		return path;
-	}
-
-	public void setPath(Path path) {
-		this.path = path;
-	}
-
-	public String getNPCName() {
-		return NPCName;
-	}
-
-	public void setNPCName(String nPCName) {
-		NPCName = nPCName;
 
 	}
 
 	public void update() {
 
-		try {
-
-			if (path.getX().get(checkpointx) == x) {
-				checkpointx += 1;
-				System.out.println("hier!");
-
-			}
-
-			if (path.getX().get(checkpointx) > x) {
-				x += speed;
-			}
-
-		} catch (Exception e) {
-
-		}
-
-		try {
-			
-		} catch (Exception e) {
-			
-		}
-
 	}
 
 	public void render(Graphics g) {
 
-		g.setColor(Color.CYAN);
-		g.fillRect(x, y, Tile.tileSize, Tile.tileSize);
+		if (Window.containsRectangle(x, y, width, height)) {
+			g.drawImage(markens_img, x + World.difx, y + World.dify, width, height, null);
+		}
 
 	}
 

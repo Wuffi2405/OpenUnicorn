@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
 
+import de.unicornworld.openunicorn.world.World;
+
 public class Window extends Canvas {
 
 	private static final long serialVersionUID = 8904967363319735435L;
@@ -68,6 +70,26 @@ public class Window extends Canvas {
 
 	public static JFrame getJFrame() {
 		return frame;
+	}
+
+	public static boolean containsPoint(int x, int y) {
+
+		if (x + World.difx < 0 || x + World.difx > frame.getWidth() | y + World.dify < 0 || y + World.dify > frame.getHeight()) {
+			return false;
+		}
+
+		return true;
+
+	}
+
+	public static boolean containsRectangle(int x, int y, int width, int height) {
+
+		if (x+width + World.difx < 0 || x+width + World.difx > frame.getWidth()+20 || y+height + World.dify < 0 || y+height + World.dify > frame.getHeight()) {
+			return false;
+		}
+
+		return true;
+
 	}
 
 }
