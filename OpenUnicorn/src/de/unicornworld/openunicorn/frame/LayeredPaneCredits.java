@@ -93,7 +93,7 @@ public class LayeredPaneCredits extends JPanel {
 	}
 	
 	public void run() {
-		System.out.println(9);
+		System.out.println("[OpenUnicorn] [LayeredPaneCredits] [run] credit animation started");
 		OpenUnicorn.getOpenUnicorn().getPreInitialisation().getWindow().requestFocus();
 		long lastTime = System.nanoTime();
 		long timer = System.currentTimeMillis();
