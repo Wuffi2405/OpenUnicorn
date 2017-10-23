@@ -10,13 +10,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import de.unicornworld.openunicorn.OpenUnicorn;
+import de.unicornworld.openunicorn.map.editor.MapEditor;
 import de.unicornworld.openunicorn.util.SourceLoader;
 
 public class LayeredPaneLauncher extends JPanel {
 	
 	private static final long serialVersionUID = 3803108154839418167L;
 
-	public static Button buttonStartGame, buttonCredits, buttonCloseGame;
+	public static Button buttonStartGame, buttonCredits, buttonCloseGame, buttonMapEditor;
 	public static JLabel image;
 	public static Thread threadCreditsAnimation;
 	
@@ -166,6 +167,44 @@ public class LayeredPaneLauncher extends JPanel {
 			}
 		});
 		this.add(buttonCloseGame);
+		
+		buttonMapEditor = new Button(150, 30);
+		buttonMapEditor.setBounds(10, 520, 150, 30);
+		buttonMapEditor.getText().setText("MapEditor");
+		buttonMapEditor.getText().setFont(new Font("Calibri", Font.BOLD, 20));
+		Window.button_launcher.add(buttonMapEditor);
+		buttonMapEditor.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				new MapEditor();
+			}
+		});
+		this.add(buttonMapEditor);
 		
 		image = new JLabel(new ImageIcon(SourceLoader.loadImage("/assets/texture/launcher/launcher-background.png")));
 		image.setBounds(0, 0, Window.getJFrame().getWidth(), Window.getJFrame().getHeight());

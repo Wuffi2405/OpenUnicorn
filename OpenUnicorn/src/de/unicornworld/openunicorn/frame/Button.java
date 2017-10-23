@@ -1,3 +1,8 @@
+/**
+ * @copyright: Nico Matzke
+ * @author: Nico Matzke
+ */
+
 package de.unicornworld.openunicorn.frame;
 
 import java.awt.Color;
