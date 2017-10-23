@@ -11,5 +11,7 @@
 1000000001
 1111111111
 //load npcs:
-1
-40/300/40/40/2/markens/left,left
+3
+40/300/40/40/2/markens/right,right,up,up,left,left,down,down/40,40,40,40,40,40,40,40
+200/300/40/40/2/peter/right,right,up,up,left,left,down,down
+200/150/40/40/2/manfred/right,right,up,up,left,left,down,down
