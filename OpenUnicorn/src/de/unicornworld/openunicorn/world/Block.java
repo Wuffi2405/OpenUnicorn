@@ -22,7 +22,9 @@ public class Block extends Rectangle {
 	}
 
 	public void render(Graphics g) {
-
+		/**
+		 * Unterscheidung nach BlockType
+		 */
 		if (id == Tile.stone) {
 			g.drawImage(steinWeg_1, x + World.difx, y + World.dify, Tile.tileSize, Tile.tileSize, null);
 
