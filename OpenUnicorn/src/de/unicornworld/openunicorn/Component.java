@@ -13,14 +13,15 @@ import javax.imageio.ImageIO;
 import de.unicornworld.openunicorn.entity.NPC;
 import de.unicornworld.openunicorn.entity.Player;
 import de.unicornworld.openunicorn.util.SourceLoader;
+import de.unicornworld.openunicorn.util.SpeechBubble;
 import de.unicornworld.openunicorn.world.Block;
 import de.unicornworld.openunicorn.world.Tile;
 import de.unicornworld.openunicorn.world.World;
 
 public class Component extends Canvas {
-
+	//pointless
 	private static final long serialVersionUID = 1L;
-
+	//player direction
 	public static double dirVert = 0;
 	public static double dirHor = 0;
 	public static double sx = 0;
@@ -34,6 +35,9 @@ public class Component extends Canvas {
 
 	public static Dimension size = new Dimension(1300, 700);
 
+	public static int mouseX;
+	public static int mouseY;
+
 	public static boolean isRunning = false;
 	public static boolean isMovingVert = false;
 	public static boolean isMovingHor = false;
@@ -44,6 +48,8 @@ public class Component extends Canvas {
 	public static Player player;
 	public static World world;
 	public static Console console;
+	public static SpeechBubble speechBubble;
+	public static Inventory inventory;
 
 	public static String worldName = "world";
 
@@ -56,9 +62,9 @@ public class Component extends Canvas {
 
 		System.out.println("[OpenUnicorn] [Initialisation] [Initialisation] called");
 
-		
+		inventory = new Inventory();
 		world = new World(worldName);
-		
+		speechBubble = null;
 		player = new Player(Tile.tileSize, Tile.tileSize, Tile.tileSize, Tile.tileSize, 2);
 		console = new Console();
 
@@ -82,6 +88,8 @@ public class Component extends Canvas {
 
 		addKeyListener(new KeyInput());
 		addKeyListener(new ConsoleListener());
+		addMouseListener(new MouseInput());
+		addMouseMotionListener(new MouseLocation());
 
 	}
 
@@ -97,6 +105,14 @@ public class Component extends Canvas {
 
 				console.update();
 
+			} else if (state == 2) {
+
+				inventory.update();
+
+			}
+
+			if (speechBubble != null) {
+				speechBubble.update();
 			}
 
 		}
@@ -127,10 +143,19 @@ public class Component extends Canvas {
 
 			console.render(g);
 
+		} else if (state == 2) {
+
+			inventory.render(g);
+
 		}
 
 		if (readyForLoop) {
 
+		}
+
+		if (speechBubble != null) {
+
+			speechBubble.render(g);
 		}
 
 		g.dispose();

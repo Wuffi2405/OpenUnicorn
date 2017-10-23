@@ -46,6 +46,16 @@ public class KeyInput implements KeyListener {
 
 			if (Component.state == 1) {
 				Component.state = 0;
+			} else if (Component.state == 2) {
+				Component.state = 0;
+			}
+
+			break;
+
+		case KeyEvent.VK_I:
+
+			if (Component.state == 0) {
+				Component.state = 2;
 			}
 
 			break;

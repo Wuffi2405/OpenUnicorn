@@ -13,13 +13,18 @@ public class NPC extends Entity {
 
 	public String name;
 	public Path path;
-
-	public NPC(int x, int y, int width, int height, double speed, String name, Path path) {
+	public boolean ableToMove;
+	public int selectedDirection;
+	public int step;
+	
+	public NPC(int x, int y, int width, int height, double speed, String name, Path path, boolean ableToMove, int selectedDirection, int step) {
 		super(x, y, width, height, speed);
 
 		this.name = name;
 		this.path = path;
-
+		this.ableToMove = ableToMove;
+		this.selectedDirection = selectedDirection;
+		this.step = step;
 	}
 
 	public void update() {

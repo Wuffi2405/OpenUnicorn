@@ -12,9 +12,9 @@ import de.unicornworld.openunicorn.frame.Window;
 import de.unicornworld.openunicorn.util.Path;
 
 public class World {
-	public static int worldW = 100, worldH = 100, npcamount = 1;
+	public static int worldW = 100, worldH = 100, npcamount;
 	public Block[][] block = new Block[worldW][worldH];
-	public NPC[] npcs = new NPC[npcamount];
+	public static NPC[] npcs = new NPC[10];
 
 	private static BufferedReader reader;
 
@@ -70,16 +70,18 @@ public class World {
 
 			reader.readLine();
 
-			int npcamount = Integer.parseInt(reader.readLine());
+			npcamount = Integer.parseInt(reader.readLine());
 
 			for (int i = 0; i < npcamount; i++) {
 
 				String npc = reader.readLine();
 				String[] npctokens = npc.split("/");
-				
-				String[] directions = npctokens[6].split(",");
 
-				NPC newNPC = new NPC(Integer.parseInt(npctokens[0]), Integer.parseInt(npctokens[1]), Integer.parseInt(npctokens[2]), Integer.parseInt(npctokens[3]), Integer.parseInt(npctokens[4]), npctokens[5], new Path(directions));
+				String[] directions = npctokens[6].split(",");
+				String[] durationString = null;
+
+				NPC newNPC = new NPC(Integer.parseInt(npctokens[0]), Integer.parseInt(npctokens[1]), Integer.parseInt(npctokens[2]), Integer.parseInt(npctokens[3]), Integer.parseInt(npctokens[4]),
+						npctokens[5], new Path(directions, durationString), true, 0, 0);
 				npcs[i] = newNPC;
 			}
 
@@ -91,8 +93,49 @@ public class World {
 
 	public void tick(int camX, int camY, int renW, int renH) {
 
-		for (int i = 0; i < npcs.length; i++) {
+		for (int i = 0; i < npcamount; i++) {
+
 			npcs[i].update();
+
+			if (npcs[i].ableToMove == true) {
+
+				if (npcs[i].step < 40) {
+
+					if (npcs[i].path.direction[npcs[i].selectedDirection].contains("left")) {
+
+						npcs[i].x--;
+
+					} else if (npcs[i].path.direction[npcs[i].selectedDirection].contains("right")) {
+
+						npcs[i].x++;
+
+					} else if (npcs[i].path.direction[npcs[i].selectedDirection].contains("up")) {
+
+						npcs[i].y--;
+
+					} else if (npcs[i].path.direction[npcs[i].selectedDirection].contains("down")) {
+
+						npcs[i].y++;
+
+					}
+
+					npcs[i].step++;
+
+				} else {
+
+					npcs[i].step = 0;
+
+					if (npcs[i].selectedDirection < npcs[i].path.direction.length - 1) {
+						npcs[i].selectedDirection++;
+
+					} else {
+						npcs[i].selectedDirection = 0;
+					}
+
+				}
+
+			}
+
 		}
 
 	}
@@ -113,7 +156,8 @@ public class World {
 			}
 		}
 
-		for (int i = 0; i < npcs.length; i++) {
+		for (int i = 0; i < npcamount; i++) {
+
 			npcs[i].render(g);
 		}
 	}

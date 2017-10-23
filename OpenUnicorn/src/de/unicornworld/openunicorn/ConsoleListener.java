@@ -20,6 +20,7 @@ public class ConsoleListener implements KeyListener {
 	public void keyPressed(KeyEvent e) {
 
 		if (Component.state == 1) {
+			
 
 			if (e.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
 
