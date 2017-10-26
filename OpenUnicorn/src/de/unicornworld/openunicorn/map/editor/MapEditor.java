@@ -18,7 +18,7 @@ public class MapEditor extends Canvas implements Runnable {
 	 * 
 	 */
 	private static final long serialVersionUID = -6911600628982462082L;
-	private JFrame frame;
+	private static JFrame frame;
 	private Button buttonRender;
 	private boolean running = false;
 	private Thread thread;
@@ -36,7 +36,10 @@ public class MapEditor extends Canvas implements Runnable {
 
 		frame.add(this);
 		frame.repaint();
-
+		
+		addMouseMotionListener(new de.unicornworld.openunicorn.map.editor.MouseListener());
+		addMouseListener(new de.unicornworld.openunicorn.map.editor.MouseListener());
+		
 		buttonRender = new Button(150, 20);
 		buttonRender.setBounds(10, 10, 150, 20);
 		buttonRender.getText().setText("Render");
@@ -150,4 +153,8 @@ public class MapEditor extends Canvas implements Runnable {
 		bs.show();
 	}
 
+	public static JFrame getJFrame() {
+		return frame;
+	}
+	
 }

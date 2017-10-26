@@ -25,11 +25,17 @@ public class Block {
 		if(material == Material.AIR) {
 			image = SourceLoader.loadImage("/assets/texture/block/Erde1.png");
 		}
+		if(material == Material.STONE) {
+			image = SourceLoader.loadImage("/assets/texture/block/grass.png");
+		}
 	}
 	
 	public void update() {
 		if(material == Material.AIR) {
 			image = SourceLoader.loadImage("/assets/texture/block/Erde1.png");
+		}
+		if(material == Material.STONE) {
+			image = SourceLoader.loadImage("/assets/texture/block/grass.png");
 		}
 	}
 	
