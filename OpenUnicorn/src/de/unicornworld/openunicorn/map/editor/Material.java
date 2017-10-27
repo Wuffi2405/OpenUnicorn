@@ -2,7 +2,9 @@ package de.unicornworld.openunicorn.map.editor;
 
 public enum Material {
 	
-	AIR,
-	STONE;
+	DIRT,
+	GRASS,
+	STONE_WAY,
+	STONE_WAY_OLD;
 	
 }

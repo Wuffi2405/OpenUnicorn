@@ -37,6 +37,7 @@ public class MapEditor extends Canvas implements Runnable {
 		frame.add(this);
 		frame.repaint();
 		
+		addKeyListener(new de.unicornworld.openunicorn.map.editor.KeyListener());
 		addMouseMotionListener(new de.unicornworld.openunicorn.map.editor.MouseListener());
 		addMouseListener(new de.unicornworld.openunicorn.map.editor.MouseListener());
 		

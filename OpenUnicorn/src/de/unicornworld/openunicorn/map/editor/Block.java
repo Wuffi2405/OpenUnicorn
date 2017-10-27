@@ -3,8 +3,6 @@ package de.unicornworld.openunicorn.map.editor;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
-import de.unicornworld.openunicorn.util.SourceLoader;
-
 public class Block {
 	
 	private int x;
@@ -22,29 +20,23 @@ public class Block {
 		this.width = p_width;
 		this.height = p_height;
 		this.material = p_material;
-		if(material == Material.AIR) {
-			image = SourceLoader.loadImage("/assets/texture/block/Erde1.png");
-		}
-		if(material == Material.STONE) {
-			image = SourceLoader.loadImage("/assets/texture/block/grass.png");
-		}
 	}
 	
 	public void update() {
-		if(material == Material.AIR) {
-			image = SourceLoader.loadImage("/assets/texture/block/Erde1.png");
-		}
-		if(material == Material.STONE) {
-			image = SourceLoader.loadImage("/assets/texture/block/grass.png");
-		}
 	}
 	
 	public void render(Graphics g) {
-		g.drawImage(image, x, y, width, height, null);
+		g.drawImage(getTexture(), x, y, width, height, null);
 	}
 	
 	public BufferedImage getTexture() {
-		return image;
+		switch(material) {
+		case DIRT: return Graphic.imageDirt;
+		case STONE_WAY:	return Graphic.imageStone;
+		case STONE_WAY_OLD: return Graphic.imageStone2;
+		case GRASS: return Graphic.imageGrass;
+		default: return image;
+		}
 	}
 	
 	public int getPosX() {
@@ -61,6 +53,14 @@ public class Block {
 	
 	public int getHeight() {
 		return height;
+	}
+	
+	public void setMaterial(Material m) {
+		this.material = m;
+	}
+	
+	public Material getMaterial() {
+		return material;
 	}
 	
 }

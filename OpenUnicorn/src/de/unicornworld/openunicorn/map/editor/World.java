@@ -18,6 +18,7 @@ public class World {
 	static boolean mouseMoving;
 	static int mx = 0;
 	static int my = 0;
+	static Material materialChange = Material.DIRT;
 
 	public World() {
 		generateDefaultMap();
@@ -27,9 +28,7 @@ public class World {
 	public void generateDefaultMap() {
 		for (int x = 0; x < sizeMapX; x++) {
 			for (int y = 0; y < sizeMapY; y++) {
-				blocks[x][y] = new Block(x * Block.sizeX, y * Block.sizeY, Block.sizeX, Block.sizeY, Material.AIR);
-				// System.out.println("x: " + x * Block.sizeX + " x-end: " + ((x * Block.sizeX)
-				// + Block.sizeX));
+				blocks[x][y] = new Block(x * Block.sizeX, y * Block.sizeY, Block.sizeX, Block.sizeY, Material.DIRT);
 			}
 		}
 	}
@@ -51,6 +50,17 @@ public class World {
 		for(int y = 0; y < mouseY/64+1; y++) {
 			my = y;
 		}
+		/**
+		 * update Blocks
+		 */
+		for (int x = 0; x < sizeMapX; x++) {
+			for (int y = 0; y < sizeMapY; y++) {
+				if (camX <= x && (camX + camW) >= x && camY <= y && (camY + camH) >= y) {
+					blocks[x][y].update();
+				}
+
+			}
+		}
 	}
 
 	public void render(Graphics g) {
@@ -71,9 +81,14 @@ public class World {
 		
 	}
 	
+	static void getMaterial() {
+		System.out.println(blocks[mx][my].getMaterial());
+	}
+	
 	static void setBlockMaterial() {
-		blocks[mx][my] = new Block(blocks[mx][my].getPosX(), blocks[mx][my].getPosY(), blocks[mx][my].getWidth(), blocks[mx][my].getHeight(), Material.STONE);
- 		System.out.println("mx: "+ mx + " my: " + my);
+//		blocks[mx][my] = new Block(blocks[mx][my].getPosX(), blocks[mx][my].getPosY(), blocks[mx][my].getWidth(), blocks[mx][my].getHeight(), Material.STONE);
+		blocks[mx][my].setMaterial(materialChange);
+		System.out.println("mx: "+ mx + " my: " + my);
 	}
 	
 }
