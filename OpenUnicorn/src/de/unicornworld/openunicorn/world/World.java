@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
+import de.unicornworld.openunicorn.Component;
 import de.unicornworld.openunicorn.entity.NPC;
 import de.unicornworld.openunicorn.frame.Window;
 import de.unicornworld.openunicorn.util.Path;
@@ -21,9 +22,10 @@ public class World {
 	public static int difx;
 	public static int dify;
 
-	private String uwwfName;
+	String uwwfName;
 
 	public World(String uwwfName) {
+
 		this.uwwfName = uwwfName;
 
 		for (int x = 0; x < block.length; x++) {
@@ -38,7 +40,7 @@ public class World {
 	public void generateLevel() {
 
 		try {
-			reader = new BufferedReader(new FileReader(new File("OpenUnicorn/src/assets/files/worlds/" + uwwfName + ".uwwf")));
+			reader = new BufferedReader(new FileReader(new File("src/assets/files/worlds/" + Component.worldName + ".uwwf")));
 
 			worldW = Integer.parseInt(reader.readLine());
 			worldH = Integer.parseInt(reader.readLine());
@@ -52,15 +54,8 @@ public class World {
 
 					for (int x = 0; x < worldW; x++) {
 
-						if (Integer.parseInt(numbers[x]) == 1) {
-							block[x][y] = new Block(new Rectangle(x * Tile.tileSize, y * Tile.tileSize, Tile.tileSize, Tile.tileSize), Tile.stone);
+						block[x][y] = new Block(new Rectangle(x * Tile.tileSize, y * Tile.tileSize, Tile.tileSize, Tile.tileSize), Integer.parseInt(numbers[x]));
 
-						} else if (Integer.parseInt(numbers[x]) == 2) {
-							block[x][y] = new Block(new Rectangle(x * Tile.tileSize, y * Tile.tileSize, Tile.tileSize, Tile.tileSize), Tile.earth);
-						} else {
-							block[x][y] = new Block(new Rectangle(x * Tile.tileSize, y * Tile.tileSize, Tile.tileSize, Tile.tileSize), Tile.grass);
-
-						}
 					}
 
 				} catch (Exception e) {
@@ -150,7 +145,7 @@ public class World {
 				if (x >= 0 && y >= 0 && x < worldW && y < worldH) {
 
 					if (Window.containsRectangle(block[x][y].x, block[x][y].y, block[x][y].width, block[x][y].height)) {
-						block[x][y].render(g);
+						block[x][y].renderID(g);
 					}
 				}
 			}

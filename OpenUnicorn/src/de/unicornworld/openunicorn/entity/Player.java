@@ -16,8 +16,6 @@ public class Player extends Entity {
 	public static float speed = 2;
 	protected float dx;
 	protected float dy;
-	protected boolean falling = true;
-	protected boolean jumping;
 
 	protected boolean jumpPerformed;
 
@@ -47,6 +45,7 @@ public class Player extends Entity {
 
 				} else {
 					World.difx -= Player.speed;
+
 				}
 			}
 			if (Component.dirVert == -Player.speed && left != true) {

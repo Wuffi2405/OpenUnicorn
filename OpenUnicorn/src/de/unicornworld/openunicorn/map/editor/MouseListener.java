@@ -25,7 +25,7 @@ public class MouseListener implements java.awt.event.MouseListener, MouseMotionL
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-//		World.setBlockMaterial();
+		// World.setBlockMaterial();
 		World.getMaterial();
 		World.setBlockMaterial();
 	}
@@ -39,12 +39,15 @@ public class MouseListener implements java.awt.event.MouseListener, MouseMotionL
 	// ----------------
 	@Override
 	public void mouseDragged(MouseEvent e) {
-//		System.out.println(1);
+		// System.out.println(1);
+		World.mouseX = e.getX();
+		World.mouseY = e.getY();
+		World.mouseMoving = true;
 	}
 
 	@Override
 	public void mouseMoved(MouseEvent e) {
-//		System.out.println(5);
+		// System.out.println(5);
 		World.mouseX = e.getX();
 		World.mouseY = e.getY();
 		World.mouseMoving = true;

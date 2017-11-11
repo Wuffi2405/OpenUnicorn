@@ -9,7 +9,7 @@ import javax.imageio.ImageIO;
 
 import de.unicornworld.openunicorn.entity.Player;
 import de.unicornworld.openunicorn.util.SourceLoader;
-import de.unicornworld.openunicorn.world.Block;
+import de.unicornworld.openunicorn.util.TextureReload;
 
 public class ConsoleListener implements KeyListener {
 
@@ -20,7 +20,6 @@ public class ConsoleListener implements KeyListener {
 	public void keyPressed(KeyEvent e) {
 
 		if (Component.state == 1) {
-			
 
 			if (e.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
 
@@ -53,9 +52,9 @@ public class ConsoleListener implements KeyListener {
 
 					try {
 
-						Block.earth = ImageIO.read(SourceLoader.class.getResourceAsStream("/assets/texture/block/Erde1.png"));
-						Block.grass = ImageIO.read(SourceLoader.class.getResourceAsStream("/assets/texture/block/grass.png"));
-						Block.steinWeg_1 = ImageIO.read(SourceLoader.class.getResourceAsStream("/assets/texture/block/Steinweg1.png"));
+						TextureReload.earth = ImageIO.read(SourceLoader.class.getResourceAsStream("/assets/texture/block/Erde1.png"));
+						TextureReload.grass = ImageIO.read(SourceLoader.class.getResourceAsStream("/assets/texture/block/grass.png"));
+						TextureReload.steinWeg_1 = ImageIO.read(SourceLoader.class.getResourceAsStream("/assets/texture/block/Steinweg1.png"));
 						Player.player = ImageIO.read(SourceLoader.class.getResourceAsStream("/assets/player.png"));
 						Player.player_left = ImageIO.read(SourceLoader.class.getResourceAsStream("/assets/player_left.png"));
 
