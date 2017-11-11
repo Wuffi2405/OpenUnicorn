@@ -67,7 +67,7 @@ public class Player extends Entity {
 		if (Component.isMovingHor == true) {
 
 			if (Component.dirHor == Player.speed && bottom != true) {
-
+ 
 				if ((Component.player.y - World.dify) < ((Window.getJFrame().getHeight() - Component.player.height) / 2)
 						|| Window.getJFrame().getHeight() - World.dify - 35 > World.worldH * Tile.tileSize) {
 
