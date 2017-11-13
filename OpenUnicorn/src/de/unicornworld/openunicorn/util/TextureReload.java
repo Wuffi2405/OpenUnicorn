@@ -6,6 +6,8 @@ import java.util.HashMap;
 
 import javax.imageio.ImageIO;
 
+import de.unicornworld.openunicorn.world.Tile;
+
 public class TextureReload {
 
 	public static HashMap<Integer, Image> textures = new HashMap<>();
@@ -25,6 +27,7 @@ public class TextureReload {
 			addBlock(3, ImageIO.read(SourceLoader.class.getResourceAsStream("/assets/texture/block/wood.png")));
 			addBlock(4, ImageIO.read(SourceLoader.class.getResourceAsStream("/assets/texture/block/wood_inside.png")));
 			addBlock(5, ImageIO.read(SourceLoader.class.getResourceAsStream("/assets/texture/block/grass.png")));
+			addBlock(99, new BufferedImage(Tile.tileSize, Tile.tileSize, BufferedImage.TYPE_INT_RGB));
 
 		} catch (Exception e) {
 			e.printStackTrace();

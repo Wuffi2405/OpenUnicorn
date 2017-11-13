@@ -1,5 +1,6 @@
 package de.unicornworld.openunicorn.world;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.io.BufferedReader;
@@ -30,7 +31,8 @@ public class World {
 
 		for (int x = 0; x < block.length; x++) {
 			for (int y = 0; y < block[0].length; y++) {
-				block[x][y] = new Block(new Rectangle(x * Tile.tileSize, y * Tile.tileSize, Tile.tileSize, Tile.tileSize), Tile.air);
+				block[x][y] = new Block(
+						new Rectangle(x * Tile.tileSize, y * Tile.tileSize, Tile.tileSize, Tile.tileSize), Tile.air);
 			}
 		}
 		generateLevel();
@@ -40,7 +42,8 @@ public class World {
 	public void generateLevel() {
 
 		try {
-			reader = new BufferedReader(new FileReader(new File("src/assets/files/worlds/" + Component.worldName + ".uwwf")));
+			reader = new BufferedReader(
+					new FileReader(new File("src/assets/files/worlds/" + Component.worldName + ".uwwf")));
 
 			worldW = Integer.parseInt(reader.readLine());
 			worldH = Integer.parseInt(reader.readLine());
@@ -50,11 +53,13 @@ public class World {
 
 					String s = reader.readLine();
 
-					String[] numbers = s.split("");
+					String[] numbers = s.split(",");
 
 					for (int x = 0; x < worldW; x++) {
 
-						block[x][y] = new Block(new Rectangle(x * Tile.tileSize, y * Tile.tileSize, Tile.tileSize, Tile.tileSize), Integer.parseInt(numbers[x]));
+						block[x][y] = new Block(
+								new Rectangle(x * Tile.tileSize, y * Tile.tileSize, Tile.tileSize, Tile.tileSize),
+								Integer.parseInt(numbers[x]));
 
 					}
 
@@ -75,7 +80,8 @@ public class World {
 				String[] directions = npctokens[6].split(",");
 				String[] durationString = null;
 
-				NPC newNPC = new NPC(Integer.parseInt(npctokens[0]), Integer.parseInt(npctokens[1]), Integer.parseInt(npctokens[2]), Integer.parseInt(npctokens[3]), Integer.parseInt(npctokens[4]),
+				NPC newNPC = new NPC(Integer.parseInt(npctokens[0]), Integer.parseInt(npctokens[1]),
+						Integer.parseInt(npctokens[2]), Integer.parseInt(npctokens[3]), Integer.parseInt(npctokens[4]),
 						npctokens[5], new Path(directions, durationString), true, 0, 0);
 				npcs[i] = newNPC;
 			}
@@ -137,8 +143,6 @@ public class World {
 
 	public void render(Graphics g, int camX, int camY, int renW, int renH) {
 
-		// cam has to be used against lags coming soon!
-
 		for (int x = 0; x < worldW; x++) {
 			for (int y = 0; y < worldH + renH; y++) {
 
@@ -155,6 +159,16 @@ public class World {
 
 			npcs[i].render(g);
 		}
+
+		g.setColor(Color.BLACK);
+		g.drawString((int) (Component.player.x - World.difx) + "/" + (int) (Component.player.y - World.dify), 20, 20);
+
+	}
+
+	public Block getBlockAt(int x, int y) {
+
+		return block[x / Tile.tileSize][y / Tile.tileSize];
+
 	}
 
 }

@@ -28,6 +28,10 @@ public class Player extends Entity {
 
 	public void tick() {
 
+		if (Component.player.isTouchingID(99)) {
+			Component.switchWorld("world");
+		}
+
 		calculateCollisions();
 
 		if (Component.isMovingVert == true) {
@@ -67,7 +71,7 @@ public class Player extends Entity {
 		if (Component.isMovingHor == true) {
 
 			if (Component.dirHor == Player.speed && bottom != true) {
- 
+
 				if ((Component.player.y - World.dify) < ((Window.getJFrame().getHeight() - Component.player.height) / 2)
 						|| Window.getJFrame().getHeight() - World.dify - 35 > World.worldH * Tile.tileSize) {
 
@@ -103,6 +107,24 @@ public class Player extends Entity {
 
 			g.drawImage(player_left, x, y, width, height, null);
 		}
+	}
+
+	public boolean isTouchingID(int ID) {
+
+		if (Component.world.getBlockAt(Component.player.x - World.difx, Component.player.y - World.dify).id == ID
+				|| Component.world.getBlockAt(Component.player.x - World.difx + Tile.tileSize,
+						Component.player.y - World.dify).id == ID
+				|| Component.world.getBlockAt(Component.player.x - World.difx,
+						Component.player.y - World.dify + Tile.tileSize).id == ID
+				|| Component.world.getBlockAt(Component.player.x - World.difx + Tile.tileSize,
+						Component.player.y - World.dify + Tile.tileSize).id == ID) {
+
+			return true;
+
+		}
+
+		return false;
+
 	}
 
 }
