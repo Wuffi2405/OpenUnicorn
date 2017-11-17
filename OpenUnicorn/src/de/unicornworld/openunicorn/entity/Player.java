@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 
 import de.unicornworld.openunicorn.Component;
 import de.unicornworld.openunicorn.frame.Window;
+import de.unicornworld.openunicorn.util.TeleportSystem;
 import de.unicornworld.openunicorn.world.Tile;
 import de.unicornworld.openunicorn.world.World;
 
@@ -29,10 +30,15 @@ public class Player extends Entity {
 	public void tick() {
 
 		if (Component.player.isTouchingID(99)) {
-			Component.switchWorld("world");
+
+			TeleportSystem.calculateTeleport();
+			
 		}
 
-		calculateCollisions();
+		try {
+			calculateCollisions();
+		} catch (Exception e) {
+		}
 
 		if (Component.isMovingVert == true) {
 

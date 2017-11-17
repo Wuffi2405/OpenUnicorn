@@ -3,11 +3,16 @@ package de.unicornworld.openunicorn.frame;
 import java.awt.Canvas;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
 
+import de.unicornworld.openunicorn.Component;
 import de.unicornworld.openunicorn.world.World;
 
 public class Window extends Canvas {
@@ -61,6 +66,24 @@ public class Window extends Canvas {
 
 			@Override
 			public void windowClosing(WindowEvent e) {
+
+				try {
+					BufferedWriter writer = new BufferedWriter(new FileWriter(new File("src/assets/files/log.uwuf")));
+
+					writer.flush();
+					writer.write(Component.worldName);
+					writer.newLine();
+					writer.write(Component.player.x);
+					writer.newLine();
+					writer.write(Component.player.y);
+					writer.newLine();
+					writer.write(World.difx);
+					writer.newLine();
+					writer.write(World.dify);
+					writer.close();
+
+				} catch (IOException ex) {
+				}
 
 				System.err.println("GAMEPROCESS CRASHED / EXITED");
 				System.exit(1);
@@ -118,7 +141,8 @@ public class Window extends Canvas {
 
 	public static boolean containsPoint(int x, int y) {
 
-		if (x + World.difx < 0 || x + World.difx > frame.getWidth() | y + World.dify < 0 || y + World.dify > frame.getHeight()) {
+		if (x + World.difx < 0 || x + World.difx > frame.getWidth() | y + World.dify < 0
+				|| y + World.dify > frame.getHeight()) {
 			return false;
 		}
 
@@ -128,7 +152,8 @@ public class Window extends Canvas {
 
 	public static boolean containsRectangle(int x, int y, int width, int height) {
 
-		if (x + width + World.difx < 0 || x + width + World.difx > frame.getWidth() + 20 || y + height + World.dify < 0 || y + height + World.dify > frame.getHeight()) {
+		if (x + width + World.difx < 0 || x + width + World.difx > frame.getWidth() + 20 || y + height + World.dify < 0
+				|| y + height + World.dify > frame.getHeight()) {
 			return false;
 		}
 

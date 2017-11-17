@@ -49,7 +49,7 @@ public class KeyInput implements KeyListener {
 			} else if (Component.state == 2) {
 				Component.state = 0;
 			}
-
+			
 			break;
 
 		case KeyEvent.VK_I:

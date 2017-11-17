@@ -27,14 +27,9 @@ public class World {
 
 	public World(String uwwfName) {
 
-		this.uwwfName = uwwfName;
+		block = null;
 
-		for (int x = 0; x < block.length; x++) {
-			for (int y = 0; y < block[0].length; y++) {
-				block[x][y] = new Block(
-						new Rectangle(x * Tile.tileSize, y * Tile.tileSize, Tile.tileSize, Tile.tileSize), Tile.air);
-			}
-		}
+		this.uwwfName = uwwfName;
 		generateLevel();
 
 	}
@@ -47,6 +42,15 @@ public class World {
 
 			worldW = Integer.parseInt(reader.readLine());
 			worldH = Integer.parseInt(reader.readLine());
+
+			block = new Block[worldW][worldH];
+
+			for (int x = 0; x < block.length; x++) {
+				for (int y = 0; y < block[0].length; y++) {
+					block[x][y] = new Block(
+							new Rectangle(x * Tile.tileSize, y * Tile.tileSize, Tile.tileSize, Tile.tileSize), -1);
+				}
+			}
 
 			for (int y = 0; y < worldH; y++) {
 				try {
@@ -78,7 +82,8 @@ public class World {
 				String[] npctokens = npc.split("/");
 
 				String[] directions = npctokens[6].split(",");
-				String[] durationString = null;
+
+				String[] durationString = npctokens[7].split(",");
 
 				NPC newNPC = new NPC(Integer.parseInt(npctokens[0]), Integer.parseInt(npctokens[1]),
 						Integer.parseInt(npctokens[2]), Integer.parseInt(npctokens[3]), Integer.parseInt(npctokens[4]),
@@ -100,7 +105,7 @@ public class World {
 
 			if (npcs[i].ableToMove == true) {
 
-				if (npcs[i].step < 40) {
+				if (npcs[i].step < Integer.parseInt(npcs[i].path.duration[i])) {
 
 					if (npcs[i].path.direction[npcs[i].selectedDirection].contains("left")) {
 

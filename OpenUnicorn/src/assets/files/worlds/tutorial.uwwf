@@ -1,12 +1,9 @@
 5
 5
 1,1,1,1,1
-1,0,0,0,1
-1,0,0,0,1
+1,0,4,2,1
+1,0,5,3,1
 1,0,0,99,1
 1,1,1,1,1
 //load npcs:
-3
-40/300/40/40/2/markens/right,right,right,right,left,down,up,left,left,left/40,40,40,40,40,40,40,40,40,40
-200/300/40/40/2/peter/right,right,up,up,left,left,down,down
-200/150/40/40/2/manfred/right,right,up,up,left,left,down,down
+0

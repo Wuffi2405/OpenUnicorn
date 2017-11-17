@@ -15,6 +15,7 @@ import javax.imageio.ImageIO;
 
 import de.unicornworld.openunicorn.entity.NPC;
 import de.unicornworld.openunicorn.entity.Player;
+import de.unicornworld.openunicorn.frame.Window;
 import de.unicornworld.openunicorn.util.SourceLoader;
 import de.unicornworld.openunicorn.util.SpeechBubble;
 import de.unicornworld.openunicorn.util.TextureReload;
@@ -92,6 +93,14 @@ public class Component extends Canvas {
 		player = new Player(Tile.tileSize, Tile.tileSize, Tile.tileSize, Tile.tileSize, 2);
 		console = new Console();
 
+		try {
+			player.x = Integer.parseInt(logdatainput.readLine().trim());
+			player.y = Integer.parseInt(logdatainput.readLine().trim());
+			World.difx = Integer.parseInt(logdatainput.readLine().trim());
+			World.dify = Integer.parseInt(logdatainput.readLine().trim());
+		} catch (Exception e) {
+		}
+
 		readyForLoop = true;
 		System.out.println("[OpenUnicorn] [GameCanvas] [GameCanvas] called");
 
@@ -109,7 +118,8 @@ public class Component extends Canvas {
 
 			if (state == 0) {
 
-				world.tick((int) sx, (int) sy, (int) (pixel.width / Tile.tileSize + 2), (int) (pixel.height / Tile.tileSize + 2));
+				world.tick((int) sx, (int) sy, (int) (pixel.width / Tile.tileSize + 2),
+						(int) (pixel.height / Tile.tileSize + 2));
 				player.tick();
 
 			} else if (state == 1) {
@@ -144,7 +154,8 @@ public class Component extends Canvas {
 			g.setColor(Color.LIGHT_GRAY);
 			g.fillRect(0, 0, 800, 600);
 
-			world.render(g, (int) sx, (int) sy, (int) (pixel.width / Tile.tileSize + 2), (int) (pixel.height / Tile.tileSize + 2));
+			world.render(g, (int) sx, (int) sy, (int) (Window.getJFrame().getWidth() / Tile.tileSize + 2),
+					(int) (Window.getJFrame().getHeight() / Tile.tileSize + 2));
 			player.render(g);
 
 			g.setColor(new Color(100, 50, 150));
@@ -163,7 +174,6 @@ public class Component extends Canvas {
 		if (readyForLoop) {
 
 		}
-
 		if (speechBubble != null) {
 
 			speechBubble.render(g);
@@ -174,6 +184,8 @@ public class Component extends Canvas {
 	}
 
 	public static void switchWorld(String worldName) {
+
+		Component.worldName = worldName;
 		Component.world = new World(worldName);
 		Component.player.x = Tile.tileSize;
 		Component.player.y = Tile.tileSize;
