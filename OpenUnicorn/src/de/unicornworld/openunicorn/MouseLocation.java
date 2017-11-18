@@ -20,8 +20,10 @@ public class MouseLocation implements MouseMotionListener {
 
 		for (int i = 0; i < World.npcamount; i++) {
 
-			if (Component.mouseX > World.npcs[i].x && Component.mouseX < World.npcs[i].x + World.npcs[i].width && Component.mouseY > World.npcs[i].y
-					&& Component.mouseY < World.npcs[i].y + World.npcs[i].height) {
+			if (Component.mouseX + World.difx > World.npcs[i].x
+					&& Component.mouseX + World.difx < World.npcs[i].x + World.npcs[i].width
+					&& Component.mouseY - World.dify > World.npcs[i].y
+					&& Component.mouseY - World.dify < World.npcs[i].y + World.npcs[i].height) {
 				World.npcs[i].ableToMove = false;
 
 			} else {

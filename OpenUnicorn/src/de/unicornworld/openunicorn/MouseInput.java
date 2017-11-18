@@ -19,13 +19,12 @@ public class MouseInput implements MouseListener {
 
 			for (int i = 0; i < World.npcamount; i++) {
 
-				if (Component.mouseX - World.difx > World.npcs[i].x
-						&& Component.mouseX - World.difx < World.npcs[i].x - World.npcs[i].width
+				if (Component.mouseX + World.difx > World.npcs[i].x
+						&& Component.mouseX + World.difx < World.npcs[i].x + World.npcs[i].width
 						&& Component.mouseY - World.dify > World.npcs[i].y
-						&& Component.mouseY - World.dify < World.npcs[i].y - World.npcs[i].height) {
-					System.out.println("ja bei npc " + World.npcs[i].name);
+						&& Component.mouseY - World.dify < World.npcs[i].y + World.npcs[i].height) {
 
-					Component.speechBubble = new SpeechBubble(World.npcs[i].x - World.npcs[i].width, World.npcs[i].y,
+					Component.speechBubble = new SpeechBubble(World.npcs[i].x + World.npcs[i].width, World.npcs[i].y,
 							200, 30, Color.WHITE, "hallo i bims 1 " + World.npcs[i].name + " vong heute!");
 
 					npcWithSpeechBubble[0] = World.npcs[i];

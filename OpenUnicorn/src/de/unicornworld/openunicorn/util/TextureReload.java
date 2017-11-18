@@ -12,11 +12,6 @@ public class TextureReload {
 
 	public static HashMap<Integer, Image> textures = new HashMap<>();
 
-	public static BufferedImage grass;
-	public static BufferedImage wood;
-	public static BufferedImage earth;
-	public static BufferedImage steinWeg_1;
-
 	public TextureReload() {
 
 		try {

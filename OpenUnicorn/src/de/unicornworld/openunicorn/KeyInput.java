@@ -4,6 +4,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import de.unicornworld.openunicorn.entity.Player;
+import de.unicornworld.openunicorn.world.overwrite.Console;
+import de.unicornworld.openunicorn.world.overwrite.Inventory;
 
 public class KeyInput implements KeyListener {
 
@@ -37,25 +39,27 @@ public class KeyInput implements KeyListener {
 
 		case KeyEvent.VK_C:
 
-			Component.state = 1;
+			Component.layer2 = new Console();
 			ConsoleListener.keyChar = "";
 
 			break;
 
 		case KeyEvent.VK_ESCAPE:
 
-			if (Component.state == 1) {
-				Component.state = 0;
-			} else if (Component.state == 2) {
-				Component.state = 0;
+			if (Component.layer2.getClass() == Console.class) {
+				Component.layer2 = null;
+			} else if (Component.layer2.getClass() == Inventory.class) {
+				Component.layer2 = null;
 			}
-			
+
 			break;
 
 		case KeyEvent.VK_I:
 
-			if (Component.state == 0) {
-				Component.state = 2;
+			if (Component.layer2 == null) {
+				Component.layer2 = new Inventory();
+			} else if (Component.layer2.getClass() == Inventory.class) {
+				Component.layer2 = null;
 			}
 
 			break;

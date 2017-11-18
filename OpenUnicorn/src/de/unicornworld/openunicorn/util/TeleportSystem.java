@@ -9,7 +9,13 @@ public class TeleportSystem {
 		if (Component.worldName.contains("tutorial")) {
 			Component.switchWorld("world");
 		} else if (Component.worldName.contains("world")) {
-			Component.switchWorld("tutorial");
+			if (Component.location.getY() > 300) {
+				Component.switchWorld("tutorial");
+			} else {
+				Component.switchWorld("mainmap");
+			}
+		} else {
+			Component.switchWorld("world");
 		}
 
 	}

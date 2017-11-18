@@ -166,7 +166,8 @@ public class World {
 		}
 
 		g.setColor(Color.BLACK);
-		g.drawString((int) (Component.player.x - World.difx) + "/" + (int) (Component.player.y - World.dify), 20, 20);
+		g.drawString("P: " + Component.location.getX() + "/" + Component.location.getY(), 20, 20);
+		g.drawString("M: " + (Component.mouseX - World.difx) + "/" + (Component.mouseY - World.dify), 20, 30);
 
 	}
 

@@ -21,6 +21,9 @@ import de.unicornworld.openunicorn.util.SpeechBubble;
 import de.unicornworld.openunicorn.util.TextureReload;
 import de.unicornworld.openunicorn.world.Tile;
 import de.unicornworld.openunicorn.world.World;
+import de.unicornworld.openunicorn.world.overwrite.Console;
+import de.unicornworld.openunicorn.world.overwrite.Inventory;
+import de.unicornworld.openunicorn.world.overwrite.OverWritable;
 
 public class Component extends Canvas {
 	// pointless
@@ -58,7 +61,10 @@ public class Component extends Canvas {
 
 	public static BufferedReader logdatainput;
 
+	public static Point location = new Point(0, 0);
+
 	public static String worldName = "world";
+	public static OverWritable layer2 = null;
 
 	public static int pixelsize = 1;
 	public static Dimension pixel = new Dimension(size.width / pixelsize, size.height / pixelsize);
@@ -122,13 +128,11 @@ public class Component extends Canvas {
 						(int) (pixel.height / Tile.tileSize + 2));
 				player.tick();
 
-			} else if (state == 1) {
+				location = new Point(player.x - World.difx, player.y - World.dify);
 
-				console.update();
-
-			} else if (state == 2) {
-
-				inventory.update();
+				if (layer2 != null) {
+					layer2.update();
+				}
 
 			}
 
@@ -161,13 +165,9 @@ public class Component extends Canvas {
 			g.setColor(new Color(100, 50, 150));
 			g.drawRect(0, 0, 1000, 1000);
 
-		} else if (state == 1) {
-
-			console.render(g);
-
-		} else if (state == 2) {
-
-			inventory.render(g);
+			if (layer2 != null) {
+				layer2.render(g);
+			}
 
 		}
 
@@ -185,6 +185,7 @@ public class Component extends Canvas {
 
 	public static void switchWorld(String worldName) {
 
+		Component.speechBubble = null;
 		Component.worldName = worldName;
 		Component.world = new World(worldName);
 		Component.player.x = Tile.tileSize;
