@@ -13,7 +13,7 @@ public class Inventory extends OverWritable {
 
 	@Override
 	public void render(Graphics g) {
-
+ 
 		g.setColor(Color.GRAY);
 		g.fillRect(20, 20, Window.getJFrame().getWidth() - 80, Window.getJFrame().getHeight() - 80);
 
