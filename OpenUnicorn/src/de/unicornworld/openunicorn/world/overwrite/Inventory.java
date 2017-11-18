@@ -18,5 +18,5 @@ public class Inventory extends OverWritable {
 		g.fillRect(20, 20, Window.getJFrame().getWidth() - 80, Window.getJFrame().getHeight() - 80);
 
 	}
-
+ 
 }
