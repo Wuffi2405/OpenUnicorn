@@ -36,7 +36,6 @@ public class D {
 		
 		createDirectory();
 		
-		D_Load.loadD();
 	}
 
 	public void createDirectory() {
