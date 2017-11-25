@@ -40,44 +40,6 @@ public class MapEditor extends Canvas implements Runnable {
 		addKeyListener(new de.unicornworld.openunicorn.map.editor.KeyListener());
 		addMouseMotionListener(new de.unicornworld.openunicorn.map.editor.MouseListener());
 		addMouseListener(new de.unicornworld.openunicorn.map.editor.MouseListener());
-		
-		buttonRender = new Button(150, 20);
-		buttonRender.setBounds(10, 10, 150, 20);
-		buttonRender.getText().setText("Render");
-		buttonRender.getText().setFont(new Font("Calibri", Font.BOLD, 20));
-		buttonRender.addMouseListener(new MouseListener() {
-
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				start();
-
-			}
-		});
-		// frame.add(buttonRender);
 
 		world = new World();
 		start();
