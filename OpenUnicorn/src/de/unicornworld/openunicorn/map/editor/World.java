@@ -5,7 +5,7 @@ import java.awt.Graphics;
 
 public class World {
 
-	private static int sizeMapX = 16; // Fields
+	private static int sizeMapX = 24; // Fields
 	private static int sizeMapY = 16; // Fields
 	static Block[][] blocks = new Block[sizeMapX][sizeMapY];
 
@@ -28,7 +28,7 @@ public class World {
 	public void generateDefaultMap() {
 		for (int x = 0; x < sizeMapX; x++) {
 			for (int y = 0; y < sizeMapY; y++) {
-				blocks[x][y] = new Block(x * Block.sizeX, y * Block.sizeY, Block.sizeX, Block.sizeY, Material.DIRT);
+				blocks[x][y] = new Block(x * Block.sizeX, y * Block.sizeY, Block.sizeX, Block.sizeY, Material.GRASS);
 			}
 		}
 	}
@@ -44,10 +44,10 @@ public class World {
 		/**
 		 * update active Block
 		 */
-		for(int x = 0; x < mouseX/64+1; x++) {
+		for(int x = 0; x < mouseX/Block.sizeX+1; x++) {
 			mx = x;
 		}
-		for(int y = 0; y < mouseY/64+1; y++) {
+		for(int y = 0; y < mouseY/Block.sizeY+1; y++) {
 			my = y;
 		}
 		/**
@@ -77,7 +77,7 @@ public class World {
 		}
 				
 		g.setColor(Color.RED);
-		g.drawRect(mx*64, my*64, Block.sizeX, Block.sizeY);
+		g.drawRect(mx*Block.sizeX, my*Block.sizeY, Block.sizeX, Block.sizeY);
 		
 	}
 	

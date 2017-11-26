@@ -2,13 +2,16 @@ package de.unicornworld.openunicorn.map.editor;
 
 import java.awt.Canvas;
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferStrategy;
+import java.net.URL;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 import de.unicornworld.openunicorn.frame.Button;
 
@@ -18,8 +21,9 @@ public class MapEditor extends Canvas implements Runnable {
 	 * 
 	 */
 	private static final long serialVersionUID = -6911600628982462082L;
+	private static final int RENDER_DISTANCE_FROM_TOP = 50;
 	private static JFrame frame;
-	private Button buttonRender;
+	private static JPanel panel;
 	private boolean running = false;
 	private Thread thread;
 	private World world;
@@ -41,43 +45,65 @@ public class MapEditor extends Canvas implements Runnable {
 		addMouseMotionListener(new de.unicornworld.openunicorn.map.editor.MouseListener());
 		addMouseListener(new de.unicornworld.openunicorn.map.editor.MouseListener());
 		
-		buttonRender = new Button(150, 20);
-		buttonRender.setBounds(10, 10, 150, 20);
-		buttonRender.getText().setText("Render");
-		buttonRender.getText().setFont(new Font("Calibri", Font.BOLD, 20));
-		buttonRender.addMouseListener(new MouseListener() {
-
+		panel = new JPanel();
+		panel.setLayout(null);
+//		panel.setBackground(Color.RED);
+		
+		Button buttonSettings = new Button(100, 25);
+		buttonSettings.setBounds(0, 0, 100, 25);
+		buttonSettings.getText().setText("Einstellungen");
+		panel.add(buttonSettings);
+		
+		Button buttonClose = new Button(100, 25);
+		buttonClose.setBounds(0, 25, 100, 25);
+		buttonClose.getText().setText("Beenden");
+		buttonClose.addMouseListener(new MouseListener() {
+			
 			@Override
-			public void mouseReleased(MouseEvent e) {
+			public void mouseReleased(MouseEvent arg0) {
 				// TODO Auto-generated method stub
-
+				
 			}
-
+			
 			@Override
-			public void mousePressed(MouseEvent e) {
+			public void mousePressed(MouseEvent arg0) {
 				// TODO Auto-generated method stub
-
+				
 			}
-
+			
 			@Override
-			public void mouseExited(MouseEvent e) {
+			public void mouseExited(MouseEvent arg0) {
 				// TODO Auto-generated method stub
-
+				
 			}
-
+			
 			@Override
-			public void mouseEntered(MouseEvent e) {
+			public void mouseEntered(MouseEvent arg0) {
 				// TODO Auto-generated method stub
-
+				
 			}
-
+			
 			@Override
-			public void mouseClicked(MouseEvent e) {
-				start();
-
+			public void mouseClicked(MouseEvent arg0) {
+				System.exit(0);				
 			}
 		});
-		// frame.add(buttonRender);
+		panel.add(buttonClose);
+		
+//		JLabel button = new JLabel("", new URL("/assets/texture/icon/dirt.ico"));
+//		button.setBounds(150, 0, 100, 20);
+//		button.setBackground(Color.GREEN);
+//		panel.add(button);
+		
+//		MenuBar mBar = new MenuBar();
+//		mBar.setBounds(100, 0, 500, 20);
+//		mBar.setLayout(null);
+//		mBar.setBackground(Color.RED);
+//		frame.add(mBar);
+//		
+//		mBar.repaint();
+		frame.add(panel);
+		frame.repaint();
 
 		world = new World();
 		start();
@@ -133,6 +159,8 @@ public class MapEditor extends Canvas implements Runnable {
 
 	public void update() {
 		world.update();
+		panel.setSize(frame.getWidth(), RENDER_DISTANCE_FROM_TOP);
+		panel.repaint();
 	}
 
 	public void render() {
@@ -148,7 +176,7 @@ public class MapEditor extends Canvas implements Runnable {
 		g.fillRect(0, 0, frame.getWidth(), frame.getHeight());
 
 		world.render(g);
-		setBounds(0, 0, frame.getWidth(), frame.getHeight());
+		setBounds(0, RENDER_DISTANCE_FROM_TOP, frame.getWidth(), frame.getHeight());
 
 		g.dispose();
 		bs.show();

@@ -2,6 +2,7 @@ package de.unicornworld.openunicorn.map.editor;
 
 public enum Material {
 	
+	PLACEHOLDER,
 	DIRT,
 	GRASS,
 	STONE_WAY,

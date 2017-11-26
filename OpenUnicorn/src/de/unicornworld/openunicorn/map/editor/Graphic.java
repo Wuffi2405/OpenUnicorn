@@ -6,6 +6,8 @@ import de.unicornworld.openunicorn.util.SourceLoader;
 
 public class Graphic {
 	
+
+	public static BufferedImage imagePlaceholder =  SourceLoader.loadImage("/assets/texture/block/placeholder.png");
 	public static BufferedImage imageDirt =  SourceLoader.loadImage("/assets/texture/block/dirt.png");
 	public static BufferedImage imageGrass =  SourceLoader.loadImage("/assets/texture/block/grass.png");
 	public static BufferedImage imageStone =  SourceLoader.loadImage("/assets/texture/block/stone_way.png");

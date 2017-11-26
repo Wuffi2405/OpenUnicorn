@@ -9,8 +9,8 @@ public class Block {
 	private int y;
 	private int width;
 	private int height;
-	static int sizeX = 64;
-	static int sizeY = 64;
+	static int sizeX = 40;
+	static int sizeY = 40;
 	private Material material;
 	private static BufferedImage image;
 	

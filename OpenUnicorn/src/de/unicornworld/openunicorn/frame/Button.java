@@ -66,8 +66,6 @@ public class Button extends JPanel implements MouseListener {
 		setBackground(defaultColor);
 	}
 	
-	
-	
 	public Font getDefaultFont() {
 		return defaultFont;
 	}
