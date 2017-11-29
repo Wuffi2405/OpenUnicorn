@@ -24,41 +24,41 @@ public class Entity {
 
 	public void calculateCollisions() {
 
-		if ((Component.player.x - World.difx) == 0) {
+		if ((Component.player.x - World.difx) <= 0) {
 			left = true;
 		} else {
 			left = false;
 		}
 
-		if ((Component.player.y - World.dify) == 0) {
+		if ((Component.player.y - World.dify) <= 0) {
 			top = true;
 		} else {
 			top = false;
 		}
 
-		if (Component.world.block[(int) (((Component.player.x - World.difx) - 1) / Tile.tileSize)][(int) ((((Component.player.y - World.dify)) / Tile.tileSize))].id == Tile.stone
-				|| Component.world.block[(int) (((Component.player.x - World.difx) - 1) / Tile.tileSize)][(int) ((((Component.player.y - World.dify) - 1) / Tile.tileSize) + 1)].id == Tile.stone) {
+		if (Component.world.block[(int) (((Component.player.x - World.difx) - 1) / Tile.tileSize)][(int) ((((Component.player.y - World.dify)) / Tile.tileSize))].id == 1
+				|| Component.world.block[(int) (((Component.player.x - World.difx) - 1) / Tile.tileSize)][(int) ((((Component.player.y - World.dify) - 1) / Tile.tileSize) + 1)].id == 1) {
 			left = true;
 		} else {
 			left = false;
 		}
 
-		if (Component.world.block[(int) (((Component.player.x - World.difx)) / Tile.tileSize) + 1][(int) ((((Component.player.y - World.dify)) / Tile.tileSize))].id == Tile.stone
-				|| Component.world.block[(int) (((Component.player.x - World.difx)) / Tile.tileSize) + 1][(int) ((((Component.player.y - World.dify) - 1) / Tile.tileSize) + 1)].id == Tile.stone) {
+		if (Component.world.block[(int) (((Component.player.x - World.difx)) / Tile.tileSize) + 1][(int) ((((Component.player.y - World.dify)) / Tile.tileSize))].id == 1
+				|| Component.world.block[(int) (((Component.player.x - World.difx)) / Tile.tileSize) + 1][(int) ((((Component.player.y - World.dify) - 1) / Tile.tileSize) + 1)].id == 1) {
 			right = true;
 		} else {
 			right = false;
 		}
 
-		if (Component.world.block[(int) ((Component.player.x - World.difx) / Tile.tileSize)][(int) ((((Component.player.y - World.dify) - 1) / Tile.tileSize))].id == Tile.stone
-				|| Component.world.block[(int) (((Component.player.x - World.difx) - 1) / Tile.tileSize) + 1][(int) ((((Component.player.y - World.dify) - 1) / Tile.tileSize))].id == Tile.stone) {
+		if (Component.world.block[(int) ((Component.player.x - World.difx) / Tile.tileSize)][(int) ((((Component.player.y - World.dify) - 1) / Tile.tileSize))].id == 1
+				|| Component.world.block[(int) (((Component.player.x - World.difx) - 1) / Tile.tileSize) + 1][(int) ((((Component.player.y - World.dify) - 1) / Tile.tileSize))].id == 1) {
 			top = true;
 		} else {
 			top = false;
 		}
 
-		if (Component.world.block[(int) ((Component.player.x - World.difx) / Tile.tileSize)][(int) ((((Component.player.y - World.dify)) / Tile.tileSize) + 1)].id == Tile.stone
-				|| Component.world.block[(int) (((Component.player.x - World.difx) - 1) / Tile.tileSize) + 1][(int) ((((Component.player.y - World.dify)) / Tile.tileSize) + 1)].id == Tile.stone) {
+		if (Component.world.block[(int) ((Component.player.x - World.difx) / Tile.tileSize)][(int) ((((Component.player.y - World.dify)) / Tile.tileSize) + 1)].id == 1
+				|| Component.world.block[(int) (((Component.player.x - World.difx) - 1) / Tile.tileSize) + 1][(int) ((((Component.player.y - World.dify)) / Tile.tileSize) + 1)].id == 1) {
 			bottom = true;
 		} else {
 			bottom = false;

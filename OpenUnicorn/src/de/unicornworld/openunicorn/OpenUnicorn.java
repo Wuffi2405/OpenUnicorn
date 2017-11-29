@@ -25,6 +25,9 @@ public class OpenUnicorn extends Canvas implements Runnable {
 	
 	public void callInitialisation(){
 		System.out.println("[OpenUnicorn] [OpenUnicorn] [callInitialisation] called");
+		/**
+		 * Component wird in LayeredPaneGame nochmal aufgerufen???
+		 */
 		component = new Component();
 	}
 	

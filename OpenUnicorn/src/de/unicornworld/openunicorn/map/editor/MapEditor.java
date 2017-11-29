@@ -4,13 +4,9 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.awt.image.BufferStrategy;
-import java.net.URL;
 
-import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import de.unicornworld.openunicorn.frame.Button;
@@ -24,6 +20,7 @@ public class MapEditor extends Canvas implements Runnable {
 	private static final int RENDER_DISTANCE_FROM_TOP = 50;
 	private static JFrame frame;
 	private static JPanel panel;
+	private MenuBar menuBar;
 	private boolean running = false;
 	private Thread thread;
 	private World world;
@@ -39,15 +36,18 @@ public class MapEditor extends Canvas implements Runnable {
 		frame.setResizable(true);
 
 		frame.add(this);
-		frame.repaint();
+//		frame.repaint();
 		
 		addKeyListener(new de.unicornworld.openunicorn.map.editor.KeyListener());
 		addMouseMotionListener(new de.unicornworld.openunicorn.map.editor.MouseListener());
 		addMouseListener(new de.unicornworld.openunicorn.map.editor.MouseListener());
 		
+		/**
+		 * panel size is set in the update
+		 */
 		panel = new JPanel();
 		panel.setLayout(null);
-//		panel.setBackground(Color.RED);
+		panel.setBackground(Color.RED);
 		
 		Button buttonSettings = new Button(100, 25);
 		buttonSettings.setBounds(0, 0, 100, 25);
@@ -90,18 +90,10 @@ public class MapEditor extends Canvas implements Runnable {
 		});
 		panel.add(buttonClose);
 		
-//		JLabel button = new JLabel("", new URL("/assets/texture/icon/dirt.ico"));
-//		button.setBounds(150, 0, 100, 20);
-//		button.setBackground(Color.GREEN);
-//		panel.add(button);
+		menuBar = new MenuBar();
+		menuBar.setBounds(100, 0, 250, 50);
+		panel.add(menuBar);
 		
-//		MenuBar mBar = new MenuBar();
-//		mBar.setBounds(100, 0, 500, 20);
-//		mBar.setLayout(null);
-//		mBar.setBackground(Color.RED);
-//		frame.add(mBar);
-//		
-//		mBar.repaint();
 		frame.add(panel);
 		frame.repaint();
 
@@ -160,6 +152,7 @@ public class MapEditor extends Canvas implements Runnable {
 	public void update() {
 		world.update();
 		panel.setSize(frame.getWidth(), RENDER_DISTANCE_FROM_TOP);
+		menuBar.setSize(frame.getWidth()-100, RENDER_DISTANCE_FROM_TOP);
 		panel.repaint();
 	}
 

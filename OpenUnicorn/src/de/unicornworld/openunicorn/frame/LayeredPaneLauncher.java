@@ -2,10 +2,10 @@ package de.unicornworld.openunicorn.frame;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -18,8 +18,9 @@ public class LayeredPaneLauncher extends JPanel {
 	private static final long serialVersionUID = 3803108154839418167L;
 
 	public static Button buttonStartGame, buttonCredits, buttonCloseGame, buttonMapEditor;
-	public static JLabel image;
+	public static JLabel image_background;
 	public static Thread threadCreditsAnimation;
+	private JPanel panel_background;
 	
 	
 	public LayeredPaneLauncher(Window window){
@@ -206,9 +207,18 @@ public class LayeredPaneLauncher extends JPanel {
 		});
 		this.add(buttonMapEditor);
 		
-		image = new JLabel(new ImageIcon(SourceLoader.loadImage("/assets/texture/launcher/launcher-background.png")));
-		image.setBounds(0, 0, Window.getJFrame().getWidth(), Window.getJFrame().getHeight());
-		this.add(image);
+		panel_background = new JPanel() {
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			protected void paintComponent(Graphics g) {
+				super.paintComponent(g);
+				g.drawImage(SourceLoader.loadImage("/assets/texture/launcher/launcher-background.png"), 0, 0, Window.getJFrame().getWidth(), Window.getJFrame().getHeight(), null);
+				g.drawImage(SourceLoader.loadImage("/assets/texture/launcher/logo_v2.png"), 0, 0, Window.getJFrame().getWidth()-(Window.getJFrame().getInsets().left+Window.getJFrame().getInsets().right), Window.getJFrame().getWidth()/2, null);
+			}
+		};
+		panel_background.setBounds(0, 0, 800, 600);
+		this.add(panel_background);
 		
 	}
 }

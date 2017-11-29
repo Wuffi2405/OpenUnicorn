@@ -6,22 +6,29 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.image.BufferStrategy;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
 import de.unicornworld.openunicorn.entity.NPC;
 import de.unicornworld.openunicorn.entity.Player;
+import de.unicornworld.openunicorn.frame.Window;
 import de.unicornworld.openunicorn.util.SourceLoader;
 import de.unicornworld.openunicorn.util.SpeechBubble;
-import de.unicornworld.openunicorn.world.Block;
+import de.unicornworld.openunicorn.util.TextureReload;
 import de.unicornworld.openunicorn.world.Tile;
 import de.unicornworld.openunicorn.world.World;
+import de.unicornworld.openunicorn.world.overwrite.Console;
+import de.unicornworld.openunicorn.world.overwrite.Inventory;
+import de.unicornworld.openunicorn.world.overwrite.OverWritable;
 
 public class Component extends Canvas {
-	//pointless
+	// pointless
 	private static final long serialVersionUID = 1L;
-	//player direction
+	// player direction
 	public static double dirVert = 0;
 	public static double dirHor = 0;
 	public static double sx = 0;
@@ -50,8 +57,14 @@ public class Component extends Canvas {
 	public static Console console;
 	public static SpeechBubble speechBubble;
 	public static Inventory inventory;
+	public static TextureReload texturereload;
+
+	public static BufferedReader logdatainput;
+
+	public static Point location = new Point(0, 0);
 
 	public static String worldName = "world";
+	public static OverWritable layer2 = null;
 
 	public static int pixelsize = 1;
 	public static Dimension pixel = new Dimension(size.width / pixelsize, size.height / pixelsize);
@@ -62,6 +75,24 @@ public class Component extends Canvas {
 
 		System.out.println("[OpenUnicorn] [Initialisation] [Initialisation] called");
 
+		try {
+			logdatainput = new BufferedReader(new FileReader(new File("src/assets/files/log.uwuf")));
+			worldName = logdatainput.readLine().trim();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+
+		try {
+
+			Player.player = ImageIO.read(SourceLoader.class.getResourceAsStream("/assets/player.png"));
+			Player.player_left = ImageIO.read(SourceLoader.class.getResourceAsStream("/assets/player_left.png"));
+			NPC.markens_img = ImageIO.read(SourceLoader.class.getResourceAsStream("/assets/texture/block/NPC1.png"));
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		texturereload = new TextureReload();
 		inventory = new Inventory();
 		world = new World(worldName);
 		speechBubble = null;
@@ -69,16 +100,11 @@ public class Component extends Canvas {
 		console = new Console();
 
 		try {
-
-			Block.earth = ImageIO.read(SourceLoader.class.getResourceAsStream("/assets/texture/block/Erde1.png"));
-			Block.grass = ImageIO.read(SourceLoader.class.getResourceAsStream("/assets/texture/block/grass.png"));
-			Block.steinWeg_1 = ImageIO.read(SourceLoader.class.getResourceAsStream("/assets/texture/block/Steinweg1.png"));
-			Player.player = ImageIO.read(SourceLoader.class.getResourceAsStream("/assets/player.png"));
-			Player.player_left = ImageIO.read(SourceLoader.class.getResourceAsStream("/assets/player_left.png"));
-			NPC.markens_img = ImageIO.read(SourceLoader.class.getResourceAsStream("/assets/texture/block/NPC1.png"));
-
-		} catch (IOException e) {
-			e.printStackTrace();
+			player.x = Integer.parseInt(logdatainput.readLine().trim());
+			player.y = Integer.parseInt(logdatainput.readLine().trim());
+			World.difx = Integer.parseInt(logdatainput.readLine().trim());
+			World.dify = Integer.parseInt(logdatainput.readLine().trim());
+		} catch (Exception e) {
 		}
 
 		readyForLoop = true;
@@ -98,16 +124,15 @@ public class Component extends Canvas {
 
 			if (state == 0) {
 
-				world.tick((int) sx, (int) sy, (int) (pixel.width / Tile.tileSize + 2), (int) (pixel.height / Tile.tileSize + 2));
+				world.tick((int) sx, (int) sy, (int) (pixel.width / Tile.tileSize + 2),
+						(int) (pixel.height / Tile.tileSize + 2));
 				player.tick();
 
-			} else if (state == 1) {
+				location = new Point(player.x - World.difx, player.y - World.dify);
 
-				console.update();
-
-			} else if (state == 2) {
-
-				inventory.update();
+				if (layer2 != null) {
+					layer2.update();
+				}
 
 			}
 
@@ -133,26 +158,22 @@ public class Component extends Canvas {
 			g.setColor(Color.LIGHT_GRAY);
 			g.fillRect(0, 0, 800, 600);
 
-			world.render(g, (int) sx, (int) sy, (int) (pixel.width / Tile.tileSize + 2), (int) (pixel.height / Tile.tileSize + 2));
+			world.render(g, (int) sx, (int) sy, (int) (Window.getJFrame().getWidth() / Tile.tileSize + 2),
+					(int) (Window.getJFrame().getHeight() / Tile.tileSize + 2));
 			player.render(g);
 
 			g.setColor(new Color(100, 50, 150));
 			g.drawRect(0, 0, 1000, 1000);
 
-		} else if (state == 1) {
-
-			console.render(g);
-
-		} else if (state == 2) {
-
-			inventory.render(g);
+			if (layer2 != null) {
+				layer2.render(g);
+			}
 
 		}
 
 		if (readyForLoop) {
 
 		}
-
 		if (speechBubble != null) {
 
 			speechBubble.render(g);
@@ -163,6 +184,9 @@ public class Component extends Canvas {
 	}
 
 	public static void switchWorld(String worldName) {
+
+		Component.speechBubble = null;
+		Component.worldName = worldName;
 		Component.world = new World(worldName);
 		Component.player.x = Tile.tileSize;
 		Component.player.y = Tile.tileSize;

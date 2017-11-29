@@ -2,11 +2,16 @@ package de.unicornworld.openunicorn.frame;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 import javax.swing.JPanel;
 
 import de.unicornworld.openunicorn.Component;
 import de.unicornworld.openunicorn.OpenUnicorn;
+import de.unicornworld.openunicorn.world.World;
 
 public class LayeredPaneGame extends JPanel {
 
@@ -52,6 +57,25 @@ public class LayeredPaneGame extends JPanel {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
+
+				try {
+					BufferedWriter writer = new BufferedWriter(new FileWriter(new File("src/assets/files/log.uwuf")));
+
+					writer.flush();
+					writer.write(Component.worldName);
+					writer.newLine();
+					writer.write(String.valueOf(Component.player.x));
+					writer.newLine();
+					writer.write(String.valueOf(Component.player.y));
+					writer.newLine();
+					writer.write(String.valueOf(World.difx));
+					writer.newLine();
+					writer.write(String.valueOf(World.dify));
+					writer.close();
+
+				} catch (IOException ex) {
+				}
+
 				Window.getJFrame().dispose();
 				OpenUnicorn.getOpenUnicorn().stop();
 			}

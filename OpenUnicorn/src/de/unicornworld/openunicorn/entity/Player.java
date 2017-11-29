@@ -5,6 +5,8 @@ import java.awt.image.BufferedImage;
 
 import de.unicornworld.openunicorn.Component;
 import de.unicornworld.openunicorn.frame.Window;
+import de.unicornworld.openunicorn.util.TeleportSystem;
+import de.unicornworld.openunicorn.world.Tile;
 import de.unicornworld.openunicorn.world.World;
 
 public class Player extends Entity {
@@ -16,8 +18,6 @@ public class Player extends Entity {
 	public static float speed = 2;
 	protected float dx;
 	protected float dy;
-	protected boolean falling = true;
-	protected boolean jumping;
 
 	protected boolean jumpPerformed;
 
@@ -29,7 +29,16 @@ public class Player extends Entity {
 
 	public void tick() {
 
-		calculateCollisions();
+		if (Component.player.isTouchingID(99)) {
+
+			TeleportSystem.calculateTeleport();
+			
+		}
+
+		try {
+			calculateCollisions();
+		} catch (Exception e) {
+		}
 
 		if (Component.isMovingVert == true) {
 
@@ -41,17 +50,20 @@ public class Player extends Entity {
 
 			if (Component.dirVert == Player.speed && right != true) {
 
-				if ((Component.player.x - World.difx) < ((Window.getJFrame().getWidth() - Component.player.width) / 2)) {
+				if ((Component.player.x - World.difx) < ((Window.getJFrame().getWidth() - Component.player.width) / 2)
+						|| Window.getJFrame().getWidth() - World.difx - 14 > World.worldW * Tile.tileSize) {
 
 					x += Player.speed;
 
 				} else {
 					World.difx -= Player.speed;
+
 				}
 			}
 			if (Component.dirVert == -Player.speed && left != true) {
 
-				if (World.difx >= 0) {
+				if (World.difx >= 0 || Component.player.x - World.difx - 14 > World.worldW * Tile.tileSize
+						- (Window.getJFrame().getWidth() / 2)) {
 
 					x -= Player.speed;
 
@@ -66,7 +78,8 @@ public class Player extends Entity {
 
 			if (Component.dirHor == Player.speed && bottom != true) {
 
-				if ((Component.player.y - World.dify) < ((Window.getJFrame().getHeight() - Component.player.height) / 2)) {
+				if ((Component.player.y - World.dify) < ((Window.getJFrame().getHeight() - Component.player.height) / 2)
+						|| Window.getJFrame().getHeight() - World.dify - 35 > World.worldH * Tile.tileSize) {
 
 					y += Player.speed;
 
@@ -76,7 +89,8 @@ public class Player extends Entity {
 			}
 			if (Component.dirHor == -Player.speed && top != true) {
 
-				if (World.dify >= 0) {
+				if (World.dify >= 0 || Component.player.y - World.dify - 14 > World.worldH * Tile.tileSize
+						- (Window.getJFrame().getHeight() / 2)) {
 
 					y -= Player.speed;
 
@@ -99,6 +113,24 @@ public class Player extends Entity {
 
 			g.drawImage(player_left, x, y, width, height, null);
 		}
+	}
+
+	public boolean isTouchingID(int ID) {
+
+		if (Component.world.getBlockAt(Component.player.x - World.difx, Component.player.y - World.dify).id == ID
+				|| Component.world.getBlockAt(Component.player.x - World.difx + Tile.tileSize,
+						Component.player.y - World.dify).id == ID
+				|| Component.world.getBlockAt(Component.player.x - World.difx,
+						Component.player.y - World.dify + Tile.tileSize).id == ID
+				|| Component.world.getBlockAt(Component.player.x - World.difx + Tile.tileSize,
+						Component.player.y - World.dify + Tile.tileSize).id == ID) {
+
+			return true;
+
+		}
+
+		return false;
+
 	}
 
 }

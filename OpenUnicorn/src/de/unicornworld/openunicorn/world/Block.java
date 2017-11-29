@@ -2,43 +2,25 @@ package de.unicornworld.openunicorn.world;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
-import java.awt.image.BufferedImage;
+
+import de.unicornworld.openunicorn.util.TextureReload;
 
 public class Block extends Rectangle {
 
-	public static BufferedImage grass;
-
-	public static BufferedImage earth;
-	public static BufferedImage steinWeg_1;
-
 	private static final long serialVersionUID = 1L;
 
-	public int[] id = { -1, -1 };
+	public int id = -1;
 
-	public Block(Rectangle size, int[] id) {
+	public Block(Rectangle size, int id) {
 		setBounds(size);
 
 		this.id = id;
 	}
 
-	public void render(Graphics g) {
-		/**
-		 * Unterscheidung nach BlockType
-		 */
-		if (id == Tile.stone) {
-			g.drawImage(steinWeg_1, x + World.difx, y + World.dify, Tile.tileSize, Tile.tileSize, null);
+	public void renderID(Graphics g) {
 
-		}
+		g.drawImage(TextureReload.textures.get(id), x + World.difx, y + World.dify, Tile.tileSize, Tile.tileSize, null);
 
-		if (id == Tile.grass) {
-			g.drawImage(grass, x + World.difx, y + World.dify, Tile.tileSize, Tile.tileSize, null);
-
-		}
-
-		if (id == Tile.earth) {
-			g.drawImage(earth, x + World.difx, y + World.dify, Tile.tileSize, Tile.tileSize, null);
-
-		}
 	}
 
 }
