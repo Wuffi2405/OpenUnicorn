@@ -76,7 +76,7 @@ public class Component extends Canvas {
 		System.out.println("[OpenUnicorn] [Initialisation] [Initialisation] called");
 
 		try {
-			logdatainput = new BufferedReader(new FileReader(new File("src/assets/files/log.uwuf")));
+			logdatainput = new BufferedReader(new FileReader(new File("/assets/files/log.uwuf")));
 			worldName = logdatainput.readLine().trim();
 		} catch (IOException e1) {
 			e1.printStackTrace();
